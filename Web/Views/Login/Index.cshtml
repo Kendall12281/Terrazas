@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="~/Content/logo/cover.ico">
+    <script src="~/Content/tailwind.min.js"></script>
+    <link rel="stylesheet" href="~/Content/Site.css">
+    <title>Login</title>
+</head>
+<body style="background-color: #35495e">
+
+    <section id="navbar-css">
+        <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto">
+            <div class="w-full md:w-8/12 xl:w-4/12">
+                <div class="p-3 flex justify-center overflow-hidden">
+
+                    <img class="h-auto max-w-lg rounded-lg" src="~/Content/logo/cover.png" alt="image description">
+
+                </div>
+                <div class="m-2 p-6 space-y-4 md:space-y-6 sm:p-8">
+
+                    <form class="space-y-4 md:space-y-6">
+                        <div>
+                            <label for="email" class="text-white block mb-2 text-sm font-medium">
+                                Your
+                                email
+                            </label>
+                            <input type="email" name="email" id="email"
+                                   class="mb-8 bg-white border sm:text-sm rounded-lg block w-full p-2.5 "
+                                   placeholder="name@company.com">
+                        </div>
+                        <div>
+                            <label for="password" class="text-white block mb-2 text-sm font-medium">Password</label>
+                            <input type="password" name="password" id="password" placeholder="••••••••"
+                                   class="mb-8 bg-white border sm:text-sm rounded-lg block w-full p-2.5 "
+                                   >
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-start">
+                                <div class="flex items-center h-5">
+                                    <input id="remember" aria-describedby="remember" type="checkbox"
+                                           class="w-4 h-4 border rounded"
+                                           required="">
+                                </div>
+                                <div class="ml-3  mb-3">
+                                    <label class="text-white">Remember me</label>
+                                </div>
+                            </div>
+                            <a href="#" class="text-white text-sm font-medium  hover:underline mb-3">
+                                Forgot
+                                password?
+                            </a>
+                        </div>
+                        <div class="flex justify-center">
+
+                        <button class="w-full text-white  hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center green-color lg:w-6/12" style="margin-bottom: 1rem;">
+                            Sign
+                            in
+                        </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</body>
+</html>
+
+

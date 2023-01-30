@@ -1,0 +1,115 @@
+﻿@model Infraestructure.Model.Resident
+
+@{
+    ViewBag.Title = "Delete";
+    List<SelectListItem> list = (List<SelectListItem>)ViewBag.houseStates;
+}
+<head>
+
+    <link rel="stylesheet" href="~/Content/Site.css">
+</head>
+@using (Html.BeginForm("Delete", "Resident", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div>
+
+        <div class="w-full md:w-8/12 xl:w-4/12">
+            @Html.ValidationSummary(true, "")
+            <div class="hidden">
+                <label>
+                    @Html.LabelFor(model => model.Id, "Id")
+                </label>
+                <div>
+                    @Html.EditorFor(model => model.Id, new { htmlAttributes = new { @class = "mb-8 bg-white border sm:text-sm rounded-lg block w-full p-2.5" } })
+                    @Html.ValidationMessageFor(model => model.Id, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div>
+                <label>
+                    @Html.LabelFor(model => model.UserEmail, "Email")
+                </label>
+                <div>
+                    @Html.EditorFor(model => model.UserEmail, new { htmlAttributes = new { @class = "mb-8 bg-white border sm:text-sm rounded-lg block w-full p-2.5" } })
+                    @Html.ValidationMessageFor(model => model.UserEmail, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.HouseNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div>
+                    @Html.EditorFor(model => model.HouseNumber, new { htmlAttributes = new { @class = "mb-8 bg-white border sm:text-sm rounded-lg block w-full p-2.5" } })
+                    @Html.ValidationMessageFor(model => model.HouseNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div>
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "mb-8 bg-white border sm:text-sm rounded-lg block w-full p-2.5" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div>
+                    @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "mb-8 bg-white border sm:text-sm rounded-lg block w-full p-2.5" } })
+                    @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PersonCount, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div>
+                    @Html.EditorFor(model => model.PersonCount, new { htmlAttributes = new { @class = "mb-8 bg-white border sm:text-sm rounded-lg block w-full p-2.5" } })
+                    @Html.ValidationMessageFor(model => model.PersonCount, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CarsCount, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div>
+                    @Html.EditorFor(model => model.CarsCount, new { htmlAttributes = new { @class = "mb-8 bg-white border sm:text-sm rounded-lg block w-full p-2.5" } })
+                    @Html.ValidationMessageFor(model => model.CarsCount, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.StartedDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div>
+                    @Html.EditorFor(model => model.StartedDate, new { htmlAttributes = new { @class = "mb-8 bg-white border sm:text-sm rounded-lg block w-full p-2.5" } })
+                    @Html.ValidationMessageFor(model => model.StartedDate)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.HouseState, "IdHouseState", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div>
+                    @Html.DropDownListFor(model => model.HouseState, list, null, new { @class = "mb-8 bg-white border sm:text-sm rounded-lg block w-full p-2.5" })
+                    @Html.ValidationMessageFor(model => model.HouseState)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Active, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div>
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.Active)
+                        @Html.ValidationMessageFor(model => model.Active, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <div class="mt-5 flex gap-4">
+            <input type="submit" value="Delete" class="font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-red-400 shadow" />
+            <button class="font-medium rounded-lg text-sm px-5 py-2.5 text-center shadow">
+                @Html.ActionLink("Back to List ", "Index", new { @class = "btn-blue-color" })
+
+            </button>
+        </div>
+    </div>
+        }

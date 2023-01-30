@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cae724c80b4f432e93d28715b429a036" Name="Diagram1">
+        <EntityTypeShape EntityType="TerrazasModel.Announcement" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TerrazasModel.Booking" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TerrazasModel.Charge" Width="1.5" PointX="5.25" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="TerrazasModel.Collection" Width="1.5" PointX="3" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="TerrazasModel.CollectionPlan" Width="1.5" PointX="5.25" PointY="21.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TerrazasModel.HouseState" Width="1.5" PointX="2.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TerrazasModel.Incident" Width="1.5" PointX="6" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TerrazasModel.IncidentState" Width="1.5" PointX="3.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TerrazasModel.News" Width="1.5" PointX="8.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TerrazasModel.Payment" Width="1.5" PointX="3" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TerrazasModel.Plan" Width="1.5" PointX="4.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TerrazasModel.Resident" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TerrazasModel.Rol" Width="1.5" PointX="5.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TerrazasModel.Schedule" Width="1.5" PointX="1.5" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TerrazasModel.SocialArea" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TerrazasModel.User" Width="1.5" PointX="8" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TerrazasModel.CondoDoc" Width="1.5" PointX="8.75" PointY="7.75" IsExpanded="true" />
+        <AssociationConnector Association="TerrazasModel.FK_Booking_Resident" ManuallyRouted="false" />
+        <AssociationConnector Association="TerrazasModel.FK_Booking_SocialArea" ManuallyRouted="false" />
+        <AssociationConnector Association="TerrazasModel.FK_Charge_Collection" ManuallyRouted="false" />
+        <AssociationConnector Association="TerrazasModel.FK_Charge_Payment" ManuallyRouted="false" />
+        <AssociationConnector Association="TerrazasModel.FK_CollectionPlan_Collection" ManuallyRouted="false" />
+        <AssociationConnector Association="TerrazasModel.FK_Incident_IncidentState" ManuallyRouted="false" />
+        <AssociationConnector Association="TerrazasModel.FK_Incident_Resident" ManuallyRouted="false" />
+        <AssociationConnector Association="TerrazasModel.FK_Payment_Resident" ManuallyRouted="false" />
+        <AssociationConnector Association="TerrazasModel.FK_User_Rol" ManuallyRouted="false" />
+        <AssociationConnector Association="TerrazasModel.FK_SocialArea_Schedule" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

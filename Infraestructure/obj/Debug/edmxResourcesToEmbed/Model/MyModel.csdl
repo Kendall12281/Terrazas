@@ -1,0 +1,383 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TerrazasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Announcement">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Ttile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Booking">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdSocialArea" Type="Int32" Nullable="false" />
+    <Property Name="IdResident" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="StartTime" Type="Time" Nullable="false" Precision="3" />
+    <Property Name="EndTime" Type="Time" Nullable="false" Precision="3" />
+    <Property Name="Confirmed" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Resident" Relationship="Self.FK_Booking_Resident" FromRole="Booking" ToRole="Resident" />
+    <NavigationProperty Name="SocialArea" Relationship="Self.FK_Booking_SocialArea" FromRole="Booking" ToRole="SocialArea" />
+  </EntityType>
+  <EntityType Name="Charge">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdCollection" Type="Int32" Nullable="false" />
+    <Property Name="IdPayment" Type="Int32" Nullable="false" />
+    <Property Name="Cost" Type="Double" Nullable="false" />
+    <NavigationProperty Name="Collection" Relationship="Self.FK_Charge_Collection" FromRole="Charge" ToRole="Collection" />
+    <NavigationProperty Name="Payment" Relationship="Self.FK_Charge_Payment" FromRole="Charge" ToRole="Payment" />
+  </EntityType>
+  <EntityType Name="Collection">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Charge" Relationship="Self.FK_Charge_Collection" FromRole="Collection" ToRole="Charge" />
+    <NavigationProperty Name="CollectionPlan" Relationship="Self.FK_CollectionPlan_Collection" FromRole="Collection" ToRole="CollectionPlan" />
+  </EntityType>
+  <EntityType Name="CollectionPlan">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="IdPlan" Type="Int32" Nullable="false" />
+    <Property Name="IdCollection" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Collection" Relationship="Self.FK_CollectionPlan_Collection" FromRole="CollectionPlan" ToRole="Collection" />
+  </EntityType>
+  <EntityType Name="HouseState">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Incident">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdResident" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="IdIncidentState" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="IncidentState" Relationship="Self.FK_Incident_IncidentState" FromRole="Incident" ToRole="IncidentState" />
+    <NavigationProperty Name="Resident" Relationship="Self.FK_Incident_Resident" FromRole="Incident" ToRole="Resident" />
+  </EntityType>
+  <EntityType Name="IncidentState">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descrption" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Incident" Relationship="Self.FK_Incident_IncidentState" FromRole="IncidentState" ToRole="Incident" />
+  </EntityType>
+  <EntityType Name="News">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Ttile" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Payment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="IdResident" Type="Int32" Nullable="false" />
+    <Property Name="Month" Type="Int32" Nullable="false" />
+    <Property Name="Year" Type="Int32" Nullable="false" />
+    <Property Name="Total" Type="Double" Nullable="false" />
+    <Property Name="Canceled" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Charge" Relationship="Self.FK_Charge_Payment" FromRole="Payment" ToRole="Charge" />
+    <NavigationProperty Name="Resident" Relationship="Self.FK_Payment_Resident" FromRole="Payment" ToRole="Resident" />
+  </EntityType>
+  <EntityType Name="Plan">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Resident">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="HouseNumber" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PersonCount" Type="Int32" Nullable="false" />
+    <Property Name="CarsCount" Type="Int32" Nullable="false" />
+    <Property Name="StartedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="HouseState" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Booking" Relationship="Self.FK_Booking_Resident" FromRole="Resident" ToRole="Booking" />
+    <NavigationProperty Name="Incident" Relationship="Self.FK_Incident_Resident" FromRole="Resident" ToRole="Incident" />
+    <NavigationProperty Name="Payment" Relationship="Self.FK_Payment_Resident" FromRole="Resident" ToRole="Payment" />
+  </EntityType>
+  <EntityType Name="Rol">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK_User_Rol" FromRole="Rol" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Schedule">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="OpenHour" Type="Time" Nullable="false" Precision="3" />
+    <Property Name="ClosedHour" Type="Time" Nullable="false" Precision="3" />
+    <Property Name="Monday" Type="Boolean" Nullable="false" />
+    <Property Name="Tuesday" Type="Boolean" Nullable="false" />
+    <Property Name="Wednesday" Type="Boolean" Nullable="false" />
+    <Property Name="Thursday" Type="Boolean" Nullable="false" />
+    <Property Name="Friday" Type="Boolean" Nullable="false" />
+    <Property Name="Saturday" Type="Boolean" Nullable="false" />
+    <Property Name="Sunday" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="SocialArea" Relationship="Self.FK_SocialArea_Schedule" FromRole="Schedule" ToRole="SocialArea" />
+  </EntityType>
+  <EntityType Name="SocialArea">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="IdSchedule" Type="Int32" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Booking" Relationship="Self.FK_Booking_SocialArea" FromRole="SocialArea" ToRole="Booking" />
+    <NavigationProperty Name="Schedule" Relationship="Self.FK_SocialArea_Schedule" FromRole="SocialArea" ToRole="Schedule" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Email" />
+    </Key>
+    <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdRol" Type="Int32" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Rol" Relationship="Self.FK_User_Rol" FromRole="User" ToRole="Rol" />
+  </EntityType>
+  <EntityType Name="CondoDoc">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Title" />
+      <PropertyRef Name="Description" />
+      <PropertyRef Name="Date" />
+      <PropertyRef Name="Active" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Booking_Resident">
+    <End Role="Resident" Type="Self.Resident" Multiplicity="1" />
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Resident">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="IdResident" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Booking_SocialArea">
+    <End Role="SocialArea" Type="Self.SocialArea" Multiplicity="1" />
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SocialArea">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="IdSocialArea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Charge_Collection">
+    <End Role="Collection" Type="Self.Collection" Multiplicity="1" />
+    <End Role="Charge" Type="Self.Charge" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Collection">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Charge">
+        <PropertyRef Name="IdCollection" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Charge_Payment">
+    <End Role="Payment" Type="Self.Payment" Multiplicity="1" />
+    <End Role="Charge" Type="Self.Charge" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Payment">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Charge">
+        <PropertyRef Name="IdPayment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CollectionPlan_Collection">
+    <End Role="Collection" Type="Self.Collection" Multiplicity="1" />
+    <End Role="CollectionPlan" Type="Self.CollectionPlan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Collection">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CollectionPlan">
+        <PropertyRef Name="IdCollection" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Incident_IncidentState">
+    <End Role="IncidentState" Type="Self.IncidentState" Multiplicity="1" />
+    <End Role="Incident" Type="Self.Incident" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IncidentState">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Incident">
+        <PropertyRef Name="IdIncidentState" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Incident_Resident">
+    <End Role="Resident" Type="Self.Resident" Multiplicity="1" />
+    <End Role="Incident" Type="Self.Incident" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Resident">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Incident">
+        <PropertyRef Name="IdResident" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Payment_Resident">
+    <End Role="Resident" Type="Self.Resident" Multiplicity="1" />
+    <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Resident">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="IdResident" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Rol">
+    <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="IdRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SocialArea_Schedule">
+    <End Role="Schedule" Type="Self.Schedule" Multiplicity="1" />
+    <End Role="SocialArea" Type="Self.SocialArea" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Schedule">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SocialArea">
+        <PropertyRef Name="IdSchedule" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TerrazasEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Announcement" EntityType="Self.Announcement" />
+    <EntitySet Name="Booking" EntityType="Self.Booking" />
+    <EntitySet Name="Charge" EntityType="Self.Charge" />
+    <EntitySet Name="Collection" EntityType="Self.Collection" />
+    <EntitySet Name="CollectionPlan" EntityType="Self.CollectionPlan" />
+    <EntitySet Name="HouseState" EntityType="Self.HouseState" />
+    <EntitySet Name="Incident" EntityType="Self.Incident" />
+    <EntitySet Name="IncidentState" EntityType="Self.IncidentState" />
+    <EntitySet Name="News" EntityType="Self.News" />
+    <EntitySet Name="Payment" EntityType="Self.Payment" />
+    <EntitySet Name="Plan" EntityType="Self.Plan" />
+    <EntitySet Name="Resident" EntityType="Self.Resident" />
+    <EntitySet Name="Rol" EntityType="Self.Rol" />
+    <EntitySet Name="Schedule" EntityType="Self.Schedule" />
+    <EntitySet Name="SocialArea" EntityType="Self.SocialArea" />
+    <EntitySet Name="User" EntityType="Self.User" />
+    <EntitySet Name="CondoDoc" EntityType="Self.CondoDoc" />
+    <AssociationSet Name="FK_Booking_Resident" Association="Self.FK_Booking_Resident">
+      <End Role="Resident" EntitySet="Resident" />
+      <End Role="Booking" EntitySet="Booking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Booking_SocialArea" Association="Self.FK_Booking_SocialArea">
+      <End Role="SocialArea" EntitySet="SocialArea" />
+      <End Role="Booking" EntitySet="Booking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Charge_Collection" Association="Self.FK_Charge_Collection">
+      <End Role="Collection" EntitySet="Collection" />
+      <End Role="Charge" EntitySet="Charge" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Charge_Payment" Association="Self.FK_Charge_Payment">
+      <End Role="Payment" EntitySet="Payment" />
+      <End Role="Charge" EntitySet="Charge" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CollectionPlan_Collection" Association="Self.FK_CollectionPlan_Collection">
+      <End Role="Collection" EntitySet="Collection" />
+      <End Role="CollectionPlan" EntitySet="CollectionPlan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Incident_IncidentState" Association="Self.FK_Incident_IncidentState">
+      <End Role="IncidentState" EntitySet="IncidentState" />
+      <End Role="Incident" EntitySet="Incident" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Incident_Resident" Association="Self.FK_Incident_Resident">
+      <End Role="Resident" EntitySet="Resident" />
+      <End Role="Incident" EntitySet="Incident" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payment_Resident" Association="Self.FK_Payment_Resident">
+      <End Role="Resident" EntitySet="Resident" />
+      <End Role="Payment" EntitySet="Payment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Rol" Association="Self.FK_User_Rol">
+      <End Role="Rol" EntitySet="Rol" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SocialArea_Schedule" Association="Self.FK_SocialArea_Schedule">
+      <End Role="Schedule" EntitySet="Schedule" />
+      <End Role="SocialArea" EntitySet="SocialArea" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

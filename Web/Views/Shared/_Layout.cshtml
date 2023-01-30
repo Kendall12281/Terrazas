@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terrazas</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <script src="~/Content/tailwind.min.js"></script>
+    <link rel="stylesheet" href="~/Content/Navigation.css">
+</head>
+<body class="active">
+
+    <div class="wrapper">
+        <div class="section">
+            <div id="top-navbar" class="top_navbar flex justify-between">
+
+                <div>
+
+                    <a>
+                        <img class="block h-8 w-auto cover-img" id="cover-img" style="height: 6rem; width:auto"
+                             src="~/Content//logo/cover.png" alt="Your Company">
+                    </a>
+                </div>
+
+                <div class="hamburger px-5">
+                    <a href="#" class="block h-8 w-auto ">
+                        <i class="fas fa-bars"></i>
+                    </a>
+                </div>
+
+            </div>
+            <div class="container">
+                @RenderBody()
+
+            </div>
+        </div>
+        <div id="sidebar" class="sidebar">
+            <div class="flex justify-end m-4" id="close-btn">
+                <a class="close-icon">
+
+                    <i class="fas fa-times hover:text-white" style="font-size: 2rem; color: #F9F9F9 "></i>
+                </a>
+            </div>
+            <div class="profile">
+                <i class="fas fa-home" style="font-size:6rem; color:#42b883;"></i>
+                <div class="rounded-full mx-auto" style="background:#42b883; width:50px">
+
+                    <h3 class="font-extrabold rounded-full">
+                        132
+                    </h3>
+                </div>
+            </div>
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fas fa-home"></i></span>
+                        <span class="item">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fas fa-desktop"></i></span>
+                        <span class="item">My Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fas fa-user-friends"></i></span>
+                        <span class="item">People</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fas fa-tachometer-alt"></i></span>
+                        <span class="item">Perfomance</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fas fa-database"></i></span>
+                        <span class="item">Development</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fas fa-chart-line"></i></span>
+                        <span class="item">Reports</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fas fa-user-shield"></i></span>
+                        <span class="item">Admin</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fas fa-cog"></i></span>
+                        <span class="item">Settings</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <script>
+        if (this.screen.width > 800) {
+            document.querySelector("body").classList.remove("active");
+        }
+        addEventListener("resize", function () {
+            if (this.screen.width > 800) {
+                document.querySelector("body").classList.remove("active");
+            }
+        })
+
+        var hamburger = document.querySelector(".hamburger");
+        hamburger.addEventListener("click", function () {
+            document.querySelector("body").classList.toggle("active");
+        })
+        var navbar = document.getElementById("close-btn");
+        navbar.addEventListener("click", function () {
+            document.querySelector("body").classList.toggle("active");
+        })
+    </script>
+</body>
+</html>

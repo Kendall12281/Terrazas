@@ -1,0 +1,46 @@
+﻿:root {
+    --blue: #35495e;
+    --green : #42b883;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+/** {
+    font-family: 'Inter', sans-serif;
+}*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+}
+.blue-color{
+    background-color:var(--blue);
+    /*color:var(--blue);*/
+}
+
+.green-color{
+    background-color:var(--green);
+    /*color:var(--green);*/
+}
+.btn-green-color {
+    border: 1px solid #979797;
+    font-weight: 500;
+    background-color: var(--green);
+    margin-top: 1rem;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+}
+
+
+
+.btn-blue-color {
+    border: 1px solid #979797;
+    font-weight: 500;
+    background-color: var(--blue);
+    margin-top: 1rem;
+    font-family: 'Inter', sans-serif;
+    color:white;
+    cursor:pointer;
+}
