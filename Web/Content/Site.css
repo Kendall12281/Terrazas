@@ -24,13 +24,18 @@
     background-color:var(--green);
     /*color:var(--green);*/
 }
-.btn-green-color {
+.btn-green-color, .btn-red-color {
     border: 1px solid #979797;
     font-weight: 500;
     background-color: var(--green);
     margin-top: 1rem;
     font-family: 'Inter', sans-serif;
     cursor: pointer;
+}
+
+.btn-red-color {
+    background-color: #ef4444;
+    color: white;
 }
 
 

@@ -1,5 +1,6 @@
 ﻿using ApplicationCore.Services;
 using Infraestructure.Model;
+using Infraestructure.Model.ViewModel.Resident;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,21 +61,62 @@ namespace Web.Controllers
         {
             //if (ModelState.IsValid)
             //{
-                ServiceResident service = new ServiceResident();
-                service.AddResident(resident);
-                return RedirectToAction("Index");
+            ServiceResident service = new ServiceResident();
+            service.AddResident(resident);
+            return RedirectToAction("Index");
             //}
 
 
 
         }
 
+        //[HttpPost]
+        //public ActionResult Add02(ViewModelResident model)
+        //{
+
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return View(model);
+        //    }
+        //    Resident resident = new Resident()
+        //    {
+        //        UserEmail = model.UserEmail,
+        //        HouseNumber = model.HouseNumber,
+        //        Name = model.Name,
+        //        LastName = model.LastName,
+        //        PersonCount = model.PersonCount,
+        //        CarsCount = model.CarsCount,
+        //        StartedDate = model.StartedDate,
+        //        HouseState = model.HouseState,
+        //        Active = model.Active
+        //    };
+        //    ServiceResident service = new ServiceResident();
+        //    service.AddResident(resident);
+        //    return RedirectToAction("/");
+        //}
+
+
+        //public ActionResult New()
+        //{
+        //    ServiceHouseState serviceHouseState = new ServiceHouseState();
+        //    List<SelectListItem> items = new List<SelectListItem>();
+
+        //    foreach (var item in serviceHouseState.GetHouseStates())
+        //    {
+        //        SelectListItem houseState = new SelectListItem() { Text = item.Name, Value = item.Name };
+
+        //        items.Add(houseState);
+        //    }
+
+        //    ViewBag.houseStates = items;
+        //    return View();
+        //}
 
         public ActionResult New()
         {
-            ServiceHouseState serviceHouseState = new ServiceHouseState();
             List<SelectListItem> items = new List<SelectListItem>();
 
+            ServiceHouseState serviceHouseState = new ServiceHouseState();
             foreach (var item in serviceHouseState.GetHouseStates())
             {
                 SelectListItem houseState = new SelectListItem() { Text = item.Name, Value = item.Name };
@@ -84,6 +126,41 @@ namespace Web.Controllers
 
             ViewBag.houseStates = items;
             return View();
+        }
+        [HttpPost]
+        public ActionResult New(ViewModelResident model)
+        {
+            if (!ModelState.IsValid)
+            {
+                List<SelectListItem> items = new List<SelectListItem>();
+
+                ServiceHouseState serviceHouseState = new ServiceHouseState();
+                foreach (var item in serviceHouseState.GetHouseStates())
+                {
+                    SelectListItem houseState = new SelectListItem() { Text = item.Name, Value = item.Name };
+
+                    items.Add(houseState);
+                }
+
+                ViewBag.houseStates = items;
+                return View(model);
+            }
+            Resident resident = new Resident()
+            {
+                UserEmail = model.UserEmail,
+                HouseNumber = model.HouseNumber,
+                Name = model.Name,
+                LastName = model.LastName,
+                PersonCount = model.PersonCount,
+                CarsCount = model.CarsCount,
+                StartedDate = model.StartedDate,
+                HouseState = model.HouseState,
+                Active = model.Active
+            };
+            ServiceResident service = new ServiceResident();
+            service.AddResident(resident);
+            return RedirectToAction("/");
+
         }
 
         [HttpGet]
