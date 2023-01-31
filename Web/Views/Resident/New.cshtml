@@ -16,15 +16,6 @@
 
 <div class="w-full md:w-8/12 xl:w-4/12">
     @Html.ValidationSummary(true, "")
-    @*<div class="hidden">
-        <label>
-            @Html.LabelFor(model => model.Id, "Id")
-        </label>
-        <div>
-            @Html.EditorFor(model => model.Id, new { htmlAttributes = new { @class = "mb-8 bg-white border sm:text-sm rounded-lg block w-full p-2.5" } })
-            @Html.ValidationMessageFor(model => model.Id, "", new { @class = "text-danger" })
-        </div>
-    </div>*@
     <div>
         <label>
             @Html.LabelFor(model => model.UserEmail)

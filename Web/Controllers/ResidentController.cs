@@ -41,6 +41,20 @@ namespace Web.Controllers
 
             Resident resident = serviceResident.GetResident(id);
 
+            ViewModelEditResident modelResident = new ViewModelEditResident()
+            {
+                Id = resident.Id,
+                UserEmail = resident.UserEmail,
+                HouseNumber = resident.HouseNumber,
+                Name = resident.Name,
+                LastName = resident.LastName,
+                PersonCount = resident.PersonCount,
+                CarsCount = resident.CarsCount,
+                StartedDate = resident.StartedDate,
+                HouseState = resident.HouseState,
+                Active = resident.Active
+            };
+
             List<SelectListItem> items = new List<SelectListItem>();
 
             foreach (var item in serviceHouseState.GetHouseStates())
@@ -54,63 +68,48 @@ namespace Web.Controllers
 
             ViewBag.houseStates = items;
 
-            return View(resident);
+            return View(modelResident);
         }
 
-        public ActionResult Add(Resident resident)
+        [HttpPost]
+        public ActionResult Edit(ViewModelEditResident model)
         {
-            //if (ModelState.IsValid)
-            //{
+            if (!ModelState.IsValid)
+            {
+                List<SelectListItem> items = new List<SelectListItem>();
+
+                ServiceHouseState serviceHouseState = new ServiceHouseState();
+                foreach (var item in serviceHouseState.GetHouseStates())
+                {
+                    SelectListItem houseState = new SelectListItem() { Text = item.Name, Value = item.Name };
+
+                    items.Add(houseState);
+                }
+
+                ViewBag.houseStates = items;
+                return View(model);
+            }
+            Resident resident = new Resident()
+            {
+                Id= model.Id,
+                UserEmail = model.UserEmail,
+                HouseNumber = model.HouseNumber,
+                Name = model.Name,
+                LastName = model.LastName,
+                PersonCount = model.PersonCount,
+                CarsCount = model.CarsCount,
+                StartedDate = model.StartedDate,
+                HouseState = model.HouseState,
+                Active = model.Active
+            };
             ServiceResident service = new ServiceResident();
             service.AddResident(resident);
-            return RedirectToAction("Index");
-            //}
+            return RedirectToAction("/");
 
 
 
         }
 
-        //[HttpPost]
-        //public ActionResult Add02(ViewModelResident model)
-        //{
-
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return View(model);
-        //    }
-        //    Resident resident = new Resident()
-        //    {
-        //        UserEmail = model.UserEmail,
-        //        HouseNumber = model.HouseNumber,
-        //        Name = model.Name,
-        //        LastName = model.LastName,
-        //        PersonCount = model.PersonCount,
-        //        CarsCount = model.CarsCount,
-        //        StartedDate = model.StartedDate,
-        //        HouseState = model.HouseState,
-        //        Active = model.Active
-        //    };
-        //    ServiceResident service = new ServiceResident();
-        //    service.AddResident(resident);
-        //    return RedirectToAction("/");
-        //}
-
-
-        //public ActionResult New()
-        //{
-        //    ServiceHouseState serviceHouseState = new ServiceHouseState();
-        //    List<SelectListItem> items = new List<SelectListItem>();
-
-        //    foreach (var item in serviceHouseState.GetHouseStates())
-        //    {
-        //        SelectListItem houseState = new SelectListItem() { Text = item.Name, Value = item.Name };
-
-        //        items.Add(houseState);
-        //    }
-
-        //    ViewBag.houseStates = items;
-        //    return View();
-        //}
 
         public ActionResult New()
         {
