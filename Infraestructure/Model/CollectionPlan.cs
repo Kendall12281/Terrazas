@@ -19,5 +19,6 @@ namespace Infraestructure.Model
         public int IdCollection { get; set; }
     
         public virtual Collection Collection { get; set; }
+        public virtual Plan Plan { get; set; }
     }
 }

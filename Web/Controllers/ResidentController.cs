@@ -178,12 +178,32 @@ namespace Web.Controllers
             ViewBag.houseStates = items;
 
             ServiceResident serviceResident = new ServiceResident();
-            return View(serviceResident.GetResident(id));
+            Resident resident = serviceResident.GetResident(id);
+            ViewModelDeleteResident deleteResident = new ViewModelDeleteResident
+            {
+                Id = resident.Id,
+                Name = resident.Name,
+                LastName = resident.LastName,
+                UserEmail = resident.UserEmail,
+                HouseNumber = resident.HouseNumber,
+                PersonCount = resident.PersonCount,
+                CarsCount = resident.CarsCount,
+                StartedDate = resident.StartedDate,
+                HouseState = resident.HouseState,
+                Active = resident.Active,
+            };
+            return View(deleteResident);
         }
 
         [HttpPost]
-        public ActionResult Delete(Resident resident)
+        public ActionResult Delete(ViewModelDeleteResident model)
         {
+        
+
+            ServiceResident serviceResident = new ServiceResident();
+            Resident resident = serviceResident.GetResident(model.Id);
+            resident.Deleted = true;   
+
             ServiceResident service = new ServiceResident();
             service.DeleteResident(resident);
             return RedirectToAction("Index");

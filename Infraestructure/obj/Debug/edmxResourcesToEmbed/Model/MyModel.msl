@@ -131,6 +131,7 @@
           <ScalarProperty Name="StartedDate" ColumnName="StartedDate" />
           <ScalarProperty Name="HouseState" ColumnName="HouseState" />
           <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

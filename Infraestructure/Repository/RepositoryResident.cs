@@ -32,9 +32,8 @@ namespace Infraestructure.Repository
 			try
 			{
                 MyContext db = new MyContext();
-				db.Resident.Attach(resident);
-				db.Resident.Remove(resident);
-				db.SaveChanges();
+                db.Resident.AddOrUpdate(resident);
+                db.SaveChanges();
             }
 			catch (Exception)
 			{
@@ -62,8 +61,8 @@ namespace Infraestructure.Repository
 			try
 			{
 				MyContext db = new MyContext();
-				return db.Resident.ToList();
-            }
+				return db.Resident.ToList<Resident>().Where(r => r.Deleted == null || r.Deleted == false);
+			}
 			catch (Exception)
 			{
 

@@ -139,9 +139,10 @@ warning 6002: The table/view 'Terrazas.dbo.CondoDoc' does not have a primary key
           <Property Name="LastName" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="PersonCount" Type="int" Nullable="false" />
           <Property Name="CarsCount" Type="int" Nullable="false" />
-          <Property Name="StartedDate" Type="datetime" Nullable="false" />
+          <Property Name="StartedDate" Type="date" Nullable="false" />
           <Property Name="HouseState" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="Deleted" Type="bit" />
         </EntityType>
         <EntityType Name="Rol">
           <Key>
@@ -245,6 +246,18 @@ warning 6002: The table/view 'Terrazas.dbo.CondoDoc' does not have a primary key
             </Principal>
             <Dependent Role="CollectionPlan">
               <PropertyRef Name="IdCollection" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CollectionPlan_Plan">
+          <End Role="Plan" Type="Self.Plan" Multiplicity="1" />
+          <End Role="CollectionPlan" Type="Self.CollectionPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plan">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CollectionPlan">
+              <PropertyRef Name="IdPlan" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -355,6 +368,10 @@ warning 6002: The table/view 'Terrazas.dbo.CondoDoc' does not have a primary key
             <End Role="Collection" EntitySet="Collection" />
             <End Role="CollectionPlan" EntitySet="CollectionPlan" />
           </AssociationSet>
+          <AssociationSet Name="FK_CollectionPlan_Plan" Association="Self.FK_CollectionPlan_Plan">
+            <End Role="Plan" EntitySet="Plan" />
+            <End Role="CollectionPlan" EntitySet="CollectionPlan" />
+          </AssociationSet>
           <AssociationSet Name="FK_Incident_IncidentState" Association="Self.FK_Incident_IncidentState">
             <End Role="IncidentState" EntitySet="IncidentState" />
             <End Role="Incident" EntitySet="Incident" />
@@ -435,6 +452,7 @@ warning 6002: The table/view 'Terrazas.dbo.CondoDoc' does not have a primary key
           <Property Name="IdPlan" Type="Int32" Nullable="false" />
           <Property Name="IdCollection" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Collection" Relationship="Self.FK_CollectionPlan_Collection" FromRole="CollectionPlan" ToRole="Collection" />
+          <NavigationProperty Name="Plan" Relationship="Self.FK_CollectionPlan_Plan" FromRole="CollectionPlan" ToRole="Plan" />
         </EntityType>
         <EntityType Name="HouseState">
           <Key>
@@ -498,6 +516,7 @@ warning 6002: The table/view 'Terrazas.dbo.CondoDoc' does not have a primary key
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CollectionPlan" Relationship="Self.FK_CollectionPlan_Plan" FromRole="Plan" ToRole="CollectionPlan" />
         </EntityType>
         <EntityType Name="Resident">
           <Key>
@@ -510,9 +529,10 @@ warning 6002: The table/view 'Terrazas.dbo.CondoDoc' does not have a primary key
           <Property Name="LastName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PersonCount" Type="Int32" Nullable="false" />
           <Property Name="CarsCount" Type="Int32" Nullable="false" />
-          <Property Name="StartedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="StartedDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="HouseState" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="Deleted" Type="Boolean" />
           <NavigationProperty Name="Booking" Relationship="Self.FK_Booking_Resident" FromRole="Resident" ToRole="Booking" />
           <NavigationProperty Name="Incident" Relationship="Self.FK_Incident_Resident" FromRole="Resident" ToRole="Incident" />
           <NavigationProperty Name="Payment" Relationship="Self.FK_Payment_Resident" FromRole="Resident" ToRole="Payment" />
@@ -642,6 +662,18 @@ warning 6002: The table/view 'Terrazas.dbo.CondoDoc' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_CollectionPlan_Plan">
+          <End Role="Plan" Type="Self.Plan" Multiplicity="1" />
+          <End Role="CollectionPlan" Type="Self.CollectionPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plan">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CollectionPlan">
+              <PropertyRef Name="IdPlan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Incident_IncidentState">
           <End Role="IncidentState" Type="Self.IncidentState" Multiplicity="1" />
           <End Role="Incident" Type="Self.Incident" Multiplicity="*" />
@@ -738,6 +770,10 @@ warning 6002: The table/view 'Terrazas.dbo.CondoDoc' does not have a primary key
           </AssociationSet>
           <AssociationSet Name="FK_CollectionPlan_Collection" Association="Self.FK_CollectionPlan_Collection">
             <End Role="Collection" EntitySet="Collection" />
+            <End Role="CollectionPlan" EntitySet="CollectionPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CollectionPlan_Plan" Association="Self.FK_CollectionPlan_Plan">
+            <End Role="Plan" EntitySet="Plan" />
             <End Role="CollectionPlan" EntitySet="CollectionPlan" />
           </AssociationSet>
           <AssociationSet Name="FK_Incident_IncidentState" Association="Self.FK_Incident_IncidentState">
@@ -897,6 +933,7 @@ warning 6002: The table/view 'Terrazas.dbo.CondoDoc' does not have a primary key
                 <ScalarProperty Name="StartedDate" ColumnName="StartedDate" />
                 <ScalarProperty Name="HouseState" ColumnName="HouseState" />
                 <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

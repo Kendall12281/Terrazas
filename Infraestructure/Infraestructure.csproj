@@ -121,6 +121,7 @@
       <DependentUpon>MyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\ViewModel\Collection\ViewModelCollection.cs" />
+    <Compile Include="Model\ViewModel\Resident\ViewModelDeleteResident.cs" />
     <Compile Include="Model\ViewModel\Resident\ViewModelEditResident.cs" />
     <Compile Include="Model\ViewModel\Resident\ViewModelResident.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -157,7 +158,6 @@
       <LastGenOutput>MyModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

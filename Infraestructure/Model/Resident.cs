@@ -31,7 +31,8 @@ namespace Infraestructure.Model
         public int CarsCount { get; set; }
         public System.DateTime StartedDate { get; set; }
         public string HouseState { get; set; }
-        public bool Active { get; set; }
+        public Nullable<bool> Active { get; set; }
+        public Nullable<bool> Deleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Booking> Booking { get; set; }

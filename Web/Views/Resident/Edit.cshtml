@@ -77,12 +77,12 @@
             @Html.LabelFor(model => model.StartedDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="mb-8">
                 @Html.EditorFor(model => model.StartedDate, new { htmlAttributes = new { @class = "bg-white border sm:text-sm rounded-lg block w-full p-2.5" } })
-                @Html.ValidationMessageFor(model => model.StartedDate)
+                @Html.ValidationMessageFor(model => model.StartedDate, "", new { @class = "text-red-500" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.HouseState, "IdHouseState", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.HouseState, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="mb-8">
                 @Html.DropDownListFor(model => model.HouseState, list, null, new { @class = "bg-white border sm:text-sm rounded-lg block w-full p-2.5" })
                 @Html.ValidationMessageFor(model => model.HouseState)
@@ -90,11 +90,11 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Active, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Active, new { htmlAttributes = new { @class = "mb-8 bg-white border sm:text-sm rounded-lg block w-full p-2.5" } })
             <div class="mb-8">
                 <div class="checkbox">
-                    @Html.EditorFor(model => model.Active)
-                    @Html.ValidationMessageFor(model => model.Active, "", new { @class = "text-red-500" })
+                    @Html.EditorFor(model => model.Active, new { htmlAttributes = new { @class = "bg-white border sm:text-sm rounded-lg block w-full p-2.5" } })
+                    @Html.ValidationMessageFor(model => model.Active)
                 </div>
             </div>
         </div>

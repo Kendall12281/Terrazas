@@ -134,9 +134,10 @@ warning 6002: The table/view 'Terrazas.dbo.CondoDoc' does not have a primary key
     <Property Name="LastName" Type="varchar" MaxLength="200" Nullable="false" />
     <Property Name="PersonCount" Type="int" Nullable="false" />
     <Property Name="CarsCount" Type="int" Nullable="false" />
-    <Property Name="StartedDate" Type="datetime" Nullable="false" />
+    <Property Name="StartedDate" Type="date" Nullable="false" />
     <Property Name="HouseState" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="Active" Type="bit" />
+    <Property Name="Deleted" Type="bit" />
   </EntityType>
   <EntityType Name="Rol">
     <Key>
@@ -240,6 +241,18 @@ warning 6002: The table/view 'Terrazas.dbo.CondoDoc' does not have a primary key
       </Principal>
       <Dependent Role="CollectionPlan">
         <PropertyRef Name="IdCollection" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CollectionPlan_Plan">
+    <End Role="Plan" Type="Self.Plan" Multiplicity="1" />
+    <End Role="CollectionPlan" Type="Self.CollectionPlan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Plan">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CollectionPlan">
+        <PropertyRef Name="IdPlan" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -348,6 +361,10 @@ warning 6002: The table/view 'Terrazas.dbo.CondoDoc' does not have a primary key
     </AssociationSet>
     <AssociationSet Name="FK_CollectionPlan_Collection" Association="Self.FK_CollectionPlan_Collection">
       <End Role="Collection" EntitySet="Collection" />
+      <End Role="CollectionPlan" EntitySet="CollectionPlan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CollectionPlan_Plan" Association="Self.FK_CollectionPlan_Plan">
+      <End Role="Plan" EntitySet="Plan" />
       <End Role="CollectionPlan" EntitySet="CollectionPlan" />
     </AssociationSet>
     <AssociationSet Name="FK_Incident_IncidentState" Association="Self.FK_Incident_IncidentState">
