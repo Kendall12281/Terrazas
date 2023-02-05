@@ -42,6 +42,25 @@ namespace Infraestructure.Repository
 			}
         }
 
+        public Resident FindResidentByEmail(string email)
+        {
+			try
+			{
+				MyContext db = new MyContext();
+				Resident resident = (from r in db.Resident
+									where(r.UserEmail == email.Trim())
+									select r).FirstOrDefault();
+				return resident;
+
+				
+			}
+			catch (Exception)
+			{
+
+				throw;
+			}
+        }
+
         public Resident GetResident(int id)
         {
 			try

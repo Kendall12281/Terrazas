@@ -22,6 +22,12 @@ namespace ApplicationCore.Services
             repository.DeleteResident(resident);
         }
 
+        public Resident FindResidentByEmail(string email)
+        {
+            IRepositoryResident repository = new RepositoryResident();
+           return  repository.FindResidentByEmail(email);
+        }
+
         public Resident GetResident(int id)
         {
             IRepositoryResident repository = new RepositoryResident();

@@ -292,6 +292,18 @@ warning 6002: The table/view 'Terrazas.dbo.CondoDoc' does not have a primary key
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Resident_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Resident" Type="Self.Resident" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Email" />
+      </Principal>
+      <Dependent Role="Resident">
+        <PropertyRef Name="UserEmail" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_SocialArea_Schedule">
     <End Role="Schedule" Type="Self.Schedule" Multiplicity="1" />
     <End Role="SocialArea" Type="Self.SocialArea" Multiplicity="*" />
@@ -378,6 +390,10 @@ warning 6002: The table/view 'Terrazas.dbo.CondoDoc' does not have a primary key
     <AssociationSet Name="FK_Payment_Resident" Association="Self.FK_Payment_Resident">
       <End Role="Resident" EntitySet="Resident" />
       <End Role="Payment" EntitySet="Payment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Resident_User" Association="Self.FK_Resident_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Resident" EntitySet="Resident" />
     </AssociationSet>
     <AssociationSet Name="FK_SocialArea_Schedule" Association="Self.FK_SocialArea_Schedule">
       <End Role="Schedule" EntitySet="Schedule" />

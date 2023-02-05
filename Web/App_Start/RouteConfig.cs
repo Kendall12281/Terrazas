@@ -12,18 +12,19 @@ namespace Web
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Login", action = "Index", id = UrlParameter.Optional }
             );
 
-                    routes.MapRoute(
-            name: "Resident",
-            url: "{controller}/{action}/{id}",
-            defaults: new
-            {
-                controller = "Resident",
-                action = "Edit",
-                id = UrlParameter.Optional
-            });
+            //        routes.MapRoute(
+            //name: "Login",
+            //url: "{controller}/{action}/{id}",
+            //defaults: new
+            //{
+            //    controller = "Login",
+            //    action = "Index",
+            //    id = UrlParameter.Optional
+            //});
+            //    }
         }
     }
 }

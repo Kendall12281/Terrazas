@@ -138,6 +138,7 @@
     <NavigationProperty Name="Booking" Relationship="Self.FK_Booking_Resident" FromRole="Resident" ToRole="Booking" />
     <NavigationProperty Name="Incident" Relationship="Self.FK_Incident_Resident" FromRole="Resident" ToRole="Incident" />
     <NavigationProperty Name="Payment" Relationship="Self.FK_Payment_Resident" FromRole="Resident" ToRole="Payment" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Resident_User" FromRole="Resident" ToRole="User" />
   </EntityType>
   <EntityType Name="Rol">
     <Key>
@@ -187,6 +188,7 @@
     <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="IdRol" Type="Int32" Nullable="false" />
     <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Resident" Relationship="Self.FK_Resident_User" FromRole="User" ToRole="Resident" />
     <NavigationProperty Name="Rol" Relationship="Self.FK_User_Rol" FromRole="User" ToRole="Rol" />
   </EntityType>
   <EntityType Name="CondoDoc">
@@ -312,6 +314,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Resident_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Resident" Type="Self.Resident" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Email" />
+      </Principal>
+      <Dependent Role="Resident">
+        <PropertyRef Name="UserEmail" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_User_Rol">
     <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
     <End Role="User" Type="Self.User" Multiplicity="*" />
@@ -389,6 +403,10 @@
     <AssociationSet Name="FK_Payment_Resident" Association="Self.FK_Payment_Resident">
       <End Role="Resident" EntitySet="Resident" />
       <End Role="Payment" EntitySet="Payment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Resident_User" Association="Self.FK_Resident_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Resident" EntitySet="Resident" />
     </AssociationSet>
     <AssociationSet Name="FK_User_Rol" Association="Self.FK_User_Rol">
       <End Role="Rol" EntitySet="Rol" />

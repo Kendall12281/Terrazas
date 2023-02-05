@@ -1,4 +1,4 @@
-﻿
+﻿@model Infraestructure.Model.ViewModel.Login.ViewModelLogin
 @{
     ViewBag.Title = "Login";
     Layout = null;
@@ -25,47 +25,51 @@
 
                 </div>
                 <div class="m-2 p-6 space-y-4 md:space-y-6 sm:p-8">
+                    @using (Html.BeginForm("Index", "Login", FormMethod.Post))
 
-                    <form class="space-y-4 md:space-y-6">
-                        <div>
-                            <label for="email" class="text-white block mb-2 text-sm font-medium">
-                                Your
-                                email
-                            </label>
-                            <input type="email" name="email" id="email"
-                                   class="mb-8 bg-white border sm:text-sm rounded-lg block w-full p-2.5 "
-                                   placeholder="name@company.com">
-                        </div>
-                        <div>
-                            <label for="password" class="text-white block mb-2 text-sm font-medium">Password</label>
-                            <input type="password" name="password" id="password" placeholder="••••••••"
-                                   class="mb-8 bg-white border sm:text-sm rounded-lg block w-full p-2.5 "
-                                   >
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-start">
-                                <div class="flex items-center h-5">
-                                    <input id="remember" aria-describedby="remember" type="checkbox"
-                                           class="w-4 h-4 border rounded"
-                                           required="">
-                                </div>
-                                <div class="ml-3  mb-3">
-                                    <label class="text-white">Remember me</label>
+                    {
+                        <form class="space-y-4 md:space-y-6">
+                            @*@Html.AntiForgeryToken()*@
+                            <div>
+                                <label style="color:white">
+                                    @Html.LabelFor(model => model.Email)
+                                </label>
+                                <div class="mb-8 mt-2">
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "bg-white border sm:text-sm rounded-lg block w-full p-2.5", @placeholder = "name@company.com" } })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-red-400" })
                                 </div>
                             </div>
-                            <a href="#" class="text-white text-sm font-medium  hover:underline mb-3">
-                                Forgot
-                                password?
-                            </a>
-                        </div>
-                        <div class="flex justify-center">
 
-                        <button class="w-full text-white  hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center green-color lg:w-6/12" style="margin-bottom: 1rem;">
-                            Sign
-                            in
-                        </button>
-                        </div>
-                    </form>
+                            <div>
+                                <label style="color:white">
+                                    @Html.LabelFor(model => model.Password)
+                                </label>
+                                <div class="mb-8 mt-2">
+                                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "bg-white border sm:text-sm rounded-lg block w-full p-2.5", @placeholder = "••••••••" } })
+                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-red-400" })
+                                </div>
+                            </div>
+
+                            @if (ViewBag.isUserDisabled)
+                            {
+                                <div class="flex justify-center bg-red-400 rounded mb-8 mx-auto">
+                                    <h1 class="m-3 text-white">User has been disabled</h1>
+                                </div>
+                            } 
+                            @if (ViewBag.wrongCredentials)
+                            {
+                                <div class="flex justify-center bg-red-400 rounded mb-8 mx-auto">
+                                    <h1 class="m-3 text-white">Wrong Email or Password</h1>
+                                </div>
+                            }
+
+                            <div class="flex justify-center">
+
+                                <input type="submit" value="Sign In" class="w-full text-white  hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center lg:w-6/12" style="margin-bottom: 1rem; background-color: #42b883" />
+                            </div>
+
+                        </form>
+                    }
                 </div>
             </div>
         </div>

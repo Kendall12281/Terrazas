@@ -12,5 +12,8 @@ namespace Infraestructure.Repository
     {
         void NewPlan(Plan plan, IEnumerable<CollectionPlan> collectionPlanList);
         List<ViewModelIndexPlan> GetPlans();
+
+        ViewModelEditPlan GetPlan(int id);
+
     }
 }

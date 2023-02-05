@@ -149,6 +149,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\Filters\VerifySession.cs" />
+    <Compile Include="Security\Session.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\DataTable\img\sort_asc.png" />
@@ -205,6 +207,7 @@
     <Content Include="Views\Collection\Edit.cshtml" />
     <Content Include="Views\Plan\New.cshtml" />
     <Content Include="Views\Plan\Index.cshtml" />
+    <Content Include="Views\Plan\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

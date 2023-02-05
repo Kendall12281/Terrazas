@@ -35,7 +35,6 @@ namespace Web.Controllers
                 };
                 listItems.Add(item1);
             }
-            ViewBag.Items = listItems;
 
             ViewModelNewPlan plan = new ViewModelNewPlan()
             {
@@ -81,6 +80,51 @@ namespace Web.Controllers
             service.NewPlan(plan, list);
 
             return RedirectToAction("/");
+        }
+
+        public ActionResult Edit(int id)
+        {
+            ServiceCollection serviceCollection = new ServiceCollection();
+            ServicePlan servicePlan = new ServicePlan();
+            ViewModelEditPlan model = servicePlan.GetPlan(id);
+
+            List<SelectListItem> listItems = new List<SelectListItem>();
+
+            foreach (var item in serviceCollection.GetCollections())
+            {
+                if (model.listCollections.Contains(item))
+                {
+                    SelectListItem item1 = new SelectListItem()
+                    {
+                        Text = item.Name,
+                        Value = item.Id.ToString(),
+                        Selected = true
+
+                    };
+                    listItems.Add(item1);
+                }
+                else
+                {
+
+                    SelectListItem item2 = new SelectListItem()
+                    {
+                        Text = item.Name,
+                        Value = item.Id.ToString(),
+                        Selected = false
+
+                    };
+                    listItems.Add(item2);
+                }
+
+
+            }
+
+            
+
+
+
+
+            return View();
         }
     }
 }

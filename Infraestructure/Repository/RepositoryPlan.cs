@@ -3,6 +3,7 @@ using Infraestructure.Model.ViewModel.Plan;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,38 @@ namespace Infraestructure.Repository
 {
     public class RepositoryPlan : IRepositoryPlan
     {
+        public ViewModelEditPlan GetPlan(int id)
+        {
+            try
+            {
+
+                MyContext db = new MyContext();
+                Plan plan = db.Plan.Find(id);
+                List<CollectionPlan> collectionPlan = db.CollectionPlan.Where(x=>x.IdPlan== plan.Id).ToList(); 
+                List<Collection> collections = new List<Collection>();
+
+                foreach (var item in collectionPlan) 
+                {
+                    collections = db.Collection.Where(x => x.Id == item.IdCollection).ToList();
+                }
+
+                ViewModelEditPlan model = new ViewModelEditPlan()
+                {
+                    Id = plan.Id,
+                    Name = plan.Name,
+                    Description = plan.Description,
+                    listCollections = collections
+                };
+
+                return model;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public List<ViewModelIndexPlan> GetPlans()
         {
             try

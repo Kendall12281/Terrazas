@@ -11,6 +11,12 @@ namespace ApplicationCore.Services
 {
     public class ServicePlan : IServicePlan
     {
+        public ViewModelEditPlan GetPlan(int id)
+        {
+            ServicePlan service = new ServicePlan();
+            return service.GetPlan(id);
+        }
+
         public List<ViewModelIndexPlan> GetPlans()
         {
             IRepositoryPlan repository = new RepositoryPlan();

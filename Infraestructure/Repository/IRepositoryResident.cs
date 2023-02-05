@@ -11,6 +11,7 @@ namespace Infraestructure.Repository
     {
         IEnumerable<Resident> GetResidents();
         Resident GetResident(int id);
+        Resident FindResidentByEmail(string email);
         void AddResident(Resident resident);
         void DeleteResident(Resident resident);
     }

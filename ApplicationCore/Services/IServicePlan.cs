@@ -12,5 +12,6 @@ namespace ApplicationCore.Services
     {
         List<ViewModelIndexPlan> GetPlans();
         void NewPlan(Plan plan, IEnumerable<CollectionPlan> collectionPlanList);
+        ViewModelEditPlan GetPlan(int id);
     }
 }

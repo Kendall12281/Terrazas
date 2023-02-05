@@ -40,5 +40,6 @@ namespace Infraestructure.Model
         public virtual ICollection<Incident> Incident { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Payment> Payment { get; set; }
+        public virtual User User { get; set; }
     }
 }

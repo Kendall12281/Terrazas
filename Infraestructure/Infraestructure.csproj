@@ -142,18 +142,22 @@
       <DependentUpon>MyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\ViewModel\Collection\ViewModelCollection.cs" />
+    <Compile Include="Model\ViewModel\Login\ViewModelLogin.cs" />
+    <Compile Include="Model\ViewModel\Plan\ViewModelEditPlan.cs" />
     <Compile Include="Model\ViewModel\Plan\ViewModelIndexPlan.cs" />
     <Compile Include="Model\ViewModel\Plan\ViewModelNewPlan.cs" />
     <Compile Include="Model\ViewModel\Resident\ViewModelDeleteResident.cs" />
     <Compile Include="Model\ViewModel\Resident\ViewModelEditResident.cs" />
     <Compile Include="Model\ViewModel\Resident\ViewModelResident.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\IRepositoryLogin.cs" />
     <Compile Include="Repository\IRepositoryPlan.cs" />
     <Compile Include="Repository\IRepositoryCollection.cs" />
     <Compile Include="Repository\IRepositoryHouseState.cs" />
     <Compile Include="Repository\IRepositoryResident.cs" />
     <Compile Include="Repository\RepositoryCollection.cs" />
     <Compile Include="Repository\RepositoryHouseState.cs" />
+    <Compile Include="Repository\RepositoryLogin.cs" />
     <Compile Include="Repository\RepositoryPlan.cs" />
     <Compile Include="Repository\RepositoryResident.cs" />
   </ItemGroup>
