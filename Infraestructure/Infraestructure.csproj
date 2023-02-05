@@ -142,6 +142,7 @@
       <DependentUpon>MyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\ViewModel\Collection\ViewModelCollection.cs" />
+    <Compile Include="Model\ViewModel\Plan\ViewModelIndexPlan.cs" />
     <Compile Include="Model\ViewModel\Plan\ViewModelNewPlan.cs" />
     <Compile Include="Model\ViewModel\Resident\ViewModelDeleteResident.cs" />
     <Compile Include="Model\ViewModel\Resident\ViewModelEditResident.cs" />

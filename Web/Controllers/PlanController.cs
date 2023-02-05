@@ -15,7 +15,9 @@ namespace Web.Controllers
         // GET: Plan
         public ActionResult Index()
         {
-            return View();
+            ServicePlan service = new ServicePlan();
+
+            return View(service.GetPlans());
         }
         public ActionResult New()
         {

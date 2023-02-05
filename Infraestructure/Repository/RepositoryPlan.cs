@@ -16,7 +16,6 @@ namespace Infraestructure.Repository
             try
             {
                 List<ViewModelIndexPlan> plans = new List<ViewModelIndexPlan>();
-                List<CollectionPlan> collectionPlans= new List<CollectionPlan>();
                 List<Collection> collections= new List<Collection>();
 
               MyContext db = new MyContext();
@@ -27,7 +26,7 @@ namespace Infraestructure.Repository
 
                     foreach (var collectionPlanItem in db.CollectionPlan.ToList().Where(x => x.IdPlan == item.Id).ToList())
                     {
-                        collections = db.Collection.ToList().Where(x => x.Id == collectionPlanItem.IdPlan).ToList();
+                        collections.Add(db.Collection.Find(collectionPlanItem.IdCollection));
                     }
 
                     ViewModelIndexPlan viewModelPlan = new ViewModelIndexPlan()
@@ -35,10 +34,12 @@ namespace Infraestructure.Repository
                         Id = item.Id,
                         Name = item.Name,
                         Description = item.Description,
-                        listCollections = collections
+                        listCollections = new List<Collection>(collections)
                     };
 
                     plans.Add(viewModelPlan);
+                    collections.Clear();
+
                 }
 
                 return plans;

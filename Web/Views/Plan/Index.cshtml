@@ -1,6 +1,120 @@
 ﻿
+@model  List<Infraestructure.Model.ViewModel.Plan.ViewModelIndexPlan>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <link rel="stylesheet" href="~/Content/Site.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DataTables </title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="~/Content/DataTable/styles.css" rel="stylesheet" />
+    <link href="~/Content/DataTable/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Content/DataTable/responsive.dataTables.min.css" rel="stylesheet" />
+
+
+
 </head>
 
+<body>
+
+
+    <!--Container-->
+    <div class="mt-5" style="margin-right:2rem; overflow:hidden">
+
+
+
+
+        <!--Card-->
+        <div class="p-8 mt-5 lg:mt-0 rounded shadow bg-white">
+
+
+            <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
+                <thead>
+                    <tr>
+                        <th data-priority="1">Name</th>
+                        <th data-priority="2">Description</th>
+                        <th class="col-4" data-priority="3">Collections</th>
+                        <th class="col-4" data-priority="3">Collections</th>
+                        <th class="col-4" data-priority="3">Collections</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr class="text-center">
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </td>
+                            <td class="mx-auto ">
+                                    <ul class="max-w-md space-y-1 list-disc list-inside">
+                                @foreach (var collection in item.listCollections)
+                                {
+                                        <li class="flex items-center">
+                                            <svg class="w-4 h-4 mr-1.5 text-green-500 dark:text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                            @collection.Name
+                                        </li>
+                                }
+                                    </ul>
+                            </td>
+
+                            <td class="flex gap-4">
+                                <button class="font-medium rounded-lg text-sm px-5 py-2.5 text-center btn-green-color shadow">
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                                </button>
+                                <button class="font-medium rounded-lg text-sm px-5 py-2.5 text-center btn-red-color shadow">
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                                </button>
+                            </td>
+                            <td class="hidden">
+                                @Html.HiddenFor(modelItem => item.Id)
+                            </td>
+                        </tr>
+
+
+                    }
+                </tbody>
+
+            </table>
+
+
+        </div>
+        <!--/Card-->
+
+
+    </div>
+    <!--/container-->
+    <!-- jQuery -->
+    <script type="text/javascript" src="~/Content/DataTable/js/jquery-3.4.1.min.js"></script>
+
+    <!--Datatables -->
+    <script src="~/Content/DataTable/js/jquery.dataTables.min.js"></script>
+    <script src="~/Content/DataTable/js/dataTables.responsive.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            var table = $('#example').DataTable({
+                responsive: true
+            })
+                .columns.adjust()
+                .responsive.recalc();
+        });
+    </script>
+
+</body>
+
+</html>
 
