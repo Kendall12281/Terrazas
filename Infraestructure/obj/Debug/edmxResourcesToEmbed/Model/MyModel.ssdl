@@ -44,7 +44,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="IdPlan" Type="int" Nullable="false" />
     <Property Name="IdCollection" Type="int" Nullable="false" />
   </EntityType>
@@ -119,7 +119,7 @@ warning 6002: The table/view 'Terrazas.dbo.CondoDoc' does not have a primary key
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="Description" Type="varchar" MaxLength="255" Nullable="false" />
   </EntityType>

@@ -50,7 +50,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IdPlan" Type="Int32" Nullable="false" />
     <Property Name="IdCollection" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Collection" Relationship="Self.FK_CollectionPlan_Collection" FromRole="CollectionPlan" ToRole="Collection" />
@@ -115,7 +115,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="CollectionPlan" Relationship="Self.FK_CollectionPlan_Plan" FromRole="Plan" ToRole="CollectionPlan" />

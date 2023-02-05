@@ -34,3 +34,16 @@ C:\Users\Kendall\Source\Repos\Terrazas\Infraestructure\obj\Debug\Infraestructure
 C:\Users\Kendall\Source\Repos\Terrazas\Infraestructure\obj\Debug\Infraestructure.csproj.CopyComplete
 C:\Users\Kendall\Source\Repos\Terrazas\Infraestructure\obj\Debug\Infraestructure.dll
 C:\Users\Kendall\Source\Repos\Terrazas\Infraestructure\obj\Debug\Infraestructure.pdb
+C:\Users\Kendall\Source\Repos\Terrazas\Infraestructure\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\Kendall\Source\Repos\Terrazas\Infraestructure\bin\Debug\System.Web.Helpers.dll
+C:\Users\Kendall\Source\Repos\Terrazas\Infraestructure\bin\Debug\System.Web.Mvc.dll
+C:\Users\Kendall\Source\Repos\Terrazas\Infraestructure\bin\Debug\System.Web.Razor.dll
+C:\Users\Kendall\Source\Repos\Terrazas\Infraestructure\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\Kendall\Source\Repos\Terrazas\Infraestructure\bin\Debug\System.Web.WebPages.dll
+C:\Users\Kendall\Source\Repos\Terrazas\Infraestructure\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\Kendall\Source\Repos\Terrazas\Infraestructure\bin\Debug\System.Web.Helpers.xml
+C:\Users\Kendall\Source\Repos\Terrazas\Infraestructure\bin\Debug\System.Web.Mvc.xml
+C:\Users\Kendall\Source\Repos\Terrazas\Infraestructure\bin\Debug\System.Web.Razor.xml
+C:\Users\Kendall\Source\Repos\Terrazas\Infraestructure\bin\Debug\System.Web.WebPages.xml
+C:\Users\Kendall\Source\Repos\Terrazas\Infraestructure\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\Kendall\Source\Repos\Terrazas\Infraestructure\bin\Debug\System.Web.WebPages.Razor.xml

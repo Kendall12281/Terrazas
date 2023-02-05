@@ -44,9 +44,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IServiceCollection.cs" />
     <Compile Include="Services\IServiceHouseState.cs" />
+    <Compile Include="Services\IServicePlan.cs" />
     <Compile Include="Services\IServiceResident.cs" />
     <Compile Include="Services\ServiceCollection.cs" />
     <Compile Include="Services\ServiceHouseState.cs" />
+    <Compile Include="Services\ServicePlan.cs" />
     <Compile Include="Services\ServiceResident.cs" />
   </ItemGroup>
   <ItemGroup>

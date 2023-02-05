@@ -34,3 +34,14 @@ C:\Users\Kendall\Source\Repos\Terrazas\ApplicationCore\obj\Debug\ApplicationCore
 C:\Users\Kendall\Source\Repos\Terrazas\ApplicationCore\obj\Debug\ApplicationCore.csproj.CopyComplete
 C:\Users\Kendall\Source\Repos\Terrazas\ApplicationCore\obj\Debug\ApplicationCore.dll
 C:\Users\Kendall\Source\Repos\Terrazas\ApplicationCore\obj\Debug\ApplicationCore.pdb
+C:\Users\Kendall\Source\Repos\Terrazas\ApplicationCore\bin\Debug\System.Web.Mvc.dll
+C:\Users\Kendall\Source\Repos\Terrazas\ApplicationCore\bin\Debug\System.Web.WebPages.dll
+C:\Users\Kendall\Source\Repos\Terrazas\ApplicationCore\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\Kendall\Source\Repos\Terrazas\ApplicationCore\bin\Debug\System.Web.Razor.dll
+C:\Users\Kendall\Source\Repos\Terrazas\ApplicationCore\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\Kendall\Source\Repos\Terrazas\ApplicationCore\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\Kendall\Source\Repos\Terrazas\ApplicationCore\bin\Debug\System.Web.Mvc.xml
+C:\Users\Kendall\Source\Repos\Terrazas\ApplicationCore\bin\Debug\System.Web.WebPages.xml
+C:\Users\Kendall\Source\Repos\Terrazas\ApplicationCore\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\Kendall\Source\Repos\Terrazas\ApplicationCore\bin\Debug\System.Web.Razor.xml
+C:\Users\Kendall\Source\Repos\Terrazas\ApplicationCore\bin\Debug\System.Web.WebPages.Deployment.xml
