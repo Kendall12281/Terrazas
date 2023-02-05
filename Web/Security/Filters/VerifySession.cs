@@ -27,10 +27,14 @@ namespace Web.Security.Filters
                 {
                     filterContext.HttpContext.Response.Redirect("~/Home/");
                 }
+                /*ADMIN FILTERS*/
+                if (filterContext.Controller is ResidentController == true && oUser.IdRol != 1) { filterContext.HttpContext.Response.Redirect("~/Home/"); }
             }
+
+
             base.OnActionExecuting(filterContext);
         }
 
-      
+
     }
 }
