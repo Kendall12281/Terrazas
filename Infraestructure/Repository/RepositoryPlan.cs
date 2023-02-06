@@ -24,7 +24,7 @@ namespace Infraestructure.Repository
 
                 foreach (var item in collectionPlan) 
                 {
-                    collections = db.Collection.Where(x => x.Id == item.IdCollection).ToList();
+                    collections.Add(db.Collection.Where(x => x.Id == item.IdCollection).FirstOrDefault());
                 }
 
                 ViewModelEditPlan model = new ViewModelEditPlan()

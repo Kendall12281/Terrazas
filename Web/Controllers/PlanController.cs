@@ -90,9 +90,12 @@ namespace Web.Controllers
 
             List<SelectListItem> listItems = new List<SelectListItem>();
 
+            int index = 0;
+
             foreach (var item in serviceCollection.GetCollections())
             {
-                if (model.listCollections.Contains(item))
+                
+                if (model.listCollections[index].Id == item.Id)
                 {
                     SelectListItem item1 = new SelectListItem()
                     {
@@ -116,15 +119,19 @@ namespace Web.Controllers
                     listItems.Add(item2);
                 }
 
+                index++;
+
 
             }
+
+            model.listSelectedItems = listItems;
 
             
 
 
 
 
-            return View();
+            return View(model);
         }
     }
 }

@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 using System.Xml.Linq;
 
 namespace Infraestructure.Model.ViewModel.Plan
@@ -21,5 +22,6 @@ namespace Infraestructure.Model.ViewModel.Plan
         [Display(Name = "Collection List")]
         [Required]
         public List<Infraestructure.Model.Collection> listCollections { get; set; }
+        public List<SelectListItem> listSelectedItems { get; set; }
     }
 }

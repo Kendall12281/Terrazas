@@ -13,7 +13,7 @@ namespace ApplicationCore.Services
     {
         public ViewModelEditPlan GetPlan(int id)
         {
-            ServicePlan service = new ServicePlan();
+            IRepositoryPlan service = new RepositoryPlan();
             return service.GetPlan(id);
         }
 

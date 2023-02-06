@@ -61,25 +61,22 @@
                             </td>
                             <td>
                                 <ul class="max-w-md space-y-1 list-disc list-inside">
-                                    @*@foreach (var collectionItem in item.listCollections)*@
                                     @for (int i = 0; i < item.listCollections.Count; i++)
                                     {
                                         <li class="flex items-center">
                                             <svg class="w-4 h-4 mr-1.5 text-green-500 dark:text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
                                             @item.listCollections[i].Name
                                         </li>
-                                        @*@Html.HiddenFor(modelItem => item.listCollections[i])
-                    @Html.DisplayFor(modelItem => item.Name)*@
                                     }
                                 </ul>
                             </td>
 
                             <td>
                                 <button class="font-medium rounded-lg text-sm px-5 py-2.5 text-center btn-green-color shadow">
-                                    @Html.ActionLink("Edit", "Plan", new { id = item.Id })
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
                                 </button>
                                 <button class="font-medium rounded-lg text-sm px-5 py-2.5 text-center btn-red-color shadow">
-                                    @Html.ActionLink("Delete", "Plan", new { id = item.Id })
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
                                 </button>
                             </td>
 

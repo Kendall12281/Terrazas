@@ -5,7 +5,7 @@
 <head>
     <link rel="stylesheet" href="~/Content/Site.css">
 </head>
-@using (Html.BeginForm("Edit", "Plan", FormMethod.Post))
+@using (Html.BeginForm("Edit", "", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 <div class="w-full md:w-8/12 xl:w-4/12">
@@ -47,18 +47,18 @@
         <div class="mb-8">
 
             <ul class="w-48 text-sm font-medium  bg-white border border-gray-200 rounded-lg">
-                @for (int i = 0; i < Model.listCollections.Count; i++)
+                @for (int i = 0; i < Model.listSelectedItems.Count; i++)
                 {
 
                     <li class="w-full border-b border-gray-200 rounded-t-lg">
                         <div class="flex items-center p-2 pl-3 mb-3 mt-3">
 
-                            @Html.CheckBoxFor(model => model.listCollections[i].Selected)
+                            @Html.CheckBoxFor(model => model.listSelectedItems[i].Selected)
                             <label class="ml-3">
-                                @Model.listCollections[i].Text
+                                @Model.listSelectedItems[i].Text
                             </label>
-                            @Html.HiddenFor(model => model.listCollections[i].Value)
-                            @Html.HiddenFor(model => model.listCollections[i].Text)
+                            @Html.HiddenFor(model => model.listSelectedItems[i].Value)
+                            @Html.HiddenFor(model => model.listSelectedItems[i].Text)
                         </div>
                     </li>
                 }
