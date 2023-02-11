@@ -43,8 +43,7 @@ namespace Web.Controllers
 
             ViewModelEditResident modelResident = new ViewModelEditResident()
             {
-                Id = resident.Id,
-                UserEmail = resident.UserEmail,
+                UserEmail = resident.EmailUser,
                 HouseNumber = resident.HouseNumber,
                 Name = resident.Name,
                 LastName = resident.LastName,
@@ -91,8 +90,7 @@ namespace Web.Controllers
             }
             Resident resident = new Resident()
             {
-                Id= model.Id,
-                UserEmail = model.UserEmail,
+                EmailUser = model.UserEmail,
                 HouseNumber = model.HouseNumber,
                 Name = model.Name,
                 LastName = model.LastName,
@@ -146,7 +144,7 @@ namespace Web.Controllers
             }
             Resident resident = new Resident()
             {
-                UserEmail = model.UserEmail,
+                EmailUser = model.UserEmail,
                 HouseNumber = model.HouseNumber,
                 Name = model.Name,
                 LastName = model.LastName,
@@ -154,7 +152,13 @@ namespace Web.Controllers
                 CarsCount = model.CarsCount,
                 StartedDate = model.StartedDate,
                 HouseState = model.HouseState,
-                Active = model.Active
+                Active = true,
+                User = new User() { 
+                    Email = model.UserEmail,
+                    IdRol = 2,
+                    Password = "Changeme23.",
+                    Active= true,
+                }
             };
             ServiceResident service = new ServiceResident();
             service.AddResident(resident);
@@ -181,10 +185,9 @@ namespace Web.Controllers
             Resident resident = serviceResident.GetResident(id);
             ViewModelDeleteResident deleteResident = new ViewModelDeleteResident
             {
-                Id = resident.Id,
                 Name = resident.Name,
                 LastName = resident.LastName,
-                UserEmail = resident.UserEmail,
+                UserEmail = resident.EmailUser,
                 HouseNumber = resident.HouseNumber,
                 PersonCount = resident.PersonCount,
                 CarsCount = resident.CarsCount,

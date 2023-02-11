@@ -18,12 +18,11 @@ namespace Infraestructure.Model
         public Resident()
         {
             this.Booking = new HashSet<Booking>();
+            this.Charge = new HashSet<Charge>();
             this.Incident = new HashSet<Incident>();
-            this.Payment = new HashSet<Payment>();
         }
     
-        public int Id { get; set; }
-        public string UserEmail { get; set; }
+        public string EmailUser { get; set; }
         public int HouseNumber { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
@@ -37,9 +36,9 @@ namespace Infraestructure.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Booking> Booking { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Incident> Incident { get; set; }
+        public virtual ICollection<Charge> Charge { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Payment> Payment { get; set; }
+        public virtual ICollection<Incident> Incident { get; set; }
         public virtual User User { get; set; }
     }
 }

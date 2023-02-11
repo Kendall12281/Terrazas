@@ -5,24 +5,13 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="TerrazasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Announcement">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Ttile" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Description" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="Date" Type="date" Nullable="false" />
-          <Property Name="Image" Type="varchar(max)" />
-          <Property Name="Active" Type="bit" Nullable="false" />
-        </EntityType>
         <EntityType Name="Booking">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdSocialArea" Type="int" Nullable="false" />
-          <Property Name="IdResident" Type="int" Nullable="false" />
+          <Property Name="IdResident" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="Date" Type="date" Nullable="false" />
           <Property Name="StartTime" Type="time" Precision="3" Nullable="false" />
           <Property Name="EndTime" Type="time" Precision="3" Nullable="false" />
@@ -34,8 +23,11 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdCollection" Type="int" Nullable="false" />
-          <Property Name="IdPayment" Type="int" Nullable="false" />
-          <Property Name="Cost" Type="float" Nullable="false" />
+          <Property Name="IdResident" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Month" Type="int" Nullable="false" />
+          <Property Name="Year" Type="int" Nullable="false" />
+          <Property Name="Total" Type="float" Nullable="false" />
+          <Property Name="Cancelled" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Collection">
           <Key>
@@ -44,31 +36,15 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="Description" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Active" Type="bit" />
         </EntityType>
         <EntityType Name="CollectionPlan">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="IdPlan" />
+            <PropertyRef Name="IdCollection" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdPlan" Type="int" Nullable="false" />
           <Property Name="IdCollection" Type="int" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Terrazas.dbo.CondoDoc' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="CondoDoc">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="Title" />
-            <PropertyRef Name="Description" />
-            <PropertyRef Name="Date" />
-            <PropertyRef Name="Active" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Title" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="Description" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="Date" Type="date" Nullable="false" />
-          <Property Name="Image" Type="varchar(max)" />
-          <Property Name="Active" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="HouseState">
           <Key>
@@ -83,7 +59,7 @@ warning 6002: The table/view 'Terrazas.dbo.CondoDoc' does not have a primary key
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IdResident" Type="int" Nullable="false" />
+          <Property Name="IdResident" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="Date" Type="date" Nullable="false" />
           <Property Name="Title" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Description" Type="varchar" MaxLength="255" Nullable="false" />
@@ -98,27 +74,24 @@ warning 6002: The table/view 'Terrazas.dbo.CondoDoc' does not have a primary key
           <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="Descrption" Type="varchar" MaxLength="255" Nullable="false" />
         </EntityType>
-        <EntityType Name="News">
+        <EntityType Name="Information">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Ttile" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="IdInformationType" Type="int" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Description" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="Date" Type="date" Nullable="false" />
           <Property Name="Image" Type="varchar(max)" />
-          <Property Name="Active" Type="bit" Nullable="false" />
         </EntityType>
-        <EntityType Name="Payment">
+        <EntityType Name="InformationType">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="IdResident" Type="int" Nullable="false" />
-          <Property Name="Month" Type="int" Nullable="false" />
-          <Property Name="Year" Type="int" Nullable="false" />
-          <Property Name="Total" Type="float" Nullable="false" />
-          <Property Name="Canceled" Type="bit" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="255" Nullable="false" />
         </EntityType>
         <EntityType Name="Plan">
           <Key>
@@ -127,13 +100,13 @@ warning 6002: The table/view 'Terrazas.dbo.CondoDoc' does not have a primary key
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Description" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Active" Type="bit" />
         </EntityType>
         <EntityType Name="Resident">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="EmailUser" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserEmail" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="EmailUser" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="HouseNumber" Type="int" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="LastName" Type="varchar" MaxLength="200" Nullable="false" />
@@ -194,7 +167,7 @@ warning 6002: The table/view 'Terrazas.dbo.CondoDoc' does not have a primary key
           <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Resident">
-              <PropertyRef Name="Id" />
+              <PropertyRef Name="EmailUser" />
             </Principal>
             <Dependent Role="Booking">
               <PropertyRef Name="IdResident" />
@@ -225,15 +198,15 @@ warning 6002: The table/view 'Terrazas.dbo.CondoDoc' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Charge_Payment">
-          <End Role="Payment" Type="Self.Payment" Multiplicity="1" />
+        <Association Name="FK_Charge_Resident">
+          <End Role="Resident" Type="Self.Resident" Multiplicity="1" />
           <End Role="Charge" Type="Self.Charge" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Payment">
-              <PropertyRef Name="Id" />
+            <Principal Role="Resident">
+              <PropertyRef Name="EmailUser" />
             </Principal>
             <Dependent Role="Charge">
-              <PropertyRef Name="IdPayment" />
+              <PropertyRef Name="IdResident" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -278,34 +251,34 @@ warning 6002: The table/view 'Terrazas.dbo.CondoDoc' does not have a primary key
           <End Role="Incident" Type="Self.Incident" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Resident">
-              <PropertyRef Name="Id" />
+              <PropertyRef Name="EmailUser" />
             </Principal>
             <Dependent Role="Incident">
               <PropertyRef Name="IdResident" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Payment_Resident">
-          <End Role="Resident" Type="Self.Resident" Multiplicity="1" />
-          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+        <Association Name="FK_Information_InformationType">
+          <End Role="InformationType" Type="Self.InformationType" Multiplicity="1" />
+          <End Role="Information" Type="Self.Information" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Resident">
+            <Principal Role="InformationType">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Payment">
-              <PropertyRef Name="IdResident" />
+            <Dependent Role="Information">
+              <PropertyRef Name="IdInformationType" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Resident_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Resident" Type="Self.Resident" Multiplicity="*" />
+          <End Role="Resident" Type="Self.Resident" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="Email" />
             </Principal>
             <Dependent Role="Resident">
-              <PropertyRef Name="UserEmail" />
+              <PropertyRef Name="EmailUser" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -334,7 +307,6 @@ warning 6002: The table/view 'Terrazas.dbo.CondoDoc' does not have a primary key
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="TerrazasModelStoreContainer">
-          <EntitySet Name="Announcement" EntityType="Self.Announcement" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Booking" EntityType="Self.Booking" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Charge" EntityType="Self.Charge" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Collection" EntityType="Self.Collection" Schema="dbo" store:Type="Tables" />
@@ -342,24 +314,14 @@ warning 6002: The table/view 'Terrazas.dbo.CondoDoc' does not have a primary key
           <EntitySet Name="HouseState" EntityType="Self.HouseState" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Incident" EntityType="Self.Incident" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="IncidentState" EntityType="Self.IncidentState" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Information" EntityType="Self.Information" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InformationType" EntityType="Self.InformationType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Plan" EntityType="Self.Plan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Resident" EntityType="Self.Resident" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Schedule" EntityType="Self.Schedule" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SocialArea" EntityType="Self.SocialArea" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CondoDoc" EntityType="Self.CondoDoc" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [CondoDoc].[Id] AS [Id], 
-    [CondoDoc].[Title] AS [Title], 
-    [CondoDoc].[Description] AS [Description], 
-    [CondoDoc].[Date] AS [Date], 
-    [CondoDoc].[Image] AS [Image], 
-    [CondoDoc].[Active] AS [Active]
-    FROM [dbo].[CondoDoc] AS [CondoDoc]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_Booking_Resident" Association="Self.FK_Booking_Resident">
             <End Role="Resident" EntitySet="Resident" />
             <End Role="Booking" EntitySet="Booking" />
@@ -372,8 +334,8 @@ warning 6002: The table/view 'Terrazas.dbo.CondoDoc' does not have a primary key
             <End Role="Collection" EntitySet="Collection" />
             <End Role="Charge" EntitySet="Charge" />
           </AssociationSet>
-          <AssociationSet Name="FK_Charge_Payment" Association="Self.FK_Charge_Payment">
-            <End Role="Payment" EntitySet="Payment" />
+          <AssociationSet Name="FK_Charge_Resident" Association="Self.FK_Charge_Resident">
+            <End Role="Resident" EntitySet="Resident" />
             <End Role="Charge" EntitySet="Charge" />
           </AssociationSet>
           <AssociationSet Name="FK_CollectionPlan_Collection" Association="Self.FK_CollectionPlan_Collection">
@@ -392,9 +354,9 @@ warning 6002: The table/view 'Terrazas.dbo.CondoDoc' does not have a primary key
             <End Role="Resident" EntitySet="Resident" />
             <End Role="Incident" EntitySet="Incident" />
           </AssociationSet>
-          <AssociationSet Name="FK_Payment_Resident" Association="Self.FK_Payment_Resident">
-            <End Role="Resident" EntitySet="Resident" />
-            <End Role="Payment" EntitySet="Payment" />
+          <AssociationSet Name="FK_Information_InformationType" Association="Self.FK_Information_InformationType">
+            <End Role="InformationType" EntitySet="InformationType" />
+            <End Role="Information" EntitySet="Information" />
           </AssociationSet>
           <AssociationSet Name="FK_Resident_User" Association="Self.FK_Resident_User">
             <End Role="User" EntitySet="User" />
@@ -414,24 +376,13 @@ warning 6002: The table/view 'Terrazas.dbo.CondoDoc' does not have a primary key
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TerrazasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Announcement">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Ttile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Active" Type="Boolean" Nullable="false" />
-        </EntityType>
         <EntityType Name="Booking">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdSocialArea" Type="Int32" Nullable="false" />
-          <Property Name="IdResident" Type="Int32" Nullable="false" />
+          <Property Name="IdResident" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="StartTime" Type="Time" Nullable="false" Precision="3" />
           <Property Name="EndTime" Type="Time" Nullable="false" Precision="3" />
@@ -445,10 +396,13 @@ warning 6002: The table/view 'Terrazas.dbo.CondoDoc' does not have a primary key
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdCollection" Type="Int32" Nullable="false" />
-          <Property Name="IdPayment" Type="Int32" Nullable="false" />
-          <Property Name="Cost" Type="Double" Nullable="false" />
+          <Property Name="IdResident" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Month" Type="Int32" Nullable="false" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
+          <Property Name="Total" Type="Double" Nullable="false" />
+          <Property Name="Cancelled" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Collection" Relationship="Self.FK_Charge_Collection" FromRole="Charge" ToRole="Collection" />
-          <NavigationProperty Name="Payment" Relationship="Self.FK_Charge_Payment" FromRole="Charge" ToRole="Payment" />
+          <NavigationProperty Name="Resident" Relationship="Self.FK_Charge_Resident" FromRole="Charge" ToRole="Resident" />
         </EntityType>
         <EntityType Name="Collection">
           <Key>
@@ -457,18 +411,9 @@ warning 6002: The table/view 'Terrazas.dbo.CondoDoc' does not have a primary key
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Active" Type="Boolean" />
           <NavigationProperty Name="Charge" Relationship="Self.FK_Charge_Collection" FromRole="Collection" ToRole="Charge" />
-          <NavigationProperty Name="CollectionPlan" Relationship="Self.FK_CollectionPlan_Collection" FromRole="Collection" ToRole="CollectionPlan" />
-        </EntityType>
-        <EntityType Name="CollectionPlan">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdPlan" Type="Int32" Nullable="false" />
-          <Property Name="IdCollection" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Collection" Relationship="Self.FK_CollectionPlan_Collection" FromRole="CollectionPlan" ToRole="Collection" />
-          <NavigationProperty Name="Plan" Relationship="Self.FK_CollectionPlan_Plan" FromRole="CollectionPlan" ToRole="Plan" />
+          <NavigationProperty Name="Plan" Relationship="Self.CollectionPlan" FromRole="Collection" ToRole="Plan" />
         </EntityType>
         <EntityType Name="HouseState">
           <Key>
@@ -483,7 +428,7 @@ warning 6002: The table/view 'Terrazas.dbo.CondoDoc' does not have a primary key
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdResident" Type="Int32" Nullable="false" />
+          <Property Name="IdResident" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
@@ -501,29 +446,26 @@ warning 6002: The table/view 'Terrazas.dbo.CondoDoc' does not have a primary key
           <Property Name="Descrption" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Incident" Relationship="Self.FK_Incident_IncidentState" FromRole="IncidentState" ToRole="Incident" />
         </EntityType>
-        <EntityType Name="News">
+        <EntityType Name="Information">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Ttile" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdInformationType" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="InformationType" Relationship="Self.FK_Information_InformationType" FromRole="Information" ToRole="InformationType" />
         </EntityType>
-        <EntityType Name="Payment">
+        <EntityType Name="InformationType">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="IdResident" Type="Int32" Nullable="false" />
-          <Property Name="Month" Type="Int32" Nullable="false" />
-          <Property Name="Year" Type="Int32" Nullable="false" />
-          <Property Name="Total" Type="Double" Nullable="false" />
-          <Property Name="Canceled" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Charge" Relationship="Self.FK_Charge_Payment" FromRole="Payment" ToRole="Charge" />
-          <NavigationProperty Name="Resident" Relationship="Self.FK_Payment_Resident" FromRole="Payment" ToRole="Resident" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Information" Relationship="Self.FK_Information_InformationType" FromRole="InformationType" ToRole="Information" />
         </EntityType>
         <EntityType Name="Plan">
           <Key>
@@ -532,14 +474,14 @@ warning 6002: The table/view 'Terrazas.dbo.CondoDoc' does not have a primary key
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="CollectionPlan" Relationship="Self.FK_CollectionPlan_Plan" FromRole="Plan" ToRole="CollectionPlan" />
+          <Property Name="Active" Type="Boolean" />
+          <NavigationProperty Name="Collection" Relationship="Self.CollectionPlan" FromRole="Plan" ToRole="Collection" />
         </EntityType>
         <EntityType Name="Resident">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="EmailUser" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmailUser" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="HouseNumber" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="LastName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
@@ -550,8 +492,8 @@ warning 6002: The table/view 'Terrazas.dbo.CondoDoc' does not have a primary key
           <Property Name="Active" Type="Boolean" />
           <Property Name="Deleted" Type="Boolean" />
           <NavigationProperty Name="Booking" Relationship="Self.FK_Booking_Resident" FromRole="Resident" ToRole="Booking" />
+          <NavigationProperty Name="Charge" Relationship="Self.FK_Charge_Resident" FromRole="Resident" ToRole="Charge" />
           <NavigationProperty Name="Incident" Relationship="Self.FK_Incident_Resident" FromRole="Resident" ToRole="Incident" />
-          <NavigationProperty Name="Payment" Relationship="Self.FK_Payment_Resident" FromRole="Resident" ToRole="Payment" />
           <NavigationProperty Name="User" Relationship="Self.FK_Resident_User" FromRole="Resident" ToRole="User" />
         </EntityType>
         <EntityType Name="Rol">
@@ -605,27 +547,12 @@ warning 6002: The table/view 'Terrazas.dbo.CondoDoc' does not have a primary key
           <NavigationProperty Name="Resident" Relationship="Self.FK_Resident_User" FromRole="User" ToRole="Resident" />
           <NavigationProperty Name="Rol" Relationship="Self.FK_User_Rol" FromRole="User" ToRole="Rol" />
         </EntityType>
-        <EntityType Name="CondoDoc">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="Title" />
-            <PropertyRef Name="Description" />
-            <PropertyRef Name="Date" />
-            <PropertyRef Name="Active" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Active" Type="Boolean" Nullable="false" />
-        </EntityType>
         <Association Name="FK_Booking_Resident">
           <End Role="Resident" Type="Self.Resident" Multiplicity="1" />
           <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Resident">
-              <PropertyRef Name="Id" />
+              <PropertyRef Name="EmailUser" />
             </Principal>
             <Dependent Role="Booking">
               <PropertyRef Name="IdResident" />
@@ -656,39 +583,15 @@ warning 6002: The table/view 'Terrazas.dbo.CondoDoc' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Charge_Payment">
-          <End Role="Payment" Type="Self.Payment" Multiplicity="1" />
+        <Association Name="FK_Charge_Resident">
+          <End Role="Resident" Type="Self.Resident" Multiplicity="1" />
           <End Role="Charge" Type="Self.Charge" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Payment">
-              <PropertyRef Name="Id" />
+            <Principal Role="Resident">
+              <PropertyRef Name="EmailUser" />
             </Principal>
             <Dependent Role="Charge">
-              <PropertyRef Name="IdPayment" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CollectionPlan_Collection">
-          <End Role="Collection" Type="Self.Collection" Multiplicity="1" />
-          <End Role="CollectionPlan" Type="Self.CollectionPlan" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Collection">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="CollectionPlan">
-              <PropertyRef Name="IdCollection" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CollectionPlan_Plan">
-          <End Role="Plan" Type="Self.Plan" Multiplicity="1" />
-          <End Role="CollectionPlan" Type="Self.CollectionPlan" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Plan">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="CollectionPlan">
-              <PropertyRef Name="IdPlan" />
+              <PropertyRef Name="IdResident" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -709,34 +612,34 @@ warning 6002: The table/view 'Terrazas.dbo.CondoDoc' does not have a primary key
           <End Role="Incident" Type="Self.Incident" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Resident">
-              <PropertyRef Name="Id" />
+              <PropertyRef Name="EmailUser" />
             </Principal>
             <Dependent Role="Incident">
               <PropertyRef Name="IdResident" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Payment_Resident">
-          <End Role="Resident" Type="Self.Resident" Multiplicity="1" />
-          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+        <Association Name="FK_Information_InformationType">
+          <End Role="InformationType" Type="Self.InformationType" Multiplicity="1" />
+          <End Role="Information" Type="Self.Information" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Resident">
+            <Principal Role="InformationType">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Payment">
-              <PropertyRef Name="IdResident" />
+            <Dependent Role="Information">
+              <PropertyRef Name="IdInformationType" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Resident_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Resident" Type="Self.Resident" Multiplicity="*" />
+          <End Role="Resident" Type="Self.Resident" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="Email" />
             </Principal>
             <Dependent Role="Resident">
-              <PropertyRef Name="UserEmail" />
+              <PropertyRef Name="EmailUser" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -764,24 +667,25 @@ warning 6002: The table/view 'Terrazas.dbo.CondoDoc' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="CollectionPlan">
+          <End Role="Collection" Type="Self.Collection" Multiplicity="*" />
+          <End Role="Plan" Type="Self.Plan" Multiplicity="*" />
+        </Association>
         <EntityContainer Name="TerrazasEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Announcement" EntityType="Self.Announcement" />
           <EntitySet Name="Booking" EntityType="Self.Booking" />
           <EntitySet Name="Charge" EntityType="Self.Charge" />
           <EntitySet Name="Collection" EntityType="Self.Collection" />
-          <EntitySet Name="CollectionPlan" EntityType="Self.CollectionPlan" />
           <EntitySet Name="HouseState" EntityType="Self.HouseState" />
           <EntitySet Name="Incident" EntityType="Self.Incident" />
           <EntitySet Name="IncidentState" EntityType="Self.IncidentState" />
-          <EntitySet Name="News" EntityType="Self.News" />
-          <EntitySet Name="Payment" EntityType="Self.Payment" />
+          <EntitySet Name="Information" EntityType="Self.Information" />
+          <EntitySet Name="InformationType" EntityType="Self.InformationType" />
           <EntitySet Name="Plan" EntityType="Self.Plan" />
           <EntitySet Name="Resident" EntityType="Self.Resident" />
           <EntitySet Name="Rol" EntityType="Self.Rol" />
           <EntitySet Name="Schedule" EntityType="Self.Schedule" />
           <EntitySet Name="SocialArea" EntityType="Self.SocialArea" />
           <EntitySet Name="User" EntityType="Self.User" />
-          <EntitySet Name="CondoDoc" EntityType="Self.CondoDoc" />
           <AssociationSet Name="FK_Booking_Resident" Association="Self.FK_Booking_Resident">
             <End Role="Resident" EntitySet="Resident" />
             <End Role="Booking" EntitySet="Booking" />
@@ -794,17 +698,9 @@ warning 6002: The table/view 'Terrazas.dbo.CondoDoc' does not have a primary key
             <End Role="Collection" EntitySet="Collection" />
             <End Role="Charge" EntitySet="Charge" />
           </AssociationSet>
-          <AssociationSet Name="FK_Charge_Payment" Association="Self.FK_Charge_Payment">
-            <End Role="Payment" EntitySet="Payment" />
+          <AssociationSet Name="FK_Charge_Resident" Association="Self.FK_Charge_Resident">
+            <End Role="Resident" EntitySet="Resident" />
             <End Role="Charge" EntitySet="Charge" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CollectionPlan_Collection" Association="Self.FK_CollectionPlan_Collection">
-            <End Role="Collection" EntitySet="Collection" />
-            <End Role="CollectionPlan" EntitySet="CollectionPlan" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CollectionPlan_Plan" Association="Self.FK_CollectionPlan_Plan">
-            <End Role="Plan" EntitySet="Plan" />
-            <End Role="CollectionPlan" EntitySet="CollectionPlan" />
           </AssociationSet>
           <AssociationSet Name="FK_Incident_IncidentState" Association="Self.FK_Incident_IncidentState">
             <End Role="IncidentState" EntitySet="IncidentState" />
@@ -814,9 +710,9 @@ warning 6002: The table/view 'Terrazas.dbo.CondoDoc' does not have a primary key
             <End Role="Resident" EntitySet="Resident" />
             <End Role="Incident" EntitySet="Incident" />
           </AssociationSet>
-          <AssociationSet Name="FK_Payment_Resident" Association="Self.FK_Payment_Resident">
-            <End Role="Resident" EntitySet="Resident" />
-            <End Role="Payment" EntitySet="Payment" />
+          <AssociationSet Name="FK_Information_InformationType" Association="Self.FK_Information_InformationType">
+            <End Role="InformationType" EntitySet="InformationType" />
+            <End Role="Information" EntitySet="Information" />
           </AssociationSet>
           <AssociationSet Name="FK_Resident_User" Association="Self.FK_Resident_User">
             <End Role="User" EntitySet="User" />
@@ -830,6 +726,10 @@ warning 6002: The table/view 'Terrazas.dbo.CondoDoc' does not have a primary key
             <End Role="Schedule" EntitySet="Schedule" />
             <End Role="SocialArea" EntitySet="SocialArea" />
           </AssociationSet>
+          <AssociationSet Name="CollectionPlan" Association="Self.CollectionPlan">
+            <End Role="Collection" EntitySet="Collection" />
+            <End Role="Plan" EntitySet="Plan" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -837,18 +737,6 @@ warning 6002: The table/view 'Terrazas.dbo.CondoDoc' does not have a primary key
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="TerrazasModelStoreContainer" CdmEntityContainer="TerrazasEntities">
-          <EntitySetMapping Name="Announcement">
-            <EntityTypeMapping TypeName="TerrazasModel.Announcement">
-              <MappingFragment StoreEntitySet="Announcement">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Ttile" ColumnName="Ttile" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="Active" ColumnName="Active" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Booking">
             <EntityTypeMapping TypeName="TerrazasModel.Booking">
               <MappingFragment StoreEntitySet="Booking">
@@ -867,8 +755,11 @@ warning 6002: The table/view 'Terrazas.dbo.CondoDoc' does not have a primary key
               <MappingFragment StoreEntitySet="Charge">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="IdCollection" ColumnName="IdCollection" />
-                <ScalarProperty Name="IdPayment" ColumnName="IdPayment" />
-                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="IdResident" ColumnName="IdResident" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Cancelled" ColumnName="Cancelled" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -878,15 +769,7 @@ warning 6002: The table/view 'Terrazas.dbo.CondoDoc' does not have a primary key
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CollectionPlan">
-            <EntityTypeMapping TypeName="TerrazasModel.CollectionPlan">
-              <MappingFragment StoreEntitySet="CollectionPlan">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="IdPlan" ColumnName="IdPlan" />
-                <ScalarProperty Name="IdCollection" ColumnName="IdCollection" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -921,27 +804,24 @@ warning 6002: The table/view 'Terrazas.dbo.CondoDoc' does not have a primary key
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="News">
-            <EntityTypeMapping TypeName="TerrazasModel.News">
-              <MappingFragment StoreEntitySet="News">
+          <EntitySetMapping Name="Information">
+            <EntityTypeMapping TypeName="TerrazasModel.Information">
+              <MappingFragment StoreEntitySet="Information">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Ttile" ColumnName="Ttile" />
+                <ScalarProperty Name="IdInformationType" ColumnName="IdInformationType" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="Active" ColumnName="Active" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Payment">
-            <EntityTypeMapping TypeName="TerrazasModel.Payment">
-              <MappingFragment StoreEntitySet="Payment">
+          <EntitySetMapping Name="InformationType">
+            <EntityTypeMapping TypeName="TerrazasModel.InformationType">
+              <MappingFragment StoreEntitySet="InformationType">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="IdResident" ColumnName="IdResident" />
-                <ScalarProperty Name="Month" ColumnName="Month" />
-                <ScalarProperty Name="Year" ColumnName="Year" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="Canceled" ColumnName="Canceled" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -951,14 +831,14 @@ warning 6002: The table/view 'Terrazas.dbo.CondoDoc' does not have a primary key
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Resident">
             <EntityTypeMapping TypeName="TerrazasModel.Resident">
               <MappingFragment StoreEntitySet="Resident">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="EmailUser" ColumnName="EmailUser" />
                 <ScalarProperty Name="HouseNumber" ColumnName="HouseNumber" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
@@ -1020,18 +900,14 @@ warning 6002: The table/view 'Terrazas.dbo.CondoDoc' does not have a primary key
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="CondoDoc">
-            <EntityTypeMapping TypeName="TerrazasModel.CondoDoc">
-              <MappingFragment StoreEntitySet="CondoDoc">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="Active" ColumnName="Active" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+          <AssociationSetMapping Name="CollectionPlan" TypeName="TerrazasModel.CollectionPlan" StoreEntitySet="CollectionPlan">
+            <EndProperty Name="Collection">
+              <ScalarProperty Name="Id" ColumnName="IdCollection" />
+            </EndProperty>
+            <EndProperty Name="Plan">
+              <ScalarProperty Name="Id" ColumnName="IdPlan" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

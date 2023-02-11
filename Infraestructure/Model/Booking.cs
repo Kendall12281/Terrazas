@@ -16,7 +16,7 @@ namespace Infraestructure.Model
     {
         public int Id { get; set; }
         public int IdSocialArea { get; set; }
-        public int IdResident { get; set; }
+        public string IdResident { get; set; }
         public System.DateTime Date { get; set; }
         public System.TimeSpan StartTime { get; set; }
         public System.TimeSpan EndTime { get; set; }

@@ -10,8 +10,9 @@ namespace ApplicationCore.Services
 {
     public interface IServicePlan
     {
-        List<ViewModelIndexPlan> GetPlans();
-        void NewPlan(Plan plan, IEnumerable<CollectionPlan> collectionPlanList);
-        ViewModelEditPlan GetPlan(int id);
+        List<Plan> GetPlans();
+        void NewPlan(Plan plan);
+        Plan GetPlan(int id);
+        void DeletePlan(int id);
     }
 }

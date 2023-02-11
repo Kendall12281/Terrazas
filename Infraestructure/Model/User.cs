@@ -14,19 +14,12 @@ namespace Infraestructure.Model
     
     public partial class User
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
-        {
-            this.Resident = new HashSet<Resident>();
-        }
-    
         public string Email { get; set; }
         public string Password { get; set; }
         public int IdRol { get; set; }
         public bool Active { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Resident> Resident { get; set; }
+        public virtual Resident Resident { get; set; }
         public virtual Rol Rol { get; set; }
     }
 }

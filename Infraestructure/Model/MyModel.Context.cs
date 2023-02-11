@@ -25,22 +25,19 @@ namespace Infraestructure.Model
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Announcement> Announcement { get; set; }
         public virtual DbSet<Booking> Booking { get; set; }
         public virtual DbSet<Charge> Charge { get; set; }
         public virtual DbSet<Collection> Collection { get; set; }
-        public virtual DbSet<CollectionPlan> CollectionPlan { get; set; }
         public virtual DbSet<HouseState> HouseState { get; set; }
         public virtual DbSet<Incident> Incident { get; set; }
         public virtual DbSet<IncidentState> IncidentState { get; set; }
-        public virtual DbSet<News> News { get; set; }
-        public virtual DbSet<Payment> Payment { get; set; }
+        public virtual DbSet<Information> Information { get; set; }
+        public virtual DbSet<InformationType> InformationType { get; set; }
         public virtual DbSet<Plan> Plan { get; set; }
         public virtual DbSet<Resident> Resident { get; set; }
         public virtual DbSet<Rol> Rol { get; set; }
         public virtual DbSet<Schedule> Schedule { get; set; }
         public virtual DbSet<SocialArea> SocialArea { get; set; }
         public virtual DbSet<User> User { get; set; }
-        public virtual DbSet<CondoDoc> CondoDoc { get; set; }
     }
 }

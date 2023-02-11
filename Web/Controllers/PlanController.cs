@@ -49,6 +49,8 @@ namespace Web.Controllers
         [HttpPost]
         public ActionResult New(ViewModelNewPlan model)
         {
+
+            ServiceCollection  serviceCollection= new ServiceCollection();
             int count = 0;
             foreach (var item in model.listCollections)
             {
@@ -66,18 +68,15 @@ namespace Web.Controllers
                 Description = model.Description
             };
 
-            List<CollectionPlan> list = new List<CollectionPlan>();
 
             foreach (var item in model.listCollections)
             {
-                CollectionPlan collectionPlan = new CollectionPlan()
-                {
-                    IdCollection = int.Parse(item.Value)
-                };
-                list.Add(collectionPlan);
+
+                plan.Collection.Add(serviceCollection.GetCollection(int.Parse(item.Value)));
             }
+
             ServicePlan service = new ServicePlan();
-            service.NewPlan(plan, list);
+            service.NewPlan(plan);
 
             return RedirectToAction("/");
         }
@@ -86,52 +85,20 @@ namespace Web.Controllers
         {
             ServiceCollection serviceCollection = new ServiceCollection();
             ServicePlan servicePlan = new ServicePlan();
-            ViewModelEditPlan model = servicePlan.GetPlan(id);
+            Plan model = servicePlan.GetPlan(id);
 
             List<SelectListItem> listItems = new List<SelectListItem>();
 
-            int index = 0;
-
-            foreach (var item in serviceCollection.GetCollections())
-            {
-                
-                if (model.listCollections[index].Id == item.Id)
-                {
-                    SelectListItem item1 = new SelectListItem()
-                    {
-                        Text = item.Name,
-                        Value = item.Id.ToString(),
-                        Selected = true
-
-                    };
-                    listItems.Add(item1);
-                }
-                else
-                {
-
-                    SelectListItem item2 = new SelectListItem()
-                    {
-                        Text = item.Name,
-                        Value = item.Id.ToString(),
-                        Selected = false
-
-                    };
-                    listItems.Add(item2);
-                }
-
-                index++;
-
-
-            }
-
-            model.listSelectedItems = listItems;
-
-            
-
-
-
-
             return View(model);
+        }
+
+      
+        public ActionResult Delete(int id)
+        {
+            ServicePlan serviceCollection = new ServicePlan();
+            serviceCollection.DeletePlan(id);
+
+            return RedirectToAction("/");
         }
     }
 }

@@ -1,18 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="TerrazasModelStoreContainer" CdmEntityContainer="TerrazasEntities">
-    <EntitySetMapping Name="Announcement">
-      <EntityTypeMapping TypeName="TerrazasModel.Announcement">
-        <MappingFragment StoreEntitySet="Announcement">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Ttile" ColumnName="Ttile" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="Date" ColumnName="Date" />
-          <ScalarProperty Name="Image" ColumnName="Image" />
-          <ScalarProperty Name="Active" ColumnName="Active" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Booking">
       <EntityTypeMapping TypeName="TerrazasModel.Booking">
         <MappingFragment StoreEntitySet="Booking">
@@ -31,8 +19,11 @@
         <MappingFragment StoreEntitySet="Charge">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="IdCollection" ColumnName="IdCollection" />
-          <ScalarProperty Name="IdPayment" ColumnName="IdPayment" />
-          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="IdResident" ColumnName="IdResident" />
+          <ScalarProperty Name="Month" ColumnName="Month" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Cancelled" ColumnName="Cancelled" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -42,15 +33,7 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Description" ColumnName="Description" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="CollectionPlan">
-      <EntityTypeMapping TypeName="TerrazasModel.CollectionPlan">
-        <MappingFragment StoreEntitySet="CollectionPlan">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="IdPlan" ColumnName="IdPlan" />
-          <ScalarProperty Name="IdCollection" ColumnName="IdCollection" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -85,27 +68,24 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="News">
-      <EntityTypeMapping TypeName="TerrazasModel.News">
-        <MappingFragment StoreEntitySet="News">
+    <EntitySetMapping Name="Information">
+      <EntityTypeMapping TypeName="TerrazasModel.Information">
+        <MappingFragment StoreEntitySet="Information">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Ttile" ColumnName="Ttile" />
+          <ScalarProperty Name="IdInformationType" ColumnName="IdInformationType" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="Date" ColumnName="Date" />
           <ScalarProperty Name="Image" ColumnName="Image" />
-          <ScalarProperty Name="Active" ColumnName="Active" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Payment">
-      <EntityTypeMapping TypeName="TerrazasModel.Payment">
-        <MappingFragment StoreEntitySet="Payment">
+    <EntitySetMapping Name="InformationType">
+      <EntityTypeMapping TypeName="TerrazasModel.InformationType">
+        <MappingFragment StoreEntitySet="InformationType">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="IdResident" ColumnName="IdResident" />
-          <ScalarProperty Name="Month" ColumnName="Month" />
-          <ScalarProperty Name="Year" ColumnName="Year" />
-          <ScalarProperty Name="Total" ColumnName="Total" />
-          <ScalarProperty Name="Canceled" ColumnName="Canceled" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -115,14 +95,14 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Resident">
       <EntityTypeMapping TypeName="TerrazasModel.Resident">
         <MappingFragment StoreEntitySet="Resident">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+          <ScalarProperty Name="EmailUser" ColumnName="EmailUser" />
           <ScalarProperty Name="HouseNumber" ColumnName="HouseNumber" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="LastName" ColumnName="LastName" />
@@ -184,17 +164,13 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="CondoDoc">
-      <EntityTypeMapping TypeName="TerrazasModel.CondoDoc">
-        <MappingFragment StoreEntitySet="CondoDoc">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Title" ColumnName="Title" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="Date" ColumnName="Date" />
-          <ScalarProperty Name="Image" ColumnName="Image" />
-          <ScalarProperty Name="Active" ColumnName="Active" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
+    <AssociationSetMapping Name="CollectionPlan" TypeName="TerrazasModel.CollectionPlan" StoreEntitySet="CollectionPlan">
+      <EndProperty Name="Collection">
+        <ScalarProperty Name="Id" ColumnName="IdCollection" />
+      </EndProperty>
+      <EndProperty Name="Plan">
+        <ScalarProperty Name="Id" ColumnName="IdPlan" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -12,30 +12,30 @@ namespace Infraestructure.Repository
 {
     public class RepositoryPlan : IRepositoryPlan
     {
-        public ViewModelEditPlan GetPlan(int id)
+        public void DeletePlan(int id)
+        {
+            try
+            {
+                MyContext db = new MyContext();
+
+                db.Plan.Find(id).Active = false;
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public Plan GetPlan(int id)
         {
             try
             {
 
                 MyContext db = new MyContext();
                 Plan plan = db.Plan.Find(id);
-                List<CollectionPlan> collectionPlan = db.CollectionPlan.Where(x=>x.IdPlan== plan.Id).ToList(); 
-                List<Collection> collections = new List<Collection>();
-
-                foreach (var item in collectionPlan) 
-                {
-                    collections.Add(db.Collection.Where(x => x.Id == item.IdCollection).FirstOrDefault());
-                }
-
-                ViewModelEditPlan model = new ViewModelEditPlan()
-                {
-                    Id = plan.Id,
-                    Name = plan.Name,
-                    Description = plan.Description,
-                    listCollections = collections
-                };
-
-                return model;
+                return plan;
             }
             catch (Exception)
             {
@@ -44,38 +44,21 @@ namespace Infraestructure.Repository
             }
         }
 
-        public List<ViewModelIndexPlan> GetPlans()
+        public List<Plan> GetPlans()
         {
             try
             {
                 List<ViewModelIndexPlan> plans = new List<ViewModelIndexPlan>();
-                List<Collection> collections= new List<Collection>();
+                List<Collection> collections = new List<Collection>();
 
-              MyContext db = new MyContext();
+                MyContext db = new MyContext();
 
-                foreach (var item in db.Plan.ToList())
-                {
-                    //collectionPlans = db.CollectionPlan.ToList().Where(x => x.IdPlan == item.Id).ToList();
+                var a = db.Plan
+                    .Include("Collection")
+                    .Where(x => x.Active != false)
+                    .ToList();
 
-                    foreach (var collectionPlanItem in db.CollectionPlan.ToList().Where(x => x.IdPlan == item.Id).ToList())
-                    {
-                        collections.Add(db.Collection.Find(collectionPlanItem.IdCollection));
-                    }
-
-                    ViewModelIndexPlan viewModelPlan = new ViewModelIndexPlan()
-                    {
-                        Id = item.Id,
-                        Name = item.Name,
-                        Description = item.Description,
-                        listCollections = new List<Collection>(collections)
-                    };
-
-                    plans.Add(viewModelPlan);
-                    collections.Clear();
-
-                }
-
-                return plans;
+                return a;
 
             }
             catch (Exception)
@@ -85,27 +68,18 @@ namespace Infraestructure.Repository
             }
         }
 
-        public void NewPlan(Plan plan, IEnumerable<CollectionPlan> collectionPlanList)
+        public void NewPlan(Plan plan)
         {
             try
             {
                 MyContext db = new MyContext();
-                db.Plan.Add(plan);
-                db.SaveChanges();
-
-
-                foreach (var item in collectionPlanList)
+                foreach (var item in plan.Collection)
                 {
-                    using (MyContext db2 = new MyContext())
-                    {
 
-                        item.IdPlan = plan.Id;
-                        db2.CollectionPlan.Add(item);
-                        db2.SaveChanges();
-
-                    }
-
+                    db.Collection.ToHashSet().Add(item);
+                db.SaveChanges();
                 }
+
             }
 
             catch (Exception)

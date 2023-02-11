@@ -74,9 +74,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Announcement.cs">
-      <DependentUpon>MyModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\Booking.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
     </Compile>
@@ -86,12 +83,6 @@
     <Compile Include="Model\Collection.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\CollectionPlan.cs">
-      <DependentUpon>MyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\CondoDoc.cs">
-      <DependentUpon>MyModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\HouseState.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
     </Compile>
@@ -99,6 +90,12 @@
       <DependentUpon>MyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\IncidentState.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Information.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\InformationType.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\MyContext.cs" />
@@ -116,12 +113,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MyModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Model\News.cs">
-      <DependentUpon>MyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Payment.cs">
-      <DependentUpon>MyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Plan.cs">
       <DependentUpon>MyModel.tt</DependentUpon>

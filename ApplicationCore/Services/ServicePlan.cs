@@ -11,22 +11,28 @@ namespace ApplicationCore.Services
 {
     public class ServicePlan : IServicePlan
     {
-        public ViewModelEditPlan GetPlan(int id)
+        public void DeletePlan(int id)
+        {
+            IRepositoryPlan service = new RepositoryPlan();
+             service.DeletePlan(id);
+        }
+
+        public Plan GetPlan(int id)
         {
             IRepositoryPlan service = new RepositoryPlan();
             return service.GetPlan(id);
         }
 
-        public List<ViewModelIndexPlan> GetPlans()
+        public List<Plan> GetPlans()
         {
             IRepositoryPlan repository = new RepositoryPlan();
             return repository.GetPlans();
         }
 
-        public void NewPlan(Plan plan, IEnumerable<CollectionPlan> collectionPlanList)
+        public void NewPlan(Plan plan)
         {
             IRepositoryPlan repository= new RepositoryPlan();
-            repository.NewPlan(plan, collectionPlanList);
+            repository.NewPlan(plan);
         }
     }
 }

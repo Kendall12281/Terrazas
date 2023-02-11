@@ -12,13 +12,15 @@ namespace Infraestructure.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class CollectionPlan
+    public partial class Information
     {
         public int Id { get; set; }
-        public int IdPlan { get; set; }
-        public int IdCollection { get; set; }
+        public int IdInformationType { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public System.DateTime Date { get; set; }
+        public string Image { get; set; }
     
-        public virtual Collection Collection { get; set; }
-        public virtual Plan Plan { get; set; }
+        public virtual InformationType InformationType { get; set; }
     }
 }

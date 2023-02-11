@@ -12,13 +12,19 @@ namespace Infraestructure.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class News
+    public partial class InformationType
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public InformationType()
+        {
+            this.Information = new HashSet<Information>();
+        }
+    
         public int Id { get; set; }
-        public string Ttile { get; set; }
+        public string Name { get; set; }
         public string Description { get; set; }
-        public System.DateTime Date { get; set; }
-        public string Image { get; set; }
-        public bool Active { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Information> Information { get; set; }
     }
 }

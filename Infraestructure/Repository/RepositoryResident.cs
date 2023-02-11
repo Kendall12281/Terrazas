@@ -48,7 +48,7 @@ namespace Infraestructure.Repository
 			{
 				MyContext db = new MyContext();
 				Resident resident = (from r in db.Resident
-									where(r.UserEmail == email.Trim())
+									where(r.EmailUser == email.Trim())
 									select r).FirstOrDefault();
 				return resident;
 

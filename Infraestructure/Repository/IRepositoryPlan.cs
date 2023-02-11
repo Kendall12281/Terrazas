@@ -10,10 +10,12 @@ namespace Infraestructure.Repository
 {
     public interface IRepositoryPlan
     {
-        void NewPlan(Plan plan, IEnumerable<CollectionPlan> collectionPlanList);
-        List<ViewModelIndexPlan> GetPlans();
+        void NewPlan(Plan plan);
+        List<Plan> GetPlans();
 
-        ViewModelEditPlan GetPlan(int id);
+        Plan GetPlan(int id);
+
+        void DeletePlan(int id);
 
     }
 }
