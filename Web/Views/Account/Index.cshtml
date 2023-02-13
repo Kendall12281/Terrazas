@@ -36,7 +36,9 @@
 
         <div>
             <button>
-                @Html.ActionLink("PDF", "ShowTable")
+                @*@Html.ActionLink("PDF", "ShowTable")*@
+                <a href="#" onclick="window.open('@Url.Action("ShowTable", "Account")','_blank');">PDF</a>
+
             </button>
         </div>
 

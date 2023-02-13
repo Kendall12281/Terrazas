@@ -384,6 +384,7 @@
     <Content Include="Views\Plan\Index.cshtml" />
     <Content Include="Views\Plan\Edit.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Account\ShowTable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

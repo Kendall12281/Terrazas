@@ -84,7 +84,13 @@ namespace Web.Controllers
                 {
                     //table.AddCell(new Cell().Add(new Paragraph("\""+item.email+item.fullName + "," + item.monthName + ","+
                     //    item.year + ","+item.totalColones + ","+item.cancelledName + ","+item.notes+"\"")));
-                    table.AddCell(new Cell().Add(new Paragraph(item.toString)));
+                    table.AddCell(item.email);
+                    table.AddCell(item.fullName);
+                    table.AddCell(item.monthName);
+                    table.AddCell(item.year.ToString());
+                    table.AddCell(item.totalColones);
+                    table.AddCell(item.cancelledName);
+                    table.AddCell(item.notes);
                 }
                 //table.AddCell(new Cell().Add(new Paragraph("Row 1, Column 2")));
                 //table.AddCell(new Cell().Add(new Paragraph("Row 1, Column 3")));
