@@ -85,6 +85,15 @@
                             <span class="item">Home</span>
                         </a>
                     </li>
+                    @if (user.IdRol == 2)
+                    {
+                        <li>
+                            <a href="/Account/">
+                                <span class="icon"><i class="fas fa-wallet"></i></span>
+                                <span class="item">Finances</span>
+                            </a>
+                        </li>
+                    }
                     @if (user.IdRol == 1)
                     {
 

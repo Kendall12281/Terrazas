@@ -15,14 +15,15 @@ namespace Infraestructure.Model
     public partial class Charge
     {
         public int Id { get; set; }
-        public int IdCollection { get; set; }
+        public int IdPlan { get; set; }
         public string IdResident { get; set; }
         public int Month { get; set; }
         public int Year { get; set; }
+        public string Notes { get; set; }
         public double Total { get; set; }
         public bool Cancelled { get; set; }
     
-        public virtual Collection Collection { get; set; }
+        public virtual Plan Plan { get; set; }
         public virtual Resident Resident { get; set; }
     }
 }

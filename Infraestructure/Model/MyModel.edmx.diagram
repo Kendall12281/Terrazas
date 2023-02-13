@@ -4,24 +4,24 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3c0ee571218642768176e12562638ced" Name="Diagram1">
-        <EntityTypeShape EntityType="TerrazasModel.Booking" Width="1.5" PointX="7.5" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TerrazasModel.Charge" Width="1.5" PointX="10.5" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TerrazasModel.Collection" Width="1.5" PointX="8.25" PointY="9.125" IsExpanded="true" />
+      <Diagram DiagramId="b6238a04d16a4341a38587c7477a8bc5" Name="Diagram1">
+        <EntityTypeShape EntityType="TerrazasModel.Booking" Width="1.5" PointX="7.5" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TerrazasModel.Charge" Width="1.5" PointX="10.5" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TerrazasModel.Collection" Width="1.5" PointX="6" PointY="14.25" IsExpanded="true" />
         <EntityTypeShape EntityType="TerrazasModel.HouseState" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TerrazasModel.Incident" Width="1.5" PointX="7.5" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TerrazasModel.IncidentState" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="TerrazasModel.Information" Width="1.5" PointX="12" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="TerrazasModel.InformationType" Width="1.5" PointX="9.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="TerrazasModel.Plan" Width="1.5" PointX="10.5" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TerrazasModel.Incident" Width="1.5" PointX="7.5" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TerrazasModel.IncidentState" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TerrazasModel.Information" Width="1.5" PointX="10" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="TerrazasModel.InformationType" Width="1.5" PointX="7.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TerrazasModel.Plan" Width="1.5" PointX="8.25" PointY="14.25" IsExpanded="true" />
         <EntityTypeShape EntityType="TerrazasModel.Resident" Width="1.5" PointX="5.25" PointY="4.375" IsExpanded="true" />
         <EntityTypeShape EntityType="TerrazasModel.Rol" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="TerrazasModel.Schedule" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="TerrazasModel.SocialArea" Width="1.5" PointX="5.25" PointY="9.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="TerrazasModel.User" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TerrazasModel.Schedule" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TerrazasModel.SocialArea" Width="1.5" PointX="5.25" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="TerrazasModel.User" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
         <AssociationConnector Association="TerrazasModel.FK_Booking_Resident" ManuallyRouted="false" />
         <AssociationConnector Association="TerrazasModel.FK_Booking_SocialArea" ManuallyRouted="false" />
-        <AssociationConnector Association="TerrazasModel.FK_Charge_Collection" ManuallyRouted="false" />
+        <AssociationConnector Association="TerrazasModel.FK_Charge_Plan" ManuallyRouted="false" />
         <AssociationConnector Association="TerrazasModel.FK_Charge_Resident" ManuallyRouted="false" />
         <AssociationConnector Association="TerrazasModel.FK_Incident_IncidentState" ManuallyRouted="false" />
         <AssociationConnector Association="TerrazasModel.FK_Incident_Resident" ManuallyRouted="false" />

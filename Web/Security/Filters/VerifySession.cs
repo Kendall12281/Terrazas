@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 using Web.Controllers;
 
 namespace Web.Security.Filters
@@ -14,6 +15,19 @@ namespace Web.Security.Filters
         {
             var oUser = (User)HttpContext.Current.Session["User"];
 
+            base.OnActionExecuting(filterContext);
+
+            if (filterContext.HttpContext.Session == null)
+            {
+                filterContext.Result = new RedirectToRouteResult(
+                    new RouteValueDictionary(
+                        new
+                        {
+                            controller = "Login",
+                            action = "Index"
+                        })
+                    );
+            }
             if (oUser == null)
             {
                 if (filterContext.Controller is LoginController == false)
@@ -32,7 +46,6 @@ namespace Web.Security.Filters
             }
 
 
-            base.OnActionExecuting(filterContext);
         }
 
 

@@ -72,14 +72,24 @@ namespace Infraestructure.Repository
         {
             try
             {
+                //Plan plan1 = new Plan()
+                //{
+                //    Name = plan.Name,
+                //    Description = plan.Description,
+
+                //};
                 MyContext db = new MyContext();
+                 db.Plan.Add(new Plan { Name = plan.Name, Description = plan.Description });
+                db.SaveChanges();
+
+                var addedPlan = db.Plan.OrderByDescending(p => p.Id).FirstOrDefault(p => p.Name == plan.Name);
+
                 foreach (var item in plan.Collection)
                 {
-
-                    db.Collection.ToHashSet().Add(item);
-                db.SaveChanges();
+                    //db.CollectionPlan.Add(new CollectionPlan { IdCollection = item.Id, IdPlan = addedPlan.Id });
+                    //db.SaveChanges();
+                    db.Database.ExecuteSqlCommand("Insert into CollectionPlan Values ("+addedPlan.Id+","+item.Id+")");
                 }
-
             }
 
             catch (Exception)
@@ -88,5 +98,11 @@ namespace Infraestructure.Repository
                 throw;
             }
         }
+    }
+
+    public class CollectionPlan
+    {
+        public int IdPlan { get; set; }
+        public int IdCollection { get; set; }
     }
 }

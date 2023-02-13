@@ -17,10 +17,11 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="IdCollection" Type="int" Nullable="false" />
+    <Property Name="IdPlan" Type="int" Nullable="false" />
     <Property Name="IdResident" Type="varchar" MaxLength="255" Nullable="false" />
     <Property Name="Month" Type="int" Nullable="false" />
     <Property Name="Year" Type="int" Nullable="false" />
+    <Property Name="Notes" Type="varchar" MaxLength="255" />
     <Property Name="Total" Type="float" Nullable="false" />
     <Property Name="Cancelled" Type="bit" Nullable="false" />
   </EntityType>
@@ -181,15 +182,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Charge_Collection">
-    <End Role="Collection" Type="Self.Collection" Multiplicity="1" />
+  <Association Name="FK_Charge_Plan">
+    <End Role="Plan" Type="Self.Plan" Multiplicity="1" />
     <End Role="Charge" Type="Self.Charge" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Collection">
+      <Principal Role="Plan">
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Charge">
-        <PropertyRef Name="IdCollection" />
+        <PropertyRef Name="IdPlan" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -325,8 +326,8 @@
       <End Role="SocialArea" EntitySet="SocialArea" />
       <End Role="Booking" EntitySet="Booking" />
     </AssociationSet>
-    <AssociationSet Name="FK_Charge_Collection" Association="Self.FK_Charge_Collection">
-      <End Role="Collection" EntitySet="Collection" />
+    <AssociationSet Name="FK_Charge_Plan" Association="Self.FK_Charge_Plan">
+      <End Role="Plan" EntitySet="Plan" />
       <End Role="Charge" EntitySet="Charge" />
     </AssociationSet>
     <AssociationSet Name="FK_Charge_Resident" Association="Self.FK_Charge_Resident">

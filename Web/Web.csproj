@@ -46,16 +46,95 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>..\packages\Portable.BouncyCastle.1.8.9\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="itext.barcodes, Version=7.2.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.2.5\lib\net461\itext.barcodes.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.commons, Version=7.2.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.commons.7.2.5\lib\net461\itext.commons.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.forms, Version=7.2.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.2.5\lib\net461\itext.forms.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.io, Version=7.2.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.2.5\lib\net461\itext.io.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.kernel, Version=7.2.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.2.5\lib\net461\itext.kernel.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.layout, Version=7.2.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.2.5\lib\net461\itext.layout.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.pdfa, Version=7.2.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.2.5\lib\net461\itext.pdfa.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.sign, Version=7.2.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.2.5\lib\net461\itext.sign.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.styledxmlparser, Version=7.2.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.2.5\lib\net461\itext.styledxmlparser.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.svg, Version=7.2.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.2.5\lib\net461\itext.svg.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.5.0.0\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.5.0.0\lib\net461\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.5.0.0\lib\net461\Microsoft.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.5.0.0\lib\net461\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.5.0.0\lib\net461\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.5.0.0\lib\net461\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.5.0.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -106,9 +185,6 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -140,6 +216,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CollectionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -153,6 +230,92 @@
     <Compile Include="Security\Session.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\datatables_custom\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="Content\datatables_custom\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="Content\datatables_custom\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="Content\datatables_custom\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="Content\datatables_custom\bootstrap\css\bootstrap.css" />
+    <Content Include="Content\datatables_custom\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\datatables_custom\bootstrap\js\bootstrap.bundle.js" />
+    <Content Include="Content\datatables_custom\bootstrap\js\bootstrap.bundle.min.js" />
+    <Content Include="Content\datatables_custom\bootstrap\js\bootstrap.js" />
+    <Content Include="Content\datatables_custom\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\datatables_custom\datatables\Buttons-1.5.6\css\buttons.bootstrap.css" />
+    <Content Include="Content\datatables_custom\datatables\Buttons-1.5.6\css\buttons.bootstrap.min.css" />
+    <Content Include="Content\datatables_custom\datatables\Buttons-1.5.6\css\buttons.bootstrap4.css" />
+    <Content Include="Content\datatables_custom\datatables\Buttons-1.5.6\css\buttons.bootstrap4.min.css" />
+    <Content Include="Content\datatables_custom\datatables\Buttons-1.5.6\css\buttons.dataTables.css" />
+    <Content Include="Content\datatables_custom\datatables\Buttons-1.5.6\css\buttons.dataTables.min.css" />
+    <Content Include="Content\datatables_custom\datatables\Buttons-1.5.6\css\buttons.foundation.css" />
+    <Content Include="Content\datatables_custom\datatables\Buttons-1.5.6\css\buttons.foundation.min.css" />
+    <Content Include="Content\datatables_custom\datatables\Buttons-1.5.6\css\buttons.jqueryui.css" />
+    <Content Include="Content\datatables_custom\datatables\Buttons-1.5.6\css\buttons.jqueryui.min.css" />
+    <Content Include="Content\datatables_custom\datatables\Buttons-1.5.6\css\buttons.semanticui.css" />
+    <Content Include="Content\datatables_custom\datatables\Buttons-1.5.6\css\buttons.semanticui.min.css" />
+    <Content Include="Content\datatables_custom\datatables\Buttons-1.5.6\js\buttons.bootstrap.js" />
+    <Content Include="Content\datatables_custom\datatables\Buttons-1.5.6\js\buttons.bootstrap.min.js" />
+    <Content Include="Content\datatables_custom\datatables\Buttons-1.5.6\js\buttons.bootstrap4.js" />
+    <Content Include="Content\datatables_custom\datatables\Buttons-1.5.6\js\buttons.bootstrap4.min.js" />
+    <Content Include="Content\datatables_custom\datatables\Buttons-1.5.6\js\buttons.colVis.js" />
+    <Content Include="Content\datatables_custom\datatables\Buttons-1.5.6\js\buttons.colVis.min.js" />
+    <Content Include="Content\datatables_custom\datatables\Buttons-1.5.6\js\buttons.flash.js" />
+    <Content Include="Content\datatables_custom\datatables\Buttons-1.5.6\js\buttons.flash.min.js" />
+    <Content Include="Content\datatables_custom\datatables\Buttons-1.5.6\js\buttons.foundation.js" />
+    <Content Include="Content\datatables_custom\datatables\Buttons-1.5.6\js\buttons.foundation.min.js" />
+    <Content Include="Content\datatables_custom\datatables\Buttons-1.5.6\js\buttons.html5.js" />
+    <Content Include="Content\datatables_custom\datatables\Buttons-1.5.6\js\buttons.html5.min.js" />
+    <Content Include="Content\datatables_custom\datatables\Buttons-1.5.6\js\buttons.jqueryui.js" />
+    <Content Include="Content\datatables_custom\datatables\Buttons-1.5.6\js\buttons.jqueryui.min.js" />
+    <Content Include="Content\datatables_custom\datatables\Buttons-1.5.6\js\buttons.print.js" />
+    <Content Include="Content\datatables_custom\datatables\Buttons-1.5.6\js\buttons.print.min.js" />
+    <Content Include="Content\datatables_custom\datatables\Buttons-1.5.6\js\buttons.semanticui.js" />
+    <Content Include="Content\datatables_custom\datatables\Buttons-1.5.6\js\buttons.semanticui.min.js" />
+    <Content Include="Content\datatables_custom\datatables\Buttons-1.5.6\js\dataTables.buttons.js" />
+    <Content Include="Content\datatables_custom\datatables\Buttons-1.5.6\js\dataTables.buttons.min.js" />
+    <Content Include="Content\datatables_custom\datatables\Buttons-1.5.6\swf\flashExport.swf" />
+    <Content Include="Content\datatables_custom\datatables\DataTables-1.10.18\css\dataTables.bootstrap.css" />
+    <Content Include="Content\datatables_custom\datatables\DataTables-1.10.18\css\dataTables.bootstrap.min.css" />
+    <Content Include="Content\datatables_custom\datatables\DataTables-1.10.18\css\dataTables.bootstrap4.css" />
+    <Content Include="Content\datatables_custom\datatables\DataTables-1.10.18\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Content\datatables_custom\datatables\DataTables-1.10.18\css\dataTables.foundation.css" />
+    <Content Include="Content\datatables_custom\datatables\DataTables-1.10.18\css\dataTables.foundation.min.css" />
+    <Content Include="Content\datatables_custom\datatables\DataTables-1.10.18\css\dataTables.jqueryui.css" />
+    <Content Include="Content\datatables_custom\datatables\DataTables-1.10.18\css\dataTables.jqueryui.min.css" />
+    <Content Include="Content\datatables_custom\datatables\DataTables-1.10.18\css\dataTables.semanticui.css" />
+    <Content Include="Content\datatables_custom\datatables\DataTables-1.10.18\css\dataTables.semanticui.min.css" />
+    <Content Include="Content\datatables_custom\datatables\DataTables-1.10.18\css\jquery.dataTables.css" />
+    <Content Include="Content\datatables_custom\datatables\DataTables-1.10.18\css\jquery.dataTables.min.css" />
+    <Content Include="Content\datatables_custom\datatables\DataTables-1.10.18\images\sort_asc.png" />
+    <Content Include="Content\datatables_custom\datatables\DataTables-1.10.18\images\sort_asc_disabled.png" />
+    <Content Include="Content\datatables_custom\datatables\DataTables-1.10.18\images\sort_both.png" />
+    <Content Include="Content\datatables_custom\datatables\DataTables-1.10.18\images\sort_desc.png" />
+    <Content Include="Content\datatables_custom\datatables\DataTables-1.10.18\images\sort_desc_disabled.png" />
+    <Content Include="Content\datatables_custom\datatables\DataTables-1.10.18\js\dataTables.bootstrap.js" />
+    <Content Include="Content\datatables_custom\datatables\DataTables-1.10.18\js\dataTables.bootstrap.min.js" />
+    <Content Include="Content\datatables_custom\datatables\DataTables-1.10.18\js\dataTables.bootstrap4.js" />
+    <Content Include="Content\datatables_custom\datatables\DataTables-1.10.18\js\dataTables.bootstrap4.min.js" />
+    <Content Include="Content\datatables_custom\datatables\DataTables-1.10.18\js\dataTables.foundation.js" />
+    <Content Include="Content\datatables_custom\datatables\DataTables-1.10.18\js\dataTables.foundation.min.js" />
+    <Content Include="Content\datatables_custom\datatables\DataTables-1.10.18\js\dataTables.jqueryui.js" />
+    <Content Include="Content\datatables_custom\datatables\DataTables-1.10.18\js\dataTables.jqueryui.min.js" />
+    <Content Include="Content\datatables_custom\datatables\DataTables-1.10.18\js\dataTables.semanticui.js" />
+    <Content Include="Content\datatables_custom\datatables\DataTables-1.10.18\js\dataTables.semanticui.min.js" />
+    <Content Include="Content\datatables_custom\datatables\DataTables-1.10.18\js\jquery.dataTables.js" />
+    <Content Include="Content\datatables_custom\datatables\DataTables-1.10.18\js\jquery.dataTables.min.js" />
+    <Content Include="Content\datatables_custom\datatables\datatables.css" />
+    <Content Include="Content\datatables_custom\datatables\datatables.js" />
+    <Content Include="Content\datatables_custom\datatables\datatables.min.css" />
+    <Content Include="Content\datatables_custom\datatables\datatables.min.js" />
+    <Content Include="Content\datatables_custom\datatables\JSZip-2.5.0\jszip.js" />
+    <Content Include="Content\datatables_custom\datatables\JSZip-2.5.0\jszip.min.js" />
+    <Content Include="Content\datatables_custom\datatables\pdfmake-0.1.36\pdfmake.js" />
+    <Content Include="Content\datatables_custom\datatables\pdfmake-0.1.36\pdfmake.min.js" />
+    <Content Include="Content\datatables_custom\datatables\pdfmake-0.1.36\vfs_fonts.js" />
+    <Content Include="Content\datatables_custom\index.html" />
+    <Content Include="Content\datatables_custom\jquery\jquery-3.3.1.min.js" />
+    <Content Include="Content\datatables_custom\main.css" />
+    <Content Include="Content\datatables_custom\main.js" />
+    <Content Include="Content\datatables_custom\popper\popper.min.js" />
     <Content Include="Content\DataTable\img\sort_asc.png" />
     <Content Include="Content\DataTable\img\sort_both.png" />
     <Content Include="Content\DataTable\img\sort_desc.png" />
@@ -172,6 +335,18 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\datatables_custom\bootstrap\css\bootstrap-grid.css.map" />
+    <Content Include="Content\datatables_custom\bootstrap\css\bootstrap-grid.min.css.map" />
+    <Content Include="Content\datatables_custom\bootstrap\css\bootstrap-reboot.css.map" />
+    <Content Include="Content\datatables_custom\bootstrap\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\datatables_custom\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Content\datatables_custom\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Content\datatables_custom\bootstrap\js\bootstrap.bundle.js.map" />
+    <Content Include="Content\datatables_custom\bootstrap\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Content\datatables_custom\bootstrap\js\bootstrap.js.map" />
+    <Content Include="Content\datatables_custom\bootstrap\js\bootstrap.min.js.map" />
+    <Content Include="Content\datatables_custom\datatables\Buttons-1.5.6\css\common.scss" />
+    <Content Include="Content\datatables_custom\datatables\Buttons-1.5.6\css\mixins.scss" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -208,6 +383,7 @@
     <Content Include="Views\Plan\New.cshtml" />
     <Content Include="Views\Plan\Index.cshtml" />
     <Content Include="Views\Plan\Edit.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

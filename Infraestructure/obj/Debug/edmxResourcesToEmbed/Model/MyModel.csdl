@@ -19,13 +19,14 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="IdCollection" Type="Int32" Nullable="false" />
+    <Property Name="IdPlan" Type="Int32" Nullable="false" />
     <Property Name="IdResident" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Month" Type="Int32" Nullable="false" />
     <Property Name="Year" Type="Int32" Nullable="false" />
+    <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="Total" Type="Double" Nullable="false" />
     <Property Name="Cancelled" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="Collection" Relationship="Self.FK_Charge_Collection" FromRole="Charge" ToRole="Collection" />
+    <NavigationProperty Name="Plan" Relationship="Self.FK_Charge_Plan" FromRole="Charge" ToRole="Plan" />
     <NavigationProperty Name="Resident" Relationship="Self.FK_Charge_Resident" FromRole="Charge" ToRole="Resident" />
   </EntityType>
   <EntityType Name="Collection">
@@ -36,7 +37,6 @@
     <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Active" Type="Boolean" />
-    <NavigationProperty Name="Charge" Relationship="Self.FK_Charge_Collection" FromRole="Collection" ToRole="Charge" />
     <NavigationProperty Name="Plan" Relationship="Self.CollectionPlan" FromRole="Collection" ToRole="Plan" />
   </EntityType>
   <EntityType Name="HouseState">
@@ -99,6 +99,7 @@
     <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Active" Type="Boolean" />
+    <NavigationProperty Name="Charge" Relationship="Self.FK_Charge_Plan" FromRole="Plan" ToRole="Charge" />
     <NavigationProperty Name="Collection" Relationship="Self.CollectionPlan" FromRole="Plan" ToRole="Collection" />
   </EntityType>
   <EntityType Name="Resident">
@@ -195,15 +196,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Charge_Collection">
-    <End Role="Collection" Type="Self.Collection" Multiplicity="1" />
+  <Association Name="FK_Charge_Plan">
+    <End Role="Plan" Type="Self.Plan" Multiplicity="1" />
     <End Role="Charge" Type="Self.Charge" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Collection">
+      <Principal Role="Plan">
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Charge">
-        <PropertyRef Name="IdCollection" />
+        <PropertyRef Name="IdPlan" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -318,8 +319,8 @@
       <End Role="SocialArea" EntitySet="SocialArea" />
       <End Role="Booking" EntitySet="Booking" />
     </AssociationSet>
-    <AssociationSet Name="FK_Charge_Collection" Association="Self.FK_Charge_Collection">
-      <End Role="Collection" EntitySet="Collection" />
+    <AssociationSet Name="FK_Charge_Plan" Association="Self.FK_Charge_Plan">
+      <End Role="Plan" EntitySet="Plan" />
       <End Role="Charge" EntitySet="Charge" />
     </AssociationSet>
     <AssociationSet Name="FK_Charge_Resident" Association="Self.FK_Charge_Resident">

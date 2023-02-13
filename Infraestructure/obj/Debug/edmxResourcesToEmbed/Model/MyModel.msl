@@ -18,10 +18,11 @@
       <EntityTypeMapping TypeName="TerrazasModel.Charge">
         <MappingFragment StoreEntitySet="Charge">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="IdCollection" ColumnName="IdCollection" />
+          <ScalarProperty Name="IdPlan" ColumnName="IdPlan" />
           <ScalarProperty Name="IdResident" ColumnName="IdResident" />
           <ScalarProperty Name="Month" ColumnName="Month" />
           <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
           <ScalarProperty Name="Total" ColumnName="Total" />
           <ScalarProperty Name="Cancelled" ColumnName="Cancelled" />
         </MappingFragment>

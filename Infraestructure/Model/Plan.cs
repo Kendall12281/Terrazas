@@ -17,6 +17,7 @@ namespace Infraestructure.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Plan()
         {
+            this.Charge = new HashSet<Charge>();
             this.Collection = new HashSet<Collection>();
         }
     
@@ -25,6 +26,8 @@ namespace Infraestructure.Model
         public string Description { get; set; }
         public Nullable<bool> Active { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Charge> Charge { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Collection> Collection { get; set; }
     }

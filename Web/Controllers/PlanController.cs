@@ -50,7 +50,7 @@ namespace Web.Controllers
         public ActionResult New(ViewModelNewPlan model)
         {
 
-            ServiceCollection  serviceCollection= new ServiceCollection();
+            ServiceCollection serviceCollection = new ServiceCollection();
             int count = 0;
             foreach (var item in model.listCollections)
             {
@@ -68,11 +68,20 @@ namespace Web.Controllers
                 Description = model.Description
             };
 
-
-            foreach (var item in model.listCollections)
+            int counter = 0;
+            foreach (var item in serviceCollection.GetCollections())
             {
+                if (counter < model.listCollections.Count)
+                {
 
-                plan.Collection.Add(serviceCollection.GetCollection(int.Parse(item.Value)));
+                    if (model.listCollections[counter].Selected)
+                    {
+                        plan.Collection.Add(serviceCollection.GetCollection(int.Parse(model.listCollections[counter].Value)));
+                    }
+                }
+
+                counter++;
+
             }
 
             ServicePlan service = new ServicePlan();
@@ -92,7 +101,7 @@ namespace Web.Controllers
             return View(model);
         }
 
-      
+
         public ActionResult Delete(int id)
         {
             ServicePlan serviceCollection = new ServicePlan();
