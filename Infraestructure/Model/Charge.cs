@@ -16,7 +16,7 @@ namespace Infraestructure.Model
     {
         public int Id { get; set; }
         public int IdPlan { get; set; }
-        public string IdResident { get; set; }
+        public int IdResident { get; set; }
         public int Month { get; set; }
         public int Year { get; set; }
         public string Notes { get; set; }

@@ -1,0 +1,116 @@
+﻿@model Infraestructure.Model.ViewModel.Account.ViewModelAccount
+
+@{
+    ViewBag.Title = "Detail";
+}
+
+<head>
+    <link rel="stylesheet" href="~/Content/Site.css">
+</head>
+<div>
+
+    <dl class="shadow border p-10 bg-white">
+        <div>
+
+            <dt class="control-label col-md-2 mb-2">
+                @Html.DisplayNameFor(model => model.email)
+            </dt>
+
+            <dd class="bg-white border sm:text-sm rounded-lg block w-full p-2.5 mb-5">
+                @Html.DisplayFor(model => model.email)
+            </dd>
+        </div>
+        <div>
+
+            <dt class="control-label col-md-2 mb-2">
+                @Html.DisplayNameFor(model => model.name)
+            </dt>
+
+            <dd class="bg-white border sm:text-sm rounded-lg block w-full p-2.5 mb-5">
+                @Html.DisplayFor(model => model.name)
+            </dd>
+        </div>
+
+
+        <div>
+
+            <dt class="control-label col-md-2 mb-2">
+                @Html.DisplayNameFor(model => model.lastName)
+            </dt>
+
+            <dd class="bg-white border sm:text-sm rounded-lg block w-full p-2.5 mb-5">
+                @Html.DisplayFor(model => model.lastName)
+            </dd>
+        </div>
+
+
+        <dt class="control-label col-md-2 mb-2">
+            @Html.DisplayNameFor(model => model.month)
+        </dt>
+
+        <dd class="bg-white border sm:text-sm rounded-lg block w-full p-2.5 mb-5">
+            @Html.DisplayFor(model => model.monthName)
+        </dd>
+
+        <dt class="control-label col-md-2 mb-2">
+            @Html.DisplayNameFor(model => model.year)
+        </dt>
+
+        <dd class="bg-white border sm:text-sm rounded-lg block w-full p-2.5 mb-5">
+            @Html.DisplayFor(model => model.year)
+        </dd>
+
+
+        <dt class="control-label col-md-2 mb-2">
+            @Html.DisplayNameFor(model => model.PlanName)
+        </dt>
+
+        <dd class="bg-white border sm:text-sm rounded-lg block w-full p-2.5 mb-5">
+            @Html.DisplayFor(model => model.PlanName)
+        </dd>
+
+        <dt class="control-label col-md-2 mb-2">
+            @Html.DisplayNameFor(model => model.collection)
+        </dt>
+        <div class="shadow mb-5 p-5">
+            @foreach (var item in Model.collection)
+            {
+                <li class="flex items-center">
+                    <svg class="w-4 h-4 mr-1.5 text-green-500 dark:text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                    @item.Name
+                </li>
+            }
+        </div>
+
+        <dt class="control-label col-md-2 mb-2">
+            @Html.DisplayNameFor(model => model.total)
+        </dt>
+
+        <dd class="bg-white border sm:text-sm rounded-lg block w-full p-2.5 mb-5">
+            @Html.DisplayFor(model => model.totalColones)
+        </dd>
+
+        <dt class="control-label col-md-2 mb-2">
+            @Html.DisplayNameFor(model => model.notes)
+        </dt>
+
+        <dd class="bg-white border sm:text-sm rounded-lg block w-full p-2.5 mb-5">
+            @Html.DisplayFor(model => model.notes)
+        </dd>
+
+        <dt class="control-label col-md-2 mb-2">
+            @Html.DisplayNameFor(model => model.cancelled)
+        </dt>
+
+        <dd class="bg-white border sm:text-sm rounded-lg block w-full p-2.5 mb-5">
+            @Html.DisplayFor(model => model.cancelledName)
+        </dd>
+
+
+    </dl>
+</div>
+<p>
+    <button class="font-medium rounded-lg text-sm px-5 py-2.5 text-center btn-blue-color shadow">
+        @Html.ActionLink("Back to List ", "Index", new { @class = "btn-blue-color" })
+    </button>
+</p>

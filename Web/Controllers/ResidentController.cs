@@ -43,6 +43,7 @@ namespace Web.Controllers
 
             ViewModelEditResident modelResident = new ViewModelEditResident()
             {
+                Id = id,
                 UserEmail = resident.EmailUser,
                 HouseNumber = resident.HouseNumber,
                 Name = resident.Name,
@@ -90,6 +91,7 @@ namespace Web.Controllers
             }
             Resident resident = new Resident()
             {
+                Id = model.Id,
                 EmailUser = model.UserEmail,
                 HouseNumber = model.HouseNumber,
                 Name = model.Name,
@@ -210,6 +212,43 @@ namespace Web.Controllers
             ServiceResident service = new ServiceResident();
             service.DeleteResident(resident);
             return RedirectToAction("Index");
+        }
+
+        public ActionResult Detail(int id)
+        {
+            ServiceResident serviceResident = new ServiceResident();
+            ServiceHouseState serviceHouseState = new ServiceHouseState();
+
+            Resident resident = serviceResident.GetResident(id);
+
+            ViewModelEditResident modelResident = new ViewModelEditResident()
+            {
+                Id = id,
+                UserEmail = resident.EmailUser,
+                HouseNumber = resident.HouseNumber,
+                Name = resident.Name,
+                LastName = resident.LastName,
+                PersonCount = resident.PersonCount,
+                CarsCount = resident.CarsCount,
+                StartedDate = resident.StartedDate,
+                HouseState = resident.HouseState,
+                Active = resident.Active
+            };
+
+            List<SelectListItem> items = new List<SelectListItem>();
+
+            foreach (var item in serviceHouseState.GetHouseStates())
+            {
+                bool active = false;
+                if (resident.HouseState == item.Name) { active = true; }
+                SelectListItem houseState = new SelectListItem() { Text = item.Name, Value = item.Name, Selected = active };
+
+                items.Add(houseState);
+            }
+
+            ViewBag.houseStates = items;
+
+            return View(modelResident);
         }
     }
 }

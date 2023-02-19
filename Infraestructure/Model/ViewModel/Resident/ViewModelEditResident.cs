@@ -11,7 +11,6 @@ namespace Infraestructure.Model.ViewModel.Resident
     public class ViewModelEditResident
     {
         public int Id { get; set; }
-        [Required]
         [EmailAddress]
         [Display(Name = "Email Address")]
         public string UserEmail { get; set; }

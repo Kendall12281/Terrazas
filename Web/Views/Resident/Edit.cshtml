@@ -28,7 +28,7 @@
                 @Html.LabelFor(model => model.UserEmail, "Email")
             </label>
             <div class="mb-8">
-                @Html.EditorFor(model => model.UserEmail, new { htmlAttributes = new { @class = "bg-white border sm:text-sm rounded-lg block w-full p-2.5" } })
+                @Html.EditorFor(model => model.UserEmail, new { htmlAttributes = new { @class = "bg-white border sm:text-sm rounded-lg block w-full p-2.5", @readonly= "readonly" } })
                 @Html.ValidationMessageFor(model => model.UserEmail, "", new { @class = "text-red-500" })
             </div>
         </div>

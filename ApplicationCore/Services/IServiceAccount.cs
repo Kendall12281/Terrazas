@@ -11,5 +11,11 @@ namespace ApplicationCore.Services
     {
         IEnumerable<Charge> GetCharges();
         IEnumerable<Charge> GetChargesByResidentEmail(string email);
+        IEnumerable<Charge> GetPendingChargesByResidentEmail(string email);
+        IEnumerable<Charge> GetCancelledChargesByResidentEmail(string email);
+        IEnumerable<Charge> GetChargesByResidentId(int id);
+        IEnumerable<Charge> GetPendingChargesByResidentId(int id);
+        IEnumerable<Charge> GetCancelledChargesByResidentId(int id);
+        Charge GetChargeByChargeId(int id);
     }
 }

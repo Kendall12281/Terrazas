@@ -6,7 +6,7 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IdSocialArea" Type="Int32" Nullable="false" />
-    <Property Name="IdResident" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdResident" Type="Int32" Nullable="false" />
     <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="StartTime" Type="Time" Nullable="false" Precision="3" />
     <Property Name="EndTime" Type="Time" Nullable="false" Precision="3" />
@@ -20,7 +20,7 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IdPlan" Type="Int32" Nullable="false" />
-    <Property Name="IdResident" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdResident" Type="Int32" Nullable="false" />
     <Property Name="Month" Type="Int32" Nullable="false" />
     <Property Name="Year" Type="Int32" Nullable="false" />
     <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
@@ -52,7 +52,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="IdResident" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdResident" Type="Int32" Nullable="false" />
     <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
@@ -104,8 +104,9 @@
   </EntityType>
   <EntityType Name="Resident">
     <Key>
-      <PropertyRef Name="EmailUser" />
+      <PropertyRef Name="Id" />
     </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="EmailUser" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="HouseNumber" Type="Int32" Nullable="false" />
     <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
@@ -177,7 +178,7 @@
     <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Resident">
-        <PropertyRef Name="EmailUser" />
+        <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Booking">
         <PropertyRef Name="IdResident" />
@@ -213,7 +214,7 @@
     <End Role="Charge" Type="Self.Charge" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Resident">
-        <PropertyRef Name="EmailUser" />
+        <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Charge">
         <PropertyRef Name="IdResident" />
@@ -237,7 +238,7 @@
     <End Role="Incident" Type="Self.Incident" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Resident">
-        <PropertyRef Name="EmailUser" />
+        <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Incident">
         <PropertyRef Name="IdResident" />
@@ -258,7 +259,7 @@
   </Association>
   <Association Name="FK_Resident_User">
     <End Role="User" Type="Self.User" Multiplicity="1" />
-    <End Role="Resident" Type="Self.Resident" Multiplicity="0..1" />
+    <End Role="Resident" Type="Self.Resident" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="User">
         <PropertyRef Name="Email" />

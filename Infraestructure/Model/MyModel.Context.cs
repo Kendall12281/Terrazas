@@ -39,5 +39,7 @@ namespace Infraestructure.Model
         public virtual DbSet<Schedule> Schedule { get; set; }
         public virtual DbSet<SocialArea> SocialArea { get; set; }
         public virtual DbSet<User> User { get; set; }
+
+        public System.Data.Entity.DbSet<Infraestructure.Model.ViewModel.Account.ViewModelAccount> ViewModelAccounts { get; set; }
     }
 }

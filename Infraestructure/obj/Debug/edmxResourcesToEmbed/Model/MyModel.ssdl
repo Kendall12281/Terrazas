@@ -6,7 +6,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="IdSocialArea" Type="int" Nullable="false" />
-    <Property Name="IdResident" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="IdResident" Type="int" Nullable="false" />
     <Property Name="Date" Type="date" Nullable="false" />
     <Property Name="StartTime" Type="time" Precision="3" Nullable="false" />
     <Property Name="EndTime" Type="time" Precision="3" Nullable="false" />
@@ -18,7 +18,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="IdPlan" Type="int" Nullable="false" />
-    <Property Name="IdResident" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="IdResident" Type="int" Nullable="false" />
     <Property Name="Month" Type="int" Nullable="false" />
     <Property Name="Year" Type="int" Nullable="false" />
     <Property Name="Notes" Type="varchar" MaxLength="255" />
@@ -55,7 +55,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="IdResident" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="IdResident" Type="int" Nullable="false" />
     <Property Name="Date" Type="date" Nullable="false" />
     <Property Name="Title" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="Description" Type="varchar" MaxLength="255" Nullable="false" />
@@ -100,8 +100,9 @@
   </EntityType>
   <EntityType Name="Resident">
     <Key>
-      <PropertyRef Name="EmailUser" />
+      <PropertyRef Name="Id" />
     </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="EmailUser" Type="varchar" MaxLength="255" Nullable="false" />
     <Property Name="HouseNumber" Type="int" Nullable="false" />
     <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
@@ -163,7 +164,7 @@
     <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Resident">
-        <PropertyRef Name="EmailUser" />
+        <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Booking">
         <PropertyRef Name="IdResident" />
@@ -199,7 +200,7 @@
     <End Role="Charge" Type="Self.Charge" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Resident">
-        <PropertyRef Name="EmailUser" />
+        <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Charge">
         <PropertyRef Name="IdResident" />
@@ -247,7 +248,7 @@
     <End Role="Incident" Type="Self.Incident" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Resident">
-        <PropertyRef Name="EmailUser" />
+        <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Incident">
         <PropertyRef Name="IdResident" />
@@ -268,7 +269,7 @@
   </Association>
   <Association Name="FK_Resident_User">
     <End Role="User" Type="Self.User" Multiplicity="1" />
-    <End Role="Resident" Type="Self.Resident" Multiplicity="0..1" />
+    <End Role="Resident" Type="Self.Resident" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="User">
         <PropertyRef Name="Email" />

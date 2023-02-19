@@ -103,6 +103,7 @@
     <EntitySetMapping Name="Resident">
       <EntityTypeMapping TypeName="TerrazasModel.Resident">
         <MappingFragment StoreEntitySet="Resident">
+          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="EmailUser" ColumnName="EmailUser" />
           <ScalarProperty Name="HouseNumber" ColumnName="HouseNumber" />
           <ScalarProperty Name="Name" ColumnName="Name" />

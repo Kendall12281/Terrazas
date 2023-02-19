@@ -17,6 +17,7 @@
     <title>DataTables </title>
     <meta name="description" content="">
     <meta name="keywords" content="">
+    <link href="~/Content/Site.css"/>
     <link href="~/Content/DataTable/styles.css" rel="stylesheet" />
     <link href="~/Content/DataTable/jquery.dataTables.min.css" rel="stylesheet" />
     <link href="~/Content/DataTable/responsive.dataTables.min.css" rel="stylesheet" />
@@ -34,8 +35,8 @@
     <div class="mt-5" style="margin-right:2rem; overflow:hidden">
 
 
-        <div>
-            <button>
+        <div class="shadow bg-white p-5 border-full mb-5">
+            <button class="font-medium rounded-lg text-sm px-5 py-2.5 text-center btn-green-color shadow">
                 @*@Html.ActionLink("PDF", "ShowTable")*@
                 <a href="#" onclick="window.open('@Url.Action("ShowTable", "Account")','_blank');">PDF</a>
 
@@ -48,21 +49,18 @@
             <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                 <thead>
                     <tr>
-                        <th data-priority="1">Email</th>
-                        <th data-priority="2">Name</th>
-                        <th data-priority="3">Month</th>
-                        <th data-priority="4">Year</th>
-                        <th data-priority="5">Total</th>
-                        <th data-priority="6">Cancelled</th>
+                        <th data-priority="1">Name</th>
+                        <th data-priority="2">Month</th>
+                        <th data-priority="3">Year</th>
+                        <th data-priority="4">Cancelled</th>
+                        <th data-priority="5">Actions</th>
+
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var item in Model)
                     {
                         <tr class="text-center">
-                            <td>
-                                @Html.DisplayFor(modelItem => item.email)
-                            </td>
 
                             <td>
                                 @Html.DisplayFor(modelItem => item.fullName)
@@ -74,12 +72,19 @@
                                 @Html.DisplayFor(modelItem => item.year)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.totalColones)
-                            </td>
-                            <td>
                                 @Html.DisplayFor(modelItem => item.cancelledName)
                             </td>
+                            <td class="flex gap-4">
+                                <button class="mx-auto">
+                                    <svg viewBox="0 0 512 512" height="20">
+                                        <path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C6504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z" />
+                                    </svg>
+                                    @Html.ActionLink("Detail", "Detail", new { id = item.Id })
 
+                                </button>
+                            
+
+                            </td>
                         </tr>
 
 

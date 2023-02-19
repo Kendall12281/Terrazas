@@ -10,6 +10,23 @@ namespace ApplicationCore.Services
 {
     public class ServiceAccount : IServiceAccount
     {
+        public IEnumerable<Charge> GetCancelledChargesByResidentEmail(string email)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Charge> GetCancelledChargesByResidentId(int id)
+        {
+            IRepositoryAccount repository = new RepositoryAccount();
+            return repository.GetCancelledChargesByResidentId(id);
+        }
+
+        public Charge GetChargeByChargeId(int id)
+        {
+            IRepositoryAccount repository = new RepositoryAccount();
+            return repository.GetChargeByChargeId(id);
+        }
+
         public IEnumerable<Charge> GetCharges()
         {
             IRepositoryAccount repository = new RepositoryAccount();
@@ -20,6 +37,22 @@ namespace ApplicationCore.Services
         {
             IRepositoryAccount repository = new RepositoryAccount();
             return repository.GetChargesByResidentEmail(email);
+        }
+
+        public IEnumerable<Charge> GetChargesByResidentId(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Charge> GetPendingChargesByResidentEmail(string email)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Charge> GetPendingChargesByResidentId(int id)
+        {
+            IRepositoryAccount repository = new RepositoryAccount();
+            return repository.GetPendingChargesByResidentId(id);
         }
     }
 }

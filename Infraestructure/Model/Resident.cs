@@ -22,6 +22,7 @@ namespace Infraestructure.Model
             this.Incident = new HashSet<Incident>();
         }
     
+        public int Id { get; set; }
         public string EmailUser { get; set; }
         public int HouseNumber { get; set; }
         public string Name { get; set; }

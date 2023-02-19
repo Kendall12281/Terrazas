@@ -26,6 +26,22 @@ namespace Infraestructure.Repository
 				throw error;
 			}
         }
+		public void EditResident(Resident resident)
+        {
+			try
+			{
+				MyContext db = new MyContext();
+				var resident2 = db.Resident.FirstOrDefault(r =>r.Id == resident.Id);
+				resident2 = resident;
+				db.SaveChanges();
+
+			}
+			catch (Exception error)
+			{
+
+				throw error;
+			}
+        }
 
         public void DeleteResident(Resident resident)
         {

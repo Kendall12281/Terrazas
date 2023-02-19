@@ -325,6 +325,7 @@
     <Content Include="Content\DataTable\js\jquery.dataTables.min.js" />
     <Content Include="Content\DataTable\responsive.dataTables.min.css" />
     <Content Include="Content\DataTable\styles.css" />
+    <Content Include="Content\FontAwesome\SVG\info-circle-solid.svg" />
     <Content Include="Content\logo\cover.ico" />
     <Content Include="Content\logo\cover.png" />
     <Content Include="Content\Navigation.css" />
@@ -385,6 +386,13 @@
     <Content Include="Views\Plan\Edit.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Account\ShowTable.cshtml" />
+    <Content Include="Views\Resident\Detail.cshtml" />
+    <Content Include="Views\Plan\Detail.cshtml" />
+    <Content Include="Views\Plan\Delete.cshtml" />
+    <Content Include="Views\Account\Admin.cshtml" />
+    <Content Include="Views\Account\Pending.cshtml" />
+    <Content Include="Views\Account\Detail.cshtml" />
+    <Content Include="Views\Account\Cancelled.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

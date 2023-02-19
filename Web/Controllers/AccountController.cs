@@ -29,6 +29,7 @@ namespace Web.Controllers
             {
                 ViewModelAccount model = new ViewModelAccount()
                 {
+                    Id = item.Id,
                     email = item.Resident.EmailUser,
                     name = item.Resident.Name,
                     lastName = item.Resident.LastName,
@@ -48,6 +49,96 @@ namespace Web.Controllers
             return View(GetCharges());
         }
 
+        public ActionResult Detail(int id)
+        {
+            ServiceAccount service = new ServiceAccount();
+            Charge charge = service.GetChargeByChargeId(id);
+            ViewModelAccount model = new ViewModelAccount()
+            {
+                Id = id,
+                email = charge.Resident.EmailUser,
+                name = charge.Resident.Name,
+                lastName = charge.Resident.LastName,
+                month = charge.Month,
+                year = charge.Year,
+                total = charge.Total,
+                cancelled = charge.Cancelled,
+                notes = charge.Notes,
+                PlanName = charge.Plan.Name,
+                collection = charge.Plan.Collection
+
+
+            };
+
+            return View(model);
+        }
+
+        public ActionResult Admin()
+        {
+            User user = (User)Session["User"];
+
+            if (user.IdRol == 1)
+            {
+                ServiceResident service = new ServiceResident();
+                return View(service.GetResidents());
+            }
+            return View("/");
+        }
+
+        public ActionResult Pending(int id)
+        {
+            ServiceAccount service = new ServiceAccount();
+
+            List<ViewModelAccount> list = new List<ViewModelAccount>();
+            var listCharges = service.GetPendingChargesByResidentId(id);
+                foreach (var item in listCharges)
+                {
+
+                    ViewModelAccount model = new ViewModelAccount()
+                    {
+                        Id = item.Id,
+                        email = item.Resident.EmailUser,
+                        name = item.Resident.Name,
+                        lastName = item.Resident.LastName,
+                        month = item.Month,
+                        year = item.Year,
+                        total = item.Total,
+                        cancelled = item.Cancelled,
+                        notes = item.Notes
+
+                    };
+                    list.Add(model);
+            }
+
+            return View(list);
+        } 
+        public ActionResult Cancelled(int id)
+        {
+            ServiceAccount service = new ServiceAccount();
+
+            List<ViewModelAccount> list = new List<ViewModelAccount>();
+            var listCharges = service.GetCancelledChargesByResidentId(id);
+                foreach (var item in listCharges)
+                {
+
+                    ViewModelAccount model = new ViewModelAccount()
+                    {
+                        Id = item.Id,
+                        email = item.Resident.EmailUser,
+                        name = item.Resident.Name,
+                        lastName = item.Resident.LastName,
+                        month = item.Month,
+                        year = item.Year,
+                        total = item.Total,
+                        cancelled = item.Cancelled,
+                        notes = item.Notes
+
+                    };
+                    list.Add(model);
+            }
+
+            return View(list);
+        }
         public ActionResult ShowTable()
         {
             // Generate the PDF table
@@ -68,7 +159,7 @@ namespace Web.Controllers
                 Document document = new Document(pdf);
 
                 // Create a table with 3 columns
-                Table table = new Table(new float[] { 2,2,1,1,1,1,5 });
+                Table table = new Table(new float[] { 2, 2, 1, 1, 1, 1, 5 });
 
                 // Add header cells to the table
                 table.AddHeaderCell(new Cell().Add(new Paragraph("Email")));

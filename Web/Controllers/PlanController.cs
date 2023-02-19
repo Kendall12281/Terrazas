@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
 namespace Web.Controllers
 {
@@ -96,18 +97,34 @@ namespace Web.Controllers
             ServicePlan servicePlan = new ServicePlan();
             Plan model = servicePlan.GetPlan(id);
 
-            List<SelectListItem> listItems = new List<SelectListItem>();
 
             return View(model);
         }
 
+        [HttpPost]
+        public ActionResult Delete(Plan plan)
+        {
+            ServicePlan serviceCollection = new ServicePlan();
+            serviceCollection.DeletePlan(plan.Id);
+            return RedirectToAction("/");
+        }
 
         public ActionResult Delete(int id)
         {
             ServicePlan serviceCollection = new ServicePlan();
-            serviceCollection.DeletePlan(id);
+            
 
-            return RedirectToAction("/");
+            return View(serviceCollection.GetPlan(id));
+        }
+        public ActionResult Detail(int id)
+        {
+            ServiceCollection serviceCollection = new ServiceCollection();
+            ServicePlan servicePlan = new ServicePlan();
+            Plan model = servicePlan.GetPlan(id);
+
+
+            return View(model);
         }
     }
+
 }

@@ -15,7 +15,7 @@ namespace Infraestructure.Model
     public partial class Incident
     {
         public int Id { get; set; }
-        public string IdResident { get; set; }
+        public int IdResident { get; set; }
         public System.DateTime Date { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
