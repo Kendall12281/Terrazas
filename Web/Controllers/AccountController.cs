@@ -35,7 +35,8 @@ namespace Web.Controllers
                     lastName = item.Resident.LastName,
                     month = item.Month,
                     year = item.Year,
-                    total = item.Total
+                    total = item.Total,
+                    cancelled= item.Cancelled,
 
                 };
                 list.Add(model);
