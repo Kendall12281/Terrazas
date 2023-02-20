@@ -10,6 +10,8 @@ namespace Infraestructure.Model.ViewModel.Account
 {
     public class ViewModelAccount
     {
+        [Display(Name = "House Number")]
+        public int houseNumber { get; set; }
         public int Id { get; set; }
         [Display(Name = "Email")]
         public string email { get; set; }
@@ -35,7 +37,7 @@ namespace Infraestructure.Model.ViewModel.Account
         {
             get
             {
-                DateTime date = new DateTime(2022, 2, month);
+                DateTime date = new DateTime(2022, month, 1);
                 return date.ToString("MMMM", CultureInfo.CurrentCulture);
             }
         }

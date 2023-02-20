@@ -65,7 +65,8 @@ namespace Web.Controllers
                 cancelled = charge.Cancelled,
                 notes = charge.Notes,
                 PlanName = charge.Plan.Name,
-                collection = charge.Plan.Collection
+                collection = charge.Plan.Collection,
+                houseNumber = charge.Resident.HouseNumber
 
 
             };

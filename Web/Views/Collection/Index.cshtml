@@ -7,15 +7,7 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>DataTables </title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <link href="~/Content/DataTable/styles.css" rel="stylesheet" />
-    <link href="~/Content/DataTable/jquery.dataTables.min.css" rel="stylesheet" />
-    <link href="~/Content/DataTable/responsive.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" />
 
 
 
@@ -25,76 +17,45 @@
 
 
     <!--Container-->
-    <div class="mt-5" style="margin-right:2rem; overflow:hidden">
+    <div class="mt-5">
 
 
 
 
-        <!--Card-->
-        <div class="p-8 mt-5 lg:mt-0 rounded shadow bg-white">
 
 
-            <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
-                <thead>
-                    <tr>
-                        @*<th data-priority="1">Id</th>*@
-                        <th data-priority="2">Name</th>
-                        <th data-priority="3">Description</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr class="text-center">
-                            @*<td>
-                                @Html.DisplayFor(modelItem => item.Id)
-                            </td>*@
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Name)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Description)
-                            </td>
-                            <td class="flex gap-4 justify-center">
-                                <button class="font-medium rounded-lg text-sm px-5 py-2.5 text-center shadow" style="background-color: #42b883">
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
-                                </button>
-                                <button class="font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-red-400 shadow">
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                                </button>
-                            </td>
-                        </tr>
 
 
-                    }
-                </tbody>
-
-            </table>
-
-
+        @foreach (var item in Model)
+        {
+            <!--Card-->
+        <div class="p-8 mt-5 lg:mt-0 rounded shadow bg-white mb-2">
+            <div class="grid  mb-3">
+                <span class="mb-1"><strong>Name</strong></span>
+                @Html.DisplayFor(modelItem => item.Name)
+            </div>
+            <div class="grid mb-5">
+                <span class="mb-1"><strong>Description</strong></span>
+                @Html.DisplayFor(modelItem => item.Description)
+            </div>
+            <div class="flex gap-4 ">
+                
+                <button class="font-medium rounded-lg text-sm px-5 py-2.5 text-center shadow" style="background-color: #42b883">
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                </button>
+                <button class="font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-red-400 shadow">
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </button>
+            </div>
         </div>
-        <!--/Card-->
+
+
+
+
+        }
 
 
     </div>
-    <!--/container-->
-    <!-- jQuery -->
-    <script type="text/javascript" src="~/Content/DataTable/js/jquery-3.4.1.min.js"></script>
-
-    <!--Datatables -->
-    <script src="~/Content/DataTable/js/jquery.dataTables.min.js"></script>
-    <script src="~/Content/DataTable/js/dataTables.responsive.min.js"></script>
-    <script>
-        $(document).ready(function () {
-
-            var table = $('#example').DataTable({
-                responsive: true
-            })
-                .columns.adjust()
-                .responsive.recalc();
-        });
-    </script>
 
 </body>
 
