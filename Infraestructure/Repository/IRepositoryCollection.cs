@@ -12,6 +12,7 @@ namespace Infraestructure.Repository
         void AddCollection(Collection collection);
         IEnumerable<Collection> GetCollections();
         Collection GetCollection(int id);
+        void DeleteCollection(int id);
 
     }
 }

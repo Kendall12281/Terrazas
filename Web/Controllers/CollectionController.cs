@@ -74,6 +74,13 @@ namespace Web.Controllers
             return RedirectToAction("/");
         }
 
+        public ActionResult Delete(int id)
+        {
+            ServiceCollection service = new ServiceCollection();
+            service.DeleteCollection(id);
+            return RedirectToAction("/");
+        }
+
 
     }
 }

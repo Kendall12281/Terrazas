@@ -78,91 +78,113 @@
                         </div>
                     </div>
                 }
-        <ul>
-            <li>
-                <a href="/Home/">
-                    <span class="icon"><i class="fas fa-home"></i></span>
-                    <span class="item">Home</span>
-                </a>
-            </li>
-            @if (user.IdRol == 2)
-            {
-                <li>
-                    <a href="/Account/">
-                        <span class="icon"><i class="fas fa-wallet"></i></span>
-                        <span class="item">Finances</span>
-                    </a>
-                </li>
-            }
-            @if (user.IdRol == 1)
-            {
-
-                <li>
-                    <a href="/Resident/">
-                        <span class="icon"><i class="fas fa-user-friends"></i></span>
-                        <span class="item">Residents</span>
-                    </a>
-                    <ul class="ml-5">
-                        <li>
-                            <a href="/Resident/New">
-                                • New Resident
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="/Plan/">
-                        <span class="icon"><i class="fas fa-map"></i></span>
-                        <span class="item">Plans</span>
-                    </a>
-                    <ul class="ml-5">
-                        <li>
-                            <a href="/Plan/New">
-                                • New Plan
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-
-
-                <li>
-                    <a href="/Collection/">
-                        <span class="icon"><i class="fas fa-money-bill-wave-alt"></i></span>
-                        <span class="item">Collections</span>
-                    </a>
-                    <ul class="ml-5">
-                        <li>
-                            <a href="/Collection/New">
-                                • New Collection
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="/Account/Admin">
-                        <span class="icon"><i class="fas fa-wallet"></i></span>
-                        <span class="item">Finances</span>
-                    </a>
-                    <ul class="ml-5">
+                <ul>
+                    <li>
+                        <a href="/Home/">
+                            <span class="icon"><i class="fas fa-home"></i></span>
+                            <span class="item">Home</span>
+                        </a>
+                    </li>
+                    @if (user.IdRol == 2)
+                    {
                         <li>
                             <a href="/Account/">
-                                • All
+                                <span class="icon"><i class="fas fa-wallet"></i></span>
+                                <span class="item">Finances</span>
                             </a>
                         </li>
-                    </ul>
-                </li>
-            }
 
-            <li>
-                <a href="/">
-                    <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
-                    <span class="item">Sign Out</span>
-                </a>
-            </li>
-        </ul>
+                        <li>
+                            <a href="/Incident/">
+                                <span class="icon"><i class="fas fa-ticket-alt"></i></span>
+                                <span class="item">Incidents</span>
+                            </a>
+                            <ul class="ml-5">
+                                <li>
+                                    <a href="/Incident/NewIncident">
+                                        • New Incident
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                    @if (user.IdRol == 1)
+                    {
+
+                        <li>
+                            <a href="/Resident/">
+                                <span class="icon"><i class="fas fa-user-friends"></i></span>
+                                <span class="item">Residents</span>
+                            </a>
+                            <ul class="ml-5">
+                                <li>
+                                    <a href="/Resident/New">
+                                        • New Resident
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="/Plan/">
+                                <span class="icon"><i class="fas fa-map"></i></span>
+                                <span class="item">Plans</span>
+                            </a>
+                            <ul class="ml-5">
+                                <li>
+                                    <a href="/Plan/New">
+                                        • New Plan
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+
+
+                        <li>
+                            <a href="/Collection/">
+                                <span class="icon"><i class="fas fa-money-bill-wave-alt"></i></span>
+                                <span class="item">Collections</span>
+                            </a>
+                            <ul class="ml-5">
+                                <li>
+                                    <a href="/Collection/New">
+                                        • New Collection
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="/Account/Admin">
+                                <span class="icon"><i class="fas fa-wallet"></i></span>
+                                <span class="item">Finances</span>
+                            </a>
+                            <ul class="ml-5">
+                                <li>
+                                    <a href="/Account/">
+                                        • All
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+
+                            <a href="/Incident/AllIncidents">
+                                <span class="icon"><i class="fas fa-ticket-alt"></i></span>
+                                <span class="item">Incidents</span>
+                            </a>
+                        </li>
+                    }
+
+                    <li>
+                        <a href="/">
+                            <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
+                            <span class="item">Sign Out</span>
+                        </a>
+                    </li>
+                </ul>
             }
         </div>
 

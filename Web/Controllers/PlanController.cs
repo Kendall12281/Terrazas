@@ -70,6 +70,7 @@ namespace Web.Controllers
             };
 
             int counter = 0;
+            List<Collection> list = new List<Collection>();
             foreach (var item in serviceCollection.GetCollections())
             {
                 if (counter < model.listCollections.Count)
@@ -77,7 +78,8 @@ namespace Web.Controllers
 
                     if (model.listCollections[counter].Selected)
                     {
-                        plan.Collection.Add(serviceCollection.GetCollection(int.Parse(model.listCollections[counter].Value)));
+                        list.Add(serviceCollection.GetCollection(int.Parse(model.listCollections[counter].Value)));
+                        
                     }
                 }
 
@@ -86,7 +88,7 @@ namespace Web.Controllers
             }
 
             ServicePlan service = new ServicePlan();
-            service.NewPlan(plan);
+            service.NewPlan(plan,list);
 
             return RedirectToAction("/");
         }
@@ -98,7 +100,76 @@ namespace Web.Controllers
             Plan model = servicePlan.GetPlan(id);
 
 
-            return View(model);
+            List<SelectListItem> listItems = new List<SelectListItem>();
+
+            int i = 0;
+            foreach(var item in serviceCollection.GetCollections())
+            {
+                if (model.Collection.Count > i)
+                {
+                    if(model.Collection.ElementAt(i).Name == item.Name)
+                    {
+                        listItems.Add(new SelectListItem() { Text = item.Name, Selected = true, Value = item.Id.ToString() });
+                    }
+                    else
+                    {
+                        listItems.Add(new SelectListItem() { Text = item.Name, Selected = false, Value = item.Id.ToString() });
+                    }
+                }
+                else
+                {
+                    listItems.Add(new SelectListItem() { Text = item.Name, Selected = false, Value = item.Id.ToString() });
+                }
+
+                i++;
+            }
+
+            ViewModelEditPlan modelEditPlan = new ViewModelEditPlan()
+            {
+                Id = model.Id,
+                Description = model.Description,
+                listSelectedItems = listItems,
+                Name = model.Name
+            };
+            
+
+
+            return View(modelEditPlan);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(ViewModelEditPlan model)
+        {
+            if (ModelState.IsValid)
+            {
+
+                ICollection<Collection> list = new List<Collection>();
+
+                foreach (var item in model.listSelectedItems)
+                {
+                    ServiceCollection serviceCollection = new ServiceCollection();
+                    int id = int.Parse(item.Value);
+                    Collection collection = serviceCollection.GetCollection(id);
+                    list.Add(collection) ;
+                }
+                Plan plan = new Plan
+                {
+                    Id = model.Id,
+                    Name = model.Name,
+                    Description = model.Description
+
+
+                };
+
+                ServicePlan service = new ServicePlan();
+                service.EditPlan(plan);
+
+                return View("/");
+            }
+            else
+            {
+                return View(model);
+            }
         }
 
         [HttpPost]

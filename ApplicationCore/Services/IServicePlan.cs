@@ -11,8 +11,9 @@ namespace ApplicationCore.Services
     public interface IServicePlan
     {
         List<Plan> GetPlans();
-        void NewPlan(Plan plan);
+        void NewPlan(Plan plan, ICollection<Collection> collection);
         Plan GetPlan(int id);
         void DeletePlan(int id);
+        void EditPlan(Plan plan);
     }
 }

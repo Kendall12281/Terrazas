@@ -17,6 +17,12 @@ namespace ApplicationCore.Services
              service.DeletePlan(id);
         }
 
+        public void EditPlan(Plan plan)
+        {
+            IRepositoryPlan planRepository = new RepositoryPlan();
+            planRepository.EditPlan(plan);
+        }
+
         public Plan GetPlan(int id)
         {
             IRepositoryPlan service = new RepositoryPlan();
@@ -29,10 +35,10 @@ namespace ApplicationCore.Services
             return repository.GetPlans();
         }
 
-        public void NewPlan(Plan plan)
+        public void NewPlan(Plan plan, ICollection<Collection> collection)
         {
             IRepositoryPlan repository= new RepositoryPlan();
-            repository.NewPlan(plan);
+            repository.NewPlan(plan, collection);
         }
     }
 }

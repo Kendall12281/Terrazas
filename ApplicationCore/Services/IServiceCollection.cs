@@ -13,5 +13,7 @@ namespace ApplicationCore.Services
         IEnumerable<Collection> GetCollections();
         Collection GetCollection(int id);
 
+        void DeleteCollection(int id);  
+
     }
 }

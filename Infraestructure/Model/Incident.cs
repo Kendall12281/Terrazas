@@ -11,7 +11,7 @@ namespace Infraestructure.Model
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Incident
     {
         public int Id { get; set; }
@@ -19,7 +19,7 @@ namespace Infraestructure.Model
         public System.DateTime Date { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public byte[] Image { get; set; }
+        public byte[] Image { get; set; } = null;
         public int IdIncidentState { get; set; }
     
         public virtual IncidentState IncidentState { get; set; }

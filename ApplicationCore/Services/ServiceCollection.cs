@@ -16,6 +16,12 @@ namespace ApplicationCore.Services
             repository.AddCollection(collection);
         }
 
+        public void DeleteCollection(int id)
+        {
+            IRepositoryCollection repository = new RepositoryCollection();
+            repository.DeleteCollection(id);
+        }
+
         public Collection GetCollection(int id)
         {
             RepositoryCollection respository = new RepositoryCollection();

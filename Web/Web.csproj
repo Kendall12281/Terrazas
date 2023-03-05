@@ -219,6 +219,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CollectionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IncidentController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PlanController.cs" />
     <Compile Include="Controllers\ResidentController.cs" />
@@ -393,6 +394,10 @@
     <Content Include="Views\Account\Pending.cshtml" />
     <Content Include="Views\Account\Detail.cshtml" />
     <Content Include="Views\Account\Cancelled.cshtml" />
+    <Content Include="Views\Incident\NewIncident.cshtml" />
+    <Content Include="Views\Incident\Index.cshtml" />
+    <Content Include="Views\Incident\Detail.cshtml" />
+    <Content Include="Views\Incident\AllIncidents.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -435,7 +440,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>64503</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44392/</IISUrl>
+          <IISUrl>http://localhost:44392/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

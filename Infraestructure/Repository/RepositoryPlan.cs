@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
+using System.Security.Authentication.ExtendedProtection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,6 +21,38 @@ namespace Infraestructure.Repository
 
                 db.Plan.Find(id).Active = false;
                 db.SaveChanges();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public void EditPlan(Plan plan)
+        {
+            try
+            {
+                MyContext db = new MyContext();
+
+                RepositoryCollection repositoryCollection = new RepositoryCollection();
+                var listCollections = plan.Collection.ToList();
+
+                plan.Collection.Clear();
+                plan.Collection = new List<Collection>();
+                foreach (var item in listCollections)
+                {
+
+                    var collectionItem = repositoryCollection.GetCollection(item.Id);
+                    db.Collection.Attach(collectionItem);
+                    plan.Collection.Add(collectionItem);
+
+
+                }
+                db.Plan.Add(plan);
+
+                db.SaveChanges();
+
             }
             catch (Exception)
             {
@@ -68,22 +101,35 @@ namespace Infraestructure.Repository
             }
         }
 
-        public void NewPlan(Plan plan)
+        public void NewPlan(Plan plan, ICollection<Collection> collection)
         {
             try
             {
-                
-                MyContext db = new MyContext();
-                 db.Plan.Add(new Plan { Name = plan.Name, Description = plan.Description });
-                db.SaveChanges();
 
-                var addedPlan = db.Plan.OrderByDescending(p => p.Id).FirstOrDefault(p => p.Name == plan.Name);
-
-                foreach (var item in plan.Collection)
+                using (MyContext db = new MyContext())
                 {
-                    
-                    db.Database.ExecuteSqlCommand("Insert into CollectionPlan Values ("+addedPlan.Id+","+item.Id+")");
+
+
+
+
+                    RepositoryCollection repositoryCollection = new RepositoryCollection();
+
+                    //foreach (var collectionItem in collection) 
+                    //{
+                    //    db.Collection.Attach(collectionItem);
+                    //    plan.Collection.Add(collectionItem);
+                    //}
+
+                    db.Collection.AddRange(collection);
+
+
+                    db.Plan.Add(plan);
+
+                    db.SaveChanges();
+
+
                 }
+
             }
 
             catch (Exception)
@@ -94,9 +140,6 @@ namespace Infraestructure.Repository
         }
     }
 
-    public class CollectionPlan
-    {
-        public int IdPlan { get; set; }
-        public int IdCollection { get; set; }
-    }
+
+
 }
