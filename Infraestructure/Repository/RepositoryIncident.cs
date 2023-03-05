@@ -70,6 +70,23 @@ namespace Infraestructure.Repository
             }
         }
 
+        public void MarkIncidentAsSolved(int id)
+        {
+            try
+            {
+                using(MyContext db = new MyContext())
+                {
+                    db.Incident.Find(id).IdIncidentState = 2;
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public void NewIncident(Incident incident)
         {
             try

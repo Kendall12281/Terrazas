@@ -1,69 +1,145 @@
-﻿@model Infraestructure.Model.Incident
+﻿@model Infraestructure.Model.ViewModel.Incident.ViewModelIncident
 
 @{
     ViewBag.Title = "Detail";
+    Infraestructure.Model.User user = (Infraestructure.Model.User)Session["User"];
 }
 
-<h2>Detail</h2>
+<head>
+    <link rel="stylesheet" href="~/Content/Site.css">
+</head>
 
-<div>
-    <h4>Incident</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
+<div class="w-7/12 p-10 bg-white border border-gray-200 rounded-lg shadow ">
+    <div class="mb-8 text-center">
+        <h1 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">Incident - @Model.Title</h1>
+    </div>
+        <div class="flex justify-between">
+            <div class="mr-10">
 
-        <dd>
-            @Html.DisplayFor(model => model.Date)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
+                <div class="mb-4">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+                    <dt class="font-bold" mb-2>
+                        @Html.DisplayNameFor(model => model.resident.Name)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.resident.Name)
+                    </dd>
+                </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
+                <div class="mb-4">
 
-     
-        <div>
-            <img src="data:image/jpeg;charset=utf-8;base64,@Convert.ToBase64String(Model.Image)"
-                 alt="Image ALT"
-                  />
+                    <dt class="font-bold" mb-2>
+                        @Html.DisplayNameFor(model => model.resident.EmailUser)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.resident.EmailUser)
+                    </dd>
+                </div>
+
+                <div class="mb-4">
+
+                    <dt class="font-bold" mb-2>
+                        @Html.DisplayNameFor(model => model.resident.HouseNumber)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.resident.HouseNumber)
+                    </dd>
+                </div>
+
+            </div>
+
+            <div class="mr-10">
+
+
+                <div class="mb-4">
+
+                    <dt class="font-bold" mb-2>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Description)
+                    </dd>
+                </div>
+
+
+                <div class="mb-4">
+
+                    <dt class="font-bold mb-2">
+                        @Html.DisplayNameFor(model => model.Date)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Date)
+                    </dd>
+                </div>
+
+                <div class="mb-4">
+
+                    <dt class="font-bold mb-2">
+                        <label>Incident State</label>
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.IncidentState.Name)
+                    </dd>
+                </div>
+
+            </div>
+
         </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.IncidentState.Name)
-        </dt>
+        @if (Model.Image != null)
+        {
 
-        <dd>
-            @Html.DisplayFor(model => model.IncidentState.Name)
-        </dd>
+            <div>
+                <dt class="font-bold mb-2">
+                    @Html.DisplayNameFor(model => model.Image)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Resident.EmailUser)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Resident.EmailUser)
-        </dd>
+                <div>
+                    <img src="data:image/jpeg;charset=utf-8;base64,@Convert.ToBase64String(Model.Image)"
+                         alt="Image ALT" />
+                </div>
+            </div>
+        }
+        else
+        {
+            <div>
+                <dt class="font-bold mb-2">
+                    @Html.DisplayNameFor(model => model.Image)
+                </dt>
 
-    </dl>
+
+                <div>
+                    <img src="~/Content/img/NoImage.jpg"
+                         alt="Image ALT" />
+                </div>
+            </div>
+        }
+
+        <div class="flex gap-4">
+            @if (user != null)
+            {
+                if (user.IdRol == 1)
+                {
+                    <button class="font-medium rounded-lg text-sm px-5 py-2.5 text-center btn-green-color shadow">
+                        @Html.ActionLink("Mark Incident as Solved", "Solved", new { id = @Model.Id })
+                    </button>
+                }
+
+            }
+            <button class="font-medium rounded-lg text-sm px-5 py-2.5 text-center btn-blue-color shadow">
+                @Html.ActionLink("Back to List ", "AllIncidents")
+            </button>
+
+        </div>
+
+
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

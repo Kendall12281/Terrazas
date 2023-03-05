@@ -91,8 +91,20 @@ namespace Web.Controllers
         public ActionResult Detail(int id)
         {
             ServiceIncident service = new ServiceIncident();
+            var incident = service.GetIncidentById(id);
 
-            return View(service.GetIncidentById(id));
+            ViewModelIncident incidentModel = new ViewModelIncident()
+            {
+                Id = id,
+                Title = incident.Title,
+                Description = incident.Description,
+                Date = incident.Date,
+                Image = incident.Image,
+                resident = incident.Resident,
+                IncidentState = incident.IncidentState
+            };
+
+            return View(incidentModel);
         }
 
         public ActionResult AllIncidents()
@@ -117,5 +129,13 @@ namespace Web.Controllers
 
 
          }
+
+        public ActionResult Solved(int id)
+        {
+            ServiceIncident service = new ServiceIncident();
+            service.MarkIncidentAsSolved(id);
+            return RedirectToAction("AllIncidents");
+
+        }
     }
 }

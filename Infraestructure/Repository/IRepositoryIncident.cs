@@ -12,6 +12,7 @@ namespace Infraestructure.Repository
         List<Incident> GetIncidents();
         List<Incident> GetIncidentsByIdResident(int id);
         Incident GetIncidentById(int id);
+        void MarkIncidentAsSolved(int id);
         void NewIncident(Incident incident);
         void EditIncident(Incident incident);
         void DeleteIncident(int id);

@@ -38,6 +38,12 @@ namespace ApplicationCore.Services
             return repositoryIncident.GetIncidentsByIdResident(id);
         }
 
+        public void MarkIncidentAsSolved(int id)
+        {
+            IRepositoryIncident repository = new RepositoryIncident();
+            repository.MarkIncidentAsSolved(id);
+        }
+
         public void NewIncident(Incident incident)
         {
             IRepositoryIncident repositoryIncident = new RepositoryIncident();

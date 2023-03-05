@@ -327,6 +327,7 @@
     <Content Include="Content\DataTable\responsive.dataTables.min.css" />
     <Content Include="Content\DataTable\styles.css" />
     <Content Include="Content\FontAwesome\SVG\info-circle-solid.svg" />
+    <Content Include="Content\img\NoImage.jpg" />
     <Content Include="Content\logo\cover.ico" />
     <Content Include="Content\logo\cover.png" />
     <Content Include="Content\Navigation.css" />
