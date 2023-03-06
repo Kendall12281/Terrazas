@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Infraestructure.Model.Information>
+@{
+    ViewBag.Title = "Information";
+    Infraestructure.Model.Resident resident = (Infraestructure.Model.Resident)Session["Resident"];
+}
+<head>
+    <link rel="stylesheet" href="~/Content/Site.css">
+</head>
+<div class="mb-5">
+        <button class="font-medium rounded-lg text-sm px-5 py-2.5 text-center btn-green-color shadow">
+            @Html.ActionLink("Create New","Create")
+        </button>
+    <button class="font-medium rounded-lg text-sm px-5 py-2.5 text-center btn-blue-color shadow">
+            @Html.ActionLink("Edit My Posts","InformationResident", new {id = resident.Id})
+        </button>
+    </div>
+<div class=" grid ">
+    @foreach (Infraestructure.Model.Information item in Model)
+    {
+        <article class="mb-4  p-6 rounded-xl flex flex-col bg-clip-border w-4/12" style="background: #35495e">
+            <div class="flex pb-6 items-center justify-between">
+                <div class="flex">
+                    <a class="inline-block mr-4" href="#">
+                        <img class="rounded-full max-w-none w-12 h-12" src="~/Content/img/Unknown.jpg" />
+                    </a>
+                    <div class="flex flex-col">
+                        <div>
+                            <a class="inline-block text-lg font-bold dark:text-white" href="#">@item.Resident.Name <span>@item.Resident.LastName</span></a>
+                        </div>
+                        <div class="text-slate-500 dark:text-slate-300 dark:text-slate-400">
+                            @item.Date
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h2 class="text-3xl font-extrabold text-white">
+                @item.Title
+            </h2>
+            <div class="py-4">
+                @if (item.Image != null)
+                {
+                    <div>
+                        <img src="data:image/jpeg;charset=utf-8;base64,@Convert.ToBase64String(item.Image)"
+                             alt="Image ALT" />
+                    </div>
+                }
+                else
+                {
+                    <div>
+                        <img src="~/Content/logo/cover.png"
+                             alt="Image ALT" />
+                    </div>
+                }
+            </div>
+            <p class="dark:text-slate-200 mb-5">
+
+                @item.Description
+            </p>
+        </article>
+
+    }
+
+
+</div>
+
+

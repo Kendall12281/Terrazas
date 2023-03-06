@@ -46,6 +46,7 @@
     <Compile Include="Services\IServiceCollection.cs" />
     <Compile Include="Services\IServiceHouseState.cs" />
     <Compile Include="Services\IServiceIncident.cs" />
+    <Compile Include="Services\IServiceInformation.cs" />
     <Compile Include="Services\IServiceLogin.cs" />
     <Compile Include="Services\IServicePlan.cs" />
     <Compile Include="Services\IServiceResident.cs" />
@@ -53,6 +54,7 @@
     <Compile Include="Services\ServiceCollection.cs" />
     <Compile Include="Services\ServiceHouseState.cs" />
     <Compile Include="Services\ServiceIncident.cs" />
+    <Compile Include="Services\ServiceInformation.cs" />
     <Compile Include="Services\ServiceLogin.cs" />
     <Compile Include="Services\ServicePlan.cs" />
     <Compile Include="Services\ServiceResident.cs" />

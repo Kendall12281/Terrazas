@@ -1,0 +1,94 @@
+﻿@model Infraestructure.Model.ViewModel.Information.ViewModelInformation
+
+@{
+    Infraestructure.Model.Resident resident = (Infraestructure.Model.Resident)Session["Resident"];
+
+}
+
+<head>
+    <link rel="stylesheet" href="~/Content/Site.css">
+</head>
+
+
+@using (Html.BeginForm("Detail", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    <div class="w-full md:w-8/12 xl:w-4/12">
+
+        @if (resident != null)
+        {
+
+            <div class="hidden">
+                <label>
+                    @Html.LabelFor(model => model.IdResident)
+                </label>
+                <div class="mb-8 ">
+                    @Html.HiddenFor(model => resident.Id)
+                </div>
+            </div>
+        }
+
+        <div>
+            <label>
+                @Html.LabelFor(model => model.IdInformationType)
+            </label>
+            <div class="mb-8 ">
+
+                @Html.DropDownListFor(model => model.InformationTypeString, new SelectList(new List<string>() { "News", "Reminders", "Documents" }), new { htmlAttributes = new { @class = "bg-gray-300 border sm:text-sm rounded-lg block w-full p-2.5" } })
+                @Html.ValidationMessageFor(model => model.IdInformationType, "", new { @class = "text-red-500" })
+            </div>
+        </div>
+
+        <div>
+            <label>
+                @Html.LabelFor(model => model.Title)
+            </label>
+            <div class="mb-8 ">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "bg-gray-300 border sm:text-sm rounded-lg block w-full p-2.5" } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-red-500" })
+            </div>
+        </div>
+
+        <div>
+            <label>
+                @Html.LabelFor(model => model.Description)
+            </label>
+            <div class="mb-8 ">
+                @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "bg-gray-300 border sm:text-sm rounded-lg block w-full p-2.5" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-red-500" })
+            </div>
+        </div>
+
+        <div>
+            <label>
+                @Html.LabelFor(model => model.Date)
+            </label>
+            <div class="mb-8 ">
+                @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "bg-gray-300 border sm:text-sm rounded-lg block w-full p-2.5" } })
+                @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-red-500" })
+            </div>
+        </div>
+
+        <div>
+            <label>
+                @Html.LabelFor(model => model.Image)
+            </label>
+            <div class="mb-8 ">
+                <input type="file" name="ImageFile" />
+            </div>
+        </div>
+
+
+        <div>
+
+            <input type="submit" value="Update" class="font-medium rounded-lg text-sm px-5 py-2.5 text-center btn-green-color shadow" />
+            <button class="font-medium rounded-lg text-sm px-5 py-2.5 text-center btn-blue-color shadow">
+
+                @Html.ActionLink("Back to List", "Index")
+            </button>
+        </div>
+    </div>
+}
+
+
+

@@ -20,6 +20,7 @@ namespace Infraestructure.Model
             this.Booking = new HashSet<Booking>();
             this.Charge = new HashSet<Charge>();
             this.Incident = new HashSet<Incident>();
+            this.Information = new HashSet<Information>();
         }
     
         public int Id { get; set; }
@@ -40,6 +41,8 @@ namespace Infraestructure.Model
         public virtual ICollection<Charge> Charge { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Incident> Incident { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Information> Information { get; set; }
         public virtual User User { get; set; }
     }
 }

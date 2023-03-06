@@ -1,1 +1,69 @@
-﻿
+﻿@{
+    Infraestructure.Model.User user = (Infraestructure.Model.User)Session["User"];
+    Infraestructure.Model.Resident resident = (Infraestructure.Model.Resident)Session["Resident"];
+}
+<head>
+    <link rel="stylesheet" href="~/Content/Site.css">
+</head>
+
+<div class="grid h-screen place-items-center">
+
+    <div class="grid justify-center ">
+        <h1 class="text-lg font-bold mb-5" style="font-size:3rem">Welcome to <span class="text-lg font-bold" style="color: #42b883; font-size:4rem ">Terrazas</span></h1>
+    </div>
+
+    <div class="w-10/12 flex justify-between gap-5">
+
+
+        <article class="mb-4 break-inside p-6 rounded-xl shadow blue-color" style="width:20rem">
+            <div class="flex pb-6 items-center justify-between">
+                <h1 class="inline-block text-lg font-bold text-white">News</h1>
+            </div>
+            <div class="pb-6">
+                <p class="text-white">
+                    Show the latest news in Terrazas
+                </p>
+            </div>
+            <div>
+                <button class="font-medium rounded-lg text-sm px-5 py-2.5 text-center btn-green-color shadow">
+                    @Html.ActionLink("Show More", "Information", new { id = 1 })
+                </button>
+            </div>
+        </article>
+
+        <article class="mb-4 break-inside p-6 rounded-xl shadow blue-color" style="width:20rem">
+            <div class="flex pb-6 items-center justify-between">
+                <h1 class="inline-block text-lg font-bold text-white">Reminders</h1>
+            </div>
+            <div class="pb-6">
+                <p class="text-white">
+                    Show Reminders
+                </p>
+            </div>
+            <div>
+                <button class="font-medium rounded-lg text-sm px-5 py-2.5 text-center btn-green-color shadow">
+                    @Html.ActionLink("Show More", "Information", new { id = 2 })
+                </button>
+            </div>
+        </article>
+
+        <article class="mb-4 break-inside p-6 rounded-xl shadow blue-color" style="width:20rem">
+            <div class="flex pb-6 items-center justify-between">
+                <h1 class="inline-block text-lg font-bold text-white">Documents</h1>
+            </div>
+            <div class="pb-6">
+                <p class="text-white">
+                    Show Documents
+                </p>
+            </div>
+            <div>
+                <button class="font-medium rounded-lg text-sm px-5 py-2.5 text-center btn-green-color shadow">
+                    @Html.ActionLink("Show More", "Information",new {id = 3})
+                </button>
+            </div>
+        </article>
+
+
+    </div>
+</div>
+@*</div>*@

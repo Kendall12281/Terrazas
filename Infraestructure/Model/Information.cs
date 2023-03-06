@@ -15,12 +15,14 @@ namespace Infraestructure.Model
     public partial class Information
     {
         public int Id { get; set; }
+        public Nullable<int> IdResident { get; set; }
         public int IdInformationType { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public System.DateTime Date { get; set; }
-        public string Image { get; set; }
+        public byte[] Image { get; set; }
     
         public virtual InformationType InformationType { get; set; }
+        public virtual Resident Resident { get; set; }
     }
 }

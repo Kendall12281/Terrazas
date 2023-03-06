@@ -74,12 +74,13 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdResident" Type="int" />
     <Property Name="IdInformationType" Type="int" Nullable="false" />
     <Property Name="Title" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="Description" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Description" Type="varchar(max)" Nullable="false" />
     <Property Name="Date" Type="date" Nullable="false" />
-    <Property Name="Image" Type="varchar(max)" />
+    <Property Name="Image" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="InformationType">
     <Key>
@@ -267,6 +268,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Information_Resident">
+    <End Role="Resident" Type="Self.Resident" Multiplicity="0..1" />
+    <End Role="Information" Type="Self.Information" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Resident">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Information">
+        <PropertyRef Name="IdResident" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Resident_User">
     <End Role="User" Type="Self.User" Multiplicity="1" />
     <End Role="Resident" Type="Self.Resident" Multiplicity="*" />
@@ -353,6 +366,10 @@
     </AssociationSet>
     <AssociationSet Name="FK_Information_InformationType" Association="Self.FK_Information_InformationType">
       <End Role="InformationType" EntitySet="InformationType" />
+      <End Role="Information" EntitySet="Information" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Information_Resident" Association="Self.FK_Information_Resident">
+      <End Role="Resident" EntitySet="Resident" />
       <End Role="Information" EntitySet="Information" />
     </AssociationSet>
     <AssociationSet Name="FK_Resident_User" Association="Self.FK_Resident_User">

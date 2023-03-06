@@ -49,3 +49,9 @@
     color:white;
     cursor:pointer;
 }
+
+.background-towers{
+    background:linear-gradient(rgb(6,6,6,6),rgb(6,6,6,0.6)), url(/Content/img/bg.jpg) !important;
+    background-size:cover !important;
+    color:white !important;
+}

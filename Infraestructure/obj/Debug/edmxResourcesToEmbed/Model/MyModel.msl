@@ -73,6 +73,7 @@
       <EntityTypeMapping TypeName="TerrazasModel.Information">
         <MappingFragment StoreEntitySet="Information">
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdResident" ColumnName="IdResident" />
           <ScalarProperty Name="IdInformationType" ColumnName="IdInformationType" />
           <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="Description" ColumnName="Description" />

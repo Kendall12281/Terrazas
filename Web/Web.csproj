@@ -220,6 +220,7 @@
     <Compile Include="Controllers\CollectionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IncidentController.cs" />
+    <Compile Include="Controllers\InformationController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PlanController.cs" />
     <Compile Include="Controllers\ResidentController.cs" />
@@ -327,7 +328,9 @@
     <Content Include="Content\DataTable\responsive.dataTables.min.css" />
     <Content Include="Content\DataTable\styles.css" />
     <Content Include="Content\FontAwesome\SVG\info-circle-solid.svg" />
+    <Content Include="Content\img\bg.jpg" />
     <Content Include="Content\img\NoImage.jpg" />
+    <Content Include="Content\img\Unknown.jpg" />
     <Content Include="Content\logo\cover.ico" />
     <Content Include="Content\logo\cover.png" />
     <Content Include="Content\Navigation.css" />
@@ -399,10 +402,15 @@
     <Content Include="Views\Incident\Index.cshtml" />
     <Content Include="Views\Incident\Detail.cshtml" />
     <Content Include="Views\Incident\AllIncidents.cshtml" />
+    <Content Include="Views\Home\Information.cshtml" />
+    <Content Include="Views\Home\Create.cshtml" />
+    <Content Include="Views\Home\InformationResident.cshtml" />
+    <Content Include="Views\Home\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Information\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
