@@ -3,6 +3,8 @@ using Infraestructure.Model.ViewModel.Plan;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Core.Metadata.Edm;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Security.Authentication.ExtendedProtection;
@@ -17,10 +19,12 @@ namespace Infraestructure.Repository
         {
             try
             {
-                MyContext db = new MyContext();
+                using (MyContext db = new MyContext())
+                {
 
-                db.Plan.Find(id).Active = false;
-                db.SaveChanges();
+                    db.Plan.Find(id).Active = false;
+                    db.SaveChanges();
+                }
             }
             catch (Exception)
             {
@@ -33,25 +37,31 @@ namespace Infraestructure.Repository
         {
             try
             {
-                MyContext db = new MyContext();
-
-                RepositoryCollection repositoryCollection = new RepositoryCollection();
-                var listCollections = plan.Collection.ToList();
-
-                plan.Collection.Clear();
-                plan.Collection = new List<Collection>();
-                foreach (var item in listCollections)
+                using (MyContext db = new MyContext())
                 {
 
-                    var collectionItem = repositoryCollection.GetCollection(item.Id);
-                    db.Collection.Attach(collectionItem);
-                    plan.Collection.Add(collectionItem);
+                    db.Plan.Add(plan);
+                    db.Entry(plan).State = EntityState.Modified;
+                    db.SaveChanges();
+
+                    string[] selected = new string[plan.Collection.Count];
+
+                    for(int i = 0; i < plan.Collection.Count(); i++)
+                    {
+                        selected[i] = plan.Collection.ElementAt(i).Id.ToString();
+                    }
 
 
+                    var selectedCollection = new HashSet<string>(selected);
+                    db.Entry(plan).Collection(p => p.Collection).Load();
+                    var newCollection = db.Collection
+                        .Where(x => selectedCollection.Contains(x.Id.ToString())).ToList();
+
+                    plan.Collection = newCollection;
+
+                    db.Entry(plan).State = EntityState.Modified;
+                    db.SaveChanges();
                 }
-                db.Plan.Add(plan);
-
-                db.SaveChanges();
 
             }
             catch (Exception)
@@ -63,12 +73,15 @@ namespace Infraestructure.Repository
 
         public Plan GetPlan(int id)
         {
+            Plan plan = null;
             try
             {
 
-                MyContext db = new MyContext();
-                Plan plan = db.Plan.Find(id);
-                return plan;
+                using (MyContext db = new MyContext())
+                {
+                     plan = db.Plan.Where(x=>x.Id == id).Include("Collection").FirstOrDefault();
+                }
+                    return plan;
             }
             catch (Exception)
             {
@@ -84,14 +97,16 @@ namespace Infraestructure.Repository
                 List<ViewModelIndexPlan> plans = new List<ViewModelIndexPlan>();
                 List<Collection> collections = new List<Collection>();
 
-                MyContext db = new MyContext();
+                using (MyContext db = new MyContext())
+                {
 
-                var a = db.Plan
-                    .Include("Collection")
-                    .Where(x => x.Active != false)
-                    .ToList();
+                    var a = db.Plan
+                        .Include("Collection")
+                        .Where(x => x.Active != false)
+                        .ToList();
 
-                return a;
+                    return a;
+                }
 
             }
             catch (Exception)
@@ -114,13 +129,12 @@ namespace Infraestructure.Repository
 
                     RepositoryCollection repositoryCollection = new RepositoryCollection();
 
-                    //foreach (var collectionItem in collection) 
-                    //{
-                    //    db.Collection.Attach(collectionItem);
-                    //    plan.Collection.Add(collectionItem);
-                    //}
+                    foreach (var collectionItem in collection)
+                    {
+                        db.Collection.Attach(collectionItem);
+                        plan.Collection.Add(collectionItem);
+                    }
 
-                    db.Collection.AddRange(collection);
 
 
                     db.Plan.Add(plan);

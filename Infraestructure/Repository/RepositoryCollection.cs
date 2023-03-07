@@ -1,6 +1,7 @@
 ﻿using Infraestructure.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
@@ -14,9 +15,11 @@ namespace Infraestructure.Repository
         {
             try
             {
-                MyContext db = new MyContext();
-                db.Collection.AddOrUpdate(collection);
-                db.SaveChanges();
+                using (MyContext db = new MyContext())
+                {
+                    db.Collection.AddOrUpdate(collection);
+                    db.SaveChanges();
+                }
             }
             catch (Exception)
             {
@@ -46,8 +49,10 @@ namespace Infraestructure.Repository
         {
             try
             {
-                MyContext db = new MyContext();
-                return db.Collection.Find(id);
+                using (MyContext db = new MyContext())
+                {
+                    return db.Collection.Find(id);
+                }
             }
             catch (Exception)
             {
@@ -58,13 +63,16 @@ namespace Infraestructure.Repository
 
         public IEnumerable<Collection> GetCollections()
         {
+            IEnumerable<Collection> collection = null;
             try
             {
                 using (MyContext db = new MyContext())
                 {
 
-                    return db.Collection.Where(x => x.Active != false).ToList();
+                    collection = db.Collection.Where(x => x.Active != false).ToList();
                 }
+
+                return collection;
             }
             catch (Exception)
             {

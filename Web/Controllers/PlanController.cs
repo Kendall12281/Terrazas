@@ -25,7 +25,9 @@ namespace Web.Controllers
             ServiceCollection service = new ServiceCollection();
             List<SelectListItem> listItems = new List<SelectListItem>();
 
-            foreach (var item in service.GetCollections())
+            var list = service.GetCollections();
+
+            foreach (var item in list)
             {
                 SelectListItem item1 = new SelectListItem()
                 {
@@ -79,7 +81,7 @@ namespace Web.Controllers
                     if (model.listCollections[counter].Selected)
                     {
                         list.Add(serviceCollection.GetCollection(int.Parse(model.listCollections[counter].Value)));
-                        
+
                     }
                 }
 
@@ -88,7 +90,7 @@ namespace Web.Controllers
             }
 
             ServicePlan service = new ServicePlan();
-            service.NewPlan(plan,list);
+            service.NewPlan(plan, list);
 
             return RedirectToAction("/");
         }
@@ -103,11 +105,11 @@ namespace Web.Controllers
             List<SelectListItem> listItems = new List<SelectListItem>();
 
             int i = 0;
-            foreach(var item in serviceCollection.GetCollections())
+            foreach (var item in serviceCollection.GetCollections())
             {
                 if (model.Collection.Count > i)
                 {
-                    if(model.Collection.ElementAt(i).Name == item.Name)
+                    if (model.Collection.ElementAt(i).Name == item.Name)
                     {
                         listItems.Add(new SelectListItem() { Text = item.Name, Selected = true, Value = item.Id.ToString() });
                     }
@@ -131,7 +133,7 @@ namespace Web.Controllers
                 listSelectedItems = listItems,
                 Name = model.Name
             };
-            
+
 
 
             return View(modelEditPlan);
@@ -147,16 +149,21 @@ namespace Web.Controllers
 
                 foreach (var item in model.listSelectedItems)
                 {
-                    ServiceCollection serviceCollection = new ServiceCollection();
-                    int id = int.Parse(item.Value);
-                    Collection collection = serviceCollection.GetCollection(id);
-                    list.Add(collection) ;
+                    if (item.Selected)
+                    {
+
+                        ServiceCollection serviceCollection = new ServiceCollection();
+                        int id = int.Parse(item.Value);
+                        Collection collection = serviceCollection.GetCollection(id);
+                        list.Add(collection);
+                    }
                 }
                 Plan plan = new Plan
                 {
                     Id = model.Id,
                     Name = model.Name,
-                    Description = model.Description
+                    Description = model.Description,
+                    Collection = list
 
 
                 };
@@ -164,7 +171,7 @@ namespace Web.Controllers
                 ServicePlan service = new ServicePlan();
                 service.EditPlan(plan);
 
-                return View("/");
+                return RedirectToAction("/");
             }
             else
             {
@@ -183,10 +190,11 @@ namespace Web.Controllers
         public ActionResult Delete(int id)
         {
             ServicePlan serviceCollection = new ServicePlan();
-            
+
 
             return View(serviceCollection.GetPlan(id));
         }
+
         public ActionResult Detail(int id)
         {
             ServiceCollection serviceCollection = new ServiceCollection();

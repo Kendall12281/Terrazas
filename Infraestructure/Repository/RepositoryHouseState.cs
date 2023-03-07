@@ -13,8 +13,10 @@ namespace Infraestructure.Repository
         {
 			try
 			{
-				MyContext db = new MyContext();
-				return db.HouseState.ToList();
+				using (MyContext db = new MyContext())
+				{
+					return db.HouseState.ToList();
+				}
 			}
 			catch (Exception)
 			{

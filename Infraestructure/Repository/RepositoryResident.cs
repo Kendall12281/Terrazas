@@ -15,10 +15,11 @@ namespace Infraestructure.Repository
         {
 			try
 			{
-				MyContext db = new MyContext();
-				db.Resident.AddOrUpdate(resident);
-				db.SaveChanges();
-
+				using (MyContext db = new MyContext())
+				{
+					db.Resident.AddOrUpdate(resident);
+					db.SaveChanges();
+				}
 			}
 			catch (Exception error)
 			{
@@ -30,10 +31,12 @@ namespace Infraestructure.Repository
         {
 			try
 			{
-				MyContext db = new MyContext();
-				var resident2 = db.Resident.FirstOrDefault(r =>r.Id == resident.Id);
-				resident2 = resident;
-				db.SaveChanges();
+				using (MyContext db = new MyContext())
+				{
+					var resident2 = db.Resident.FirstOrDefault(r => r.Id == resident.Id);
+					resident2 = resident;
+					db.SaveChanges();
+				}
 
 			}
 			catch (Exception error)
@@ -47,9 +50,11 @@ namespace Infraestructure.Repository
         {
 			try
 			{
-                MyContext db = new MyContext();
-                db.Resident.AddOrUpdate(resident);
-                db.SaveChanges();
+				using (MyContext db = new MyContext())
+				{
+					db.Resident.AddOrUpdate(resident);
+					db.SaveChanges();
+				}
             }
 			catch (Exception)
 			{
@@ -62,12 +67,13 @@ namespace Infraestructure.Repository
         {
 			try
 			{
-				MyContext db = new MyContext();
-				Resident resident = (from r in db.Resident
-									where(r.EmailUser == email.Trim())
-									select r).FirstOrDefault();
-				return resident;
-
+				using (MyContext db = new MyContext())
+				{
+					Resident resident = (from r in db.Resident
+										 where (r.EmailUser == email.Trim())
+										 select r).FirstOrDefault();
+					return resident;
+				}
 				
 			}
 			catch (Exception)
@@ -81,8 +87,10 @@ namespace Infraestructure.Repository
         {
 			try
 			{
-				MyContext db = new MyContext();
-				return db.Resident.Find(id);
+				using (MyContext db = new MyContext())
+				{
+					return db.Resident.Find(id);
+				}
 			}
 			catch (Exception)
 			{
@@ -95,8 +103,10 @@ namespace Infraestructure.Repository
         {
 			try
 			{
-				MyContext db = new MyContext();
-				return db.Resident.ToList<Resident>().Where(r => r.Deleted == null || r.Deleted == false);
+				using (MyContext db = new MyContext())
+				{
+					return db.Resident.ToList<Resident>().Where(r => r.Deleted == null || r.Deleted == false);
+				}
 			}
 			catch (Exception)
 			{

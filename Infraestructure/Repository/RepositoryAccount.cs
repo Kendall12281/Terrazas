@@ -18,8 +18,10 @@ namespace Infraestructure.Repository
         {
             try
             {
-                MyContext db = new MyContext();
-                return db.Charge.Include("Resident").Include("Plan").Where(x => x.IdResident == id && x.Cancelled == true).ToList();
+                using (MyContext db = new MyContext())
+                {
+                    return db.Charge.Include("Resident").Include("Plan").Where(x => x.IdResident == id && x.Cancelled == true).ToList();
+                }
             }
             catch (Exception)
             {
@@ -32,9 +34,11 @@ namespace Infraestructure.Repository
         {
             try
             {
-                MyContext db = new MyContext();
-                return db.Charge.Include("Resident").Include("Plan")
-                    .Where(x => x.Id == id).FirstOrDefault();
+                using (MyContext db = new MyContext())
+                {
+                    return db.Charge.Include("Resident").Include("Plan")
+                        .Where(x => x.Id == id).FirstOrDefault();
+                }
             }
             catch (Exception)
             {
@@ -47,11 +51,13 @@ namespace Infraestructure.Repository
         {
             try
             {
-                MyContext db = new MyContext();
-                return db.Charge
-                    .Include("Resident")
-                    .Where(x => x.Resident.Active != false)
-                    .ToList();
+                using (MyContext db = new MyContext())
+                {
+                    return db.Charge
+                        .Include("Resident")
+                        .Where(x => x.Resident.Active != false)
+                        .ToList();
+                }
             }
             catch (Exception)
             {
@@ -64,11 +70,13 @@ namespace Infraestructure.Repository
         {
             try
             {
-                MyContext db = new MyContext();
-                return db.Charge
-                    .Include("Resident")
-                    .Where(x => x.Resident.Active != false && x.Resident.EmailUser == email)
-                    .ToList();
+                using (MyContext db = new MyContext())
+                {
+                    return db.Charge
+                        .Include("Resident")
+                        .Where(x => x.Resident.Active != false && x.Resident.EmailUser == email)
+                        .ToList();
+                }
             }
             catch (Exception)
             {
@@ -91,8 +99,10 @@ namespace Infraestructure.Repository
         {
             try
             {
-                MyContext db = new MyContext();
-                return db.Charge.Include("Resident").Include("Plan").Where(x=> x.IdResident == id && x.Cancelled != true).ToList();
+                using (MyContext db = new MyContext())
+                {
+                    return db.Charge.Include("Resident").Include("Plan").Where(x => x.IdResident == id && x.Cancelled != true).ToList();
+                }
             }
             catch (Exception)
             {

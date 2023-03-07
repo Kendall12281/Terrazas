@@ -8,6 +8,9 @@ namespace Infraestructure.Model
 {
     public class MyContext : TerrazasEntities
     {
-        public MyContext() { }
+        public MyContext() 
+        {
+            this.Configuration.LazyLoadingEnabled = false;
+        }
     }
 }

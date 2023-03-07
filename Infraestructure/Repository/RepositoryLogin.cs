@@ -13,11 +13,14 @@ namespace Infraestructure.Repository
         {
             try
             {
-                MyContext db = new MyContext();
-                if(db.User.Find(email).Active == true){
-                    return false;
+                using (MyContext db = new MyContext())
+                {
+                    if (db.User.Find(email).Active == true)
+                    {
+                        return false;
+                    }
+                    return true;
                 }
-                return true;
             }
             catch (Exception)
             {
@@ -30,13 +33,16 @@ namespace Infraestructure.Repository
         {
             try
             {
-                MyContext db = new MyContext();
+                using (MyContext db = new MyContext())
+                {
 
-                var oUser = (from user in db.User where user.Email == username.Trim() 
-                             && user.Password == password.Trim()
-                             select user).FirstOrDefault();
+                    var oUser = (from user in db.User
+                                 where user.Email == username.Trim()
+                                 && user.Password == password.Trim()
+                                 select user).FirstOrDefault();
 
-                return oUser;
+                    return oUser;
+                }
             }
             catch (Exception)
             {
