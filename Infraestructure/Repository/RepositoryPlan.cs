@@ -39,16 +39,21 @@ namespace Infraestructure.Repository
             {
                 using (MyContext db = new MyContext())
                 {
-
+                    List<Collection> collectionPlan = new List<Collection>();
+                    foreach (Collection item in plan.Collection)
+                    {
+                        collectionPlan.Add(item);
+                    }
+                    plan.Collection.Clear();
                     db.Plan.Add(plan);
                     db.Entry(plan).State = EntityState.Modified;
                     db.SaveChanges();
 
-                    string[] selected = new string[plan.Collection.Count];
+                    string[] selected = new string[collectionPlan.Count()];
 
-                    for(int i = 0; i < plan.Collection.Count(); i++)
+                    for(int i = 0; i < collectionPlan.Count(); i++)
                     {
-                        selected[i] = plan.Collection.ElementAt(i).Id.ToString();
+                        selected[i] = collectionPlan.ElementAt(i).Id.ToString();
                     }
 
 

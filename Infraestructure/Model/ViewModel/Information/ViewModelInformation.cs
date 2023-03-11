@@ -18,9 +18,15 @@ namespace Infraestructure.Model.ViewModel.Information
         public string Title { get; set; }
         [Required]
         public string Description { get; set; }
-        [Required]
+        
         [DataType(DataType.DateTime)]
-        public System.DateTime Date { get; set; }
+        public System.DateTime Date 
+        {
+            get
+            {
+                return DateTime.Now;
+            }
+        }
         public byte[] Image { get; set; }
 
         

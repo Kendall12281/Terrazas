@@ -53,6 +53,7 @@ namespace Web.Controllers
         public ActionResult Detail(int id)
         {
             ServiceAccount service = new ServiceAccount();
+            ServicePlan servicePlan = new ServicePlan();
             Charge charge = service.GetChargeByChargeId(id);
             ViewModelAccount model = new ViewModelAccount()
             {
@@ -66,7 +67,7 @@ namespace Web.Controllers
                 cancelled = charge.Cancelled,
                 notes = charge.Notes,
                 PlanName = charge.Plan.Name,
-                collection = charge.Plan.Collection,
+                collection = servicePlan.GetPlan(charge.IdPlan).Collection,
                 houseNumber = charge.Resident.HouseNumber
 
 

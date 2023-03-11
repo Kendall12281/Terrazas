@@ -11,10 +11,16 @@ namespace Infraestructure.Model.ViewModel.Incident
     {
         public int Id { get; set; }
         public int IdResident { get; set; }
-        [Required]
+        
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         [DataType(DataType.DateTime)]
-        public System.DateTime Date { get; set; }
+        public System.DateTime Date
+        {
+            get
+            {
+                return DateTime.Now;
+            }
+        }
         [Required]
         public string Title { get; set; }
         [Required]

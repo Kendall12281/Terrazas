@@ -86,13 +86,12 @@ namespace Web.Controllers
         {
             ServiceInformation service = new ServiceInformation();
             Information information = service.GetInformationById(id);
-
+            
             ViewModelInformation model = new ViewModelInformation()
             {
                 Id = information.Id,
                 Title = information.Title,
                 Description = information.Description,
-                Date = information.Date,
                 IdInformationType = information.IdInformationType,
                 Image = information.Image
 
@@ -132,6 +131,10 @@ namespace Web.Controllers
                     MemoryStream target = new MemoryStream();
                     ImageFile.InputStream.CopyTo(target);
                     information.Image = target.ToArray();
+                }
+                else
+                {  
+                    information.Image = service.GetInformationById(model.Id).Image;
                 }
 
                 service.UpdateInformation(information);

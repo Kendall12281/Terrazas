@@ -45,7 +45,7 @@
             </div>
         </div>
 
-        <div>
+        @*<div>
             <label>
                 @Html.LabelFor(model => model.Date)
             </label>
@@ -53,7 +53,7 @@
                 @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "bg-white border sm:text-sm rounded-lg block w-full p-2.5" } })
                 @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-red-500" })
             </div>
-        </div>
+        </div>*@
 
         <div>
             <label>
@@ -67,7 +67,7 @@
 
         <div>
 
-            <input type="submit" value="Create Collection" class="font-medium rounded-lg text-sm px-5 py-2.5 text-center btn-green-color shadow" />
+            <input type="submit" value="Create Incident" class="font-medium rounded-lg text-sm px-5 py-2.5 text-center btn-green-color shadow" />
             <button>
 
                 @Html.ActionLink("Back to List", "Index")

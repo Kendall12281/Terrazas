@@ -26,7 +26,6 @@ namespace Web.Controllers
                 list.Add(new ViewModelIncident()
                 {
                     Id = inc.Id,
-                    Date = inc.Date,
                     IncidentState = inc.IncidentState,
                     Title = inc.Title
                 });
@@ -56,7 +55,6 @@ namespace Web.Controllers
                     {
                         Title = model.Title,
                         Description = model.Description,
-                        Date = model.Date,
                         IdResident = resident.Id,
                         Image = target.ToArray(),
                         IdIncidentState = 1
@@ -70,7 +68,6 @@ namespace Web.Controllers
                     {
                         Title = model.Title,
                         Description = model.Description,
-                        Date = model.Date,
                         IdResident = resident.Id,
                         IdIncidentState = 1
                     };
@@ -98,7 +95,6 @@ namespace Web.Controllers
                 Id = id,
                 Title = incident.Title,
                 Description = incident.Description,
-                Date = incident.Date,
                 Image = incident.Image,
                 resident = incident.Resident,
                 IncidentState = incident.IncidentState
@@ -118,7 +114,6 @@ namespace Web.Controllers
                 list.Add(new ViewModelIncident()
                 {
                     Id = inc.Id,
-                    Date = inc.Date,
                     IncidentState = inc.IncidentState,
                     resident = inc.Resident,
                     Title = inc.Title
