@@ -7,9 +7,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Http.Results;
 using System.Web.Mvc;
+using Web.Security.Filters;
 
 namespace Web.Controllers
 {
+    [LoginFilter]
+    [AuthorizationFilter]
     public class ResidentController : Controller
     {
 

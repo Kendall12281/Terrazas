@@ -11,31 +11,41 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="w-full md:w-8/12 xl:w-4/12">
-        @Html.ValidationSummary(true, "")
-        <div>
-            <label>
-                @Html.LabelFor(model => model.Name)
-            </label>
-            <div class="mb-8 ">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "bg-white border sm:text-sm rounded-lg block w-full p-2.5" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-red-500" })
-            </div>
-        </div>
-        <div>
-            <label>
-                @Html.LabelFor(model => model.Description)
-            </label>
-            <div class="mb-8">
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = " bg-white border sm:text-sm rounded-lg block w-full p-2.5" } })
-                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-red-500" })
-            </div>
-        </div>
-
-        <div class="flex gap-4">
-            <input type="submit" value="Create Collection" class="font-medium rounded-lg text-sm px-5 py-2.5 text-center btn-green-color shadow" />
+<div class="w-full md:w-8/12 xl:w-4/12">
+    @Html.ValidationSummary(true, "")
+    <div>
+        <label>
+            @Html.LabelFor(model => model.Name)
+        </label>
+        <div class="mb-8 ">
+            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "bg-white border sm:text-sm rounded-lg block w-full p-2.5" } })
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-red-500" })
         </div>
     </div>
+    <div>
+        <label>
+            @Html.LabelFor(model => model.Description)
+        </label>
+        <div class="mb-8">
+            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = " bg-white border sm:text-sm rounded-lg block w-full p-2.5" } })
+            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-red-500" })
+        </div>
+    </div>
+
+    <div>
+        <label>
+            @Html.LabelFor(model => model.Total)
+        </label>
+        <div class="mb-8">
+            @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = " bg-white border sm:text-sm rounded-lg block w-full p-2.5" } })
+            @Html.ValidationMessageFor(model => model.Total, "", new { @class = "text-red-500" })
+        </div>
+    </div>
+
+    <div class="flex gap-4">
+        <input type="submit" value="Create Collection" class="font-medium rounded-lg text-sm px-5 py-2.5 text-center btn-green-color shadow" />
+    </div>
+</div>
 }
 
 

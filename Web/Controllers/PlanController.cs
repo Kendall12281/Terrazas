@@ -7,18 +7,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Web.Security.Filters;
 using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
 namespace Web.Controllers
 {
+    [LoginFilter]
+    [AuthorizationFilter]
     public class PlanController : Controller
     {
         // GET: Plan
         public ActionResult Index()
         {
             ServicePlan service = new ServicePlan();
+            List<ViewModelIndexPlan> planModel = new List<ViewModelIndexPlan>();
+            foreach (var item in service.GetPlans())
+            {
+                ViewModelIndexPlan planModelIndex = new ViewModelIndexPlan()
+                {
+                    Id = item.Id,
+                    Name = item.Name,
+                    Description = item.Description,
+                    listCollections = item.Collection.ToList()
+                };
+                planModel.Add(planModelIndex);
+            }
 
-            return View(service.GetPlans());
+            return View(planModel);
         }
         public ActionResult New()
         {

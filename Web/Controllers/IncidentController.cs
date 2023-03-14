@@ -9,9 +9,11 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Web;
 using System.Web.Mvc;
+using Web.Security.Filters;
 
 namespace Web.Controllers
 {
+    [LoginFilter]
     public class IncidentController : Controller
     {
         // GET: Incident

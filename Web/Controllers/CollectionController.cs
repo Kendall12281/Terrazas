@@ -32,7 +32,8 @@ namespace Web.Controllers
             Collection collection = new Collection()
             {
                 Name = model.Name,
-                Description = model.Description
+                Description = model.Description,
+                Total = model.Total
             };
 
             ServiceCollection service = new ServiceCollection();
@@ -49,7 +50,8 @@ namespace Web.Controllers
             ViewModelCollection model = new ViewModelCollection()
             {
                 Name = collection.Name,
-                Description = collection.Description
+                Description = collection.Description,
+                Total = collection.Total
             };
 
             return View(model);
@@ -66,7 +68,8 @@ namespace Web.Controllers
             {
                 Id= model.Id,
                 Name = model.Name,
-                Description = model.Description
+                Description = model.Description,
+                Total = model.Total
             };
             ServiceCollection service = new ServiceCollection();
             service.AddCollection(collection);

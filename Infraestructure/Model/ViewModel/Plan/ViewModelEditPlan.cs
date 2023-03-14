@@ -22,5 +22,6 @@ namespace Infraestructure.Model.ViewModel.Plan
         [Display(Name = "Collection List")]
         [Required]
         public List<SelectListItem> listSelectedItems { get; set; }
+       
     }
 }

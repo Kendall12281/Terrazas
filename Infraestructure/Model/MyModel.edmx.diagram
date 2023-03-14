@@ -4,10 +4,10 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="535407a1f4354d968d3d4672cb8291cf" Name="Diagram1">
+      <Diagram DiagramId="0dc5cb733e704910882225cb475d1715" Name="Diagram1">
         <EntityTypeShape EntityType="TerrazasModel.Booking" Width="1.5" PointX="7.5" PointY="8.5" IsExpanded="true" />
         <EntityTypeShape EntityType="TerrazasModel.Charge" Width="1.5" PointX="10.5" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="TerrazasModel.Collection" Width="1.5" PointX="6" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TerrazasModel.Collection" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TerrazasModel.HouseState" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
         <EntityTypeShape EntityType="TerrazasModel.Incident" Width="1.5" PointX="7.5" PointY="4.5" IsExpanded="true" />
         <EntityTypeShape EntityType="TerrazasModel.IncidentState" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />

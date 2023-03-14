@@ -15,11 +15,16 @@ namespace Infraestructure.Repository
             {
                 using (MyContext db = new MyContext())
                 {
-                    if (db.User.Find(email).Active == true)
+                    var user = db.User.Find(email);
+                    if (user != null)
                     {
-                        return false;
+
+                        if (user.Active == true)
+                        {
+                            return false;
+                        }
                     }
-                    return true;
+                        return true;
                 }
             }
             catch (Exception)

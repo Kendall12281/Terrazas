@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -20,5 +21,18 @@ namespace Infraestructure.Model.ViewModel.Plan
         [Display(Name = "Collection List")]
         [Required]
         public List<Infraestructure.Model.Collection> listCollections { get; set; }
+
+        public double Total
+        {
+            get
+            {
+                double total = 0;
+                foreach (var item in listCollections)
+                {
+                    total += item.Total;
+                }
+                return total;
+            }
+        }
     }
 }

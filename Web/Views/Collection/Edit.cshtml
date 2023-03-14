@@ -37,6 +37,15 @@
                 @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = " bg-white border sm:text-sm rounded-lg block w-full p-2.5" } })
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-red-500" })
             </div>
+        </div> 
+        <div>
+            <label>
+                @Html.LabelFor(model => model.Total)
+            </label>
+            <div class="mb-8">
+                @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = " bg-white border sm:text-sm rounded-lg block w-full p-2.5" } })
+                @Html.ValidationMessageFor(model => model.Total, "", new { @class = "text-red-500" })
+            </div>
         </div>
 
         <div class="flex gap-4">

@@ -36,6 +36,7 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Total" Type="Double" Nullable="false" />
     <Property Name="Active" Type="Boolean" />
     <NavigationProperty Name="Plan" Relationship="Self.CollectionPlan" FromRole="Collection" ToRole="Plan" />
   </EntityType>
