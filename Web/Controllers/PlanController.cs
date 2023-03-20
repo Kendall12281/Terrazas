@@ -119,27 +119,39 @@ namespace Web.Controllers
 
             List<SelectListItem> listItems = new List<SelectListItem>();
 
-            int i = 0;
+            //int i = 0;
+            //foreach (var item in serviceCollection.GetCollections())
+            //{
+            //    if (model.Collection.Count > i)
+            //    {
+            //        if (model.Collection.ElementAt(i).Name == item.Name)
+            //        {
+            //            listItems.Add(new SelectListItem() { Text = item.Name, Selected = true, Value = item.Id.ToString() });
+            //        }
+            //        else
+            //        {
+            //            listItems.Add(new SelectListItem() { Text = item.Name, Selected = false, Value = item.Id.ToString() });
+            //        }
+            //    }
+            //    else
+            //    {
+            //        listItems.Add(new SelectListItem() { Text = item.Name, Selected = false, Value = item.Id.ToString() });
+            //    }
+
+            //    i++;
+            //}
+            List<string> selectedList = new List<string>();
+            foreach (var item in model.Collection)
+            {
+                selectedList.Add(item.Name);
+            }
+
             foreach (var item in serviceCollection.GetCollections())
             {
-                if (model.Collection.Count > i)
-                {
-                    if (model.Collection.ElementAt(i).Name == item.Name)
-                    {
-                        listItems.Add(new SelectListItem() { Text = item.Name, Selected = true, Value = item.Id.ToString() });
-                    }
-                    else
-                    {
-                        listItems.Add(new SelectListItem() { Text = item.Name, Selected = false, Value = item.Id.ToString() });
-                    }
-                }
-                else
-                {
-                    listItems.Add(new SelectListItem() { Text = item.Name, Selected = false, Value = item.Id.ToString() });
-                }
-
-                i++;
+                listItems.Add(new SelectListItem() { Text = item.Name, Selected = selectedList.Contains(item.Name), Value = item.Id.ToString() });
             }
+
+
 
             ViewModelEditPlan modelEditPlan = new ViewModelEditPlan()
             {
