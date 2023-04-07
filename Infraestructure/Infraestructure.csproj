@@ -133,6 +133,7 @@
       <DependentUpon>MyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\ViewModel\Account\ViewModelAccount.cs" />
+    <Compile Include="Model\ViewModel\Booking\ViewModelBooking.cs" />
     <Compile Include="Model\ViewModel\Collection\ViewModelCollection.cs" />
     <Compile Include="Model\ViewModel\Incident\ViewModelIncident.cs" />
     <Compile Include="Model\ViewModel\Information\ViewModelInformation.cs" />
@@ -144,6 +145,7 @@
     <Compile Include="Model\ViewModel\Resident\ViewModelEditResident.cs" />
     <Compile Include="Model\ViewModel\Resident\ViewModelResident.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\IRepositoryBooking.cs" />
     <Compile Include="Repository\IRepositoryIncident.cs" />
     <Compile Include="Repository\IRepositoryAccount.cs" />
     <Compile Include="Repository\IRepositoryInformation.cs" />
@@ -152,7 +154,9 @@
     <Compile Include="Repository\IRepositoryCollection.cs" />
     <Compile Include="Repository\IRepositoryHouseState.cs" />
     <Compile Include="Repository\IRepositoryResident.cs" />
+    <Compile Include="Repository\IRepositorySocialArea.cs" />
     <Compile Include="Repository\RepositoryAccount.cs" />
+    <Compile Include="Repository\RepositoryBooking.cs" />
     <Compile Include="Repository\RepositoryCollection.cs" />
     <Compile Include="Repository\RepositoryHouseState.cs" />
     <Compile Include="Repository\RepositoryIncident.cs" />
@@ -160,6 +164,7 @@
     <Compile Include="Repository\RepositoryLogin.cs" />
     <Compile Include="Repository\RepositoryPlan.cs" />
     <Compile Include="Repository\RepositoryResident.cs" />
+    <Compile Include="Repository\RepositorySocialArea.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

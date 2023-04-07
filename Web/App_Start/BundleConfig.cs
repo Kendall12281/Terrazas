@@ -9,7 +9,10 @@ namespace Web
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/JQuery/jquery.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jqueryUI").Include(
+                      "~/Scripts/JQuery/custom/*.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -22,6 +25,9 @@ namespace Web
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/JQueryCSS").Include(
+                      "~/Content/JQuery/*.css"));
         }
     }
 }

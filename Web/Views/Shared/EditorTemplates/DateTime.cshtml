@@ -1,0 +1,343 @@
+﻿
+@model DateTime?
+
+
+@{
+    string datepickerId = ViewData.TemplateInfo.GetFullHtmlFieldId("");
+    string datepickerName = ViewData.TemplateInfo.GetFullHtmlFieldName("");
+    string datepickerValue = DateTime.Now.ToString("yyyy-MM-dd");
+
+}
+
+<head>
+    <link rel="stylesheet" href="~/Content/jquery-timepicker/jquery.timepicker.css">
+    @Styles.Render("~/Content/css")
+</head>
+
+<div class="">
+    <div class="mb-6">
+        <label class="block mb-2 text-sm font-medium text-gray-900">Date</label>
+        <input type="text" id="@datepickerId" name="@datepickerName" value="@datepickerValue" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg" readonly />
+    </div>
+
+    <div class="mb-6">
+        <label class="block mb-2 text-sm font-medium text-gray-900">Start Time</label>
+        <span class="block mb-2 text-sm font-medium text-red-600" id="minTime"></span>
+        <input class="timepicker  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg" id="startTime" readonly />
+    </div>
+
+    <div class="mb-6">
+        <label class="block mb-2 text-sm font-medium text-gray-900">End Time</label>
+        <span class="block mb-2 text-sm font-medium text-red-600" id="maxTime"></span>
+        <input class="timepicker  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg" id="endTime" readonly />
+    </div>
+
+    <div class="mb-8">
+        <input type="button" onclick="Book()" value="Check Avaibility" class="font-medium rounded-lg text-sm px-5 py-2.5 text-center btn-green-color shadow" />
+    </div>
+</div>
+
+
+
+
+
+
+
+<div id="popup-modal" class="hidden">
+
+    <div tabindex="-1" class="fixed inset-0 z-10 flex items-center justify-center">
+
+        <div class="fixed inset-0 bg-gray-500 opacity-75"></div>
+
+
+        <div class="relative w-full h-full max-w-md md:h-auto">
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <button type="button" onclick="CloseModal()" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="popup-modal">
+                    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+                <div class="p-6 text-center">
+                    @* Wrong *@
+                    <svg id="wrongIcon" aria-hidden="true" class="hidden mx-auto mb-4 text-gray-400 w-14 h-14 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    @* Success *@
+                    <svg id="sucessIcon" aria-hidden="true" class="hidden mx-auto mb-4 text-gray-400 w-14 h-14 dark:text-gray-200" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                    @* Falied *@
+                    <svg id="failedIcon" aria-hidden="true" class="hidden mx-auto mb-4 text-gray-400 w-14 h-14 dark:text-gray-200" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                    <h3 id="modalText" class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400"></h3>
+                    <button id="schedule" onclick="PlaceBook()" data-modal-hide="popup-modal" type="button" class="hidden text-white bg-green-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                        Book
+                    </button>
+                    <button id="cancel" data-modal-hide="popup-modal" onclick="CloseModal()" type="button" class="hidden text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+<script src="~/Scripts/JQuery/jquery.js"></script>
+<script src="~/Content/jquery-timepicker/jquery.timepicker.js"></script>
+
+<script>
+
+    var startTime;
+    var endTime;
+    const currentUrl = window.location.href.slice(-1);
+
+    $(function () {
+        $("#@datepickerId").datepicker({
+        }).on("change", function () {
+
+            var selectedDate = $(this).val();
+
+            GetTime(selectedDate);
+
+        });
+    });
+
+
+
+
+
+
+    $('.timepicker').timepicker({
+        timeFormat: 'HH:mm ss',
+        interval: 60,
+        minTime: '01',
+        maxTime: '23',
+        defaultTime: '7',
+        startTime: '01',
+        dynamic: false,
+        dropdown: true,
+        scrollbar: true
+    });
+
+
+
+
+
+    GetTime(Date.now);
+
+    function GetTime(selectedDate) {
+
+
+
+        var data = {
+            id: currentUrl,
+            date: selectedDate
+        };
+
+
+        $.ajax({
+            url: "/Booking/CheckAvaibility", // Replace with the URL of the server-side action to get the selected date
+            type: "POST",
+            data: data,
+            success: function (response) {
+
+                startTime = response.startTime.Hours ;
+                endTime = response.endTime.Hours;
+
+
+                $('#minTime').text('Min Time: ' + startTime + ":00")
+                $('#maxTime').text('Max Time: ' + endTime + ":00")
+
+
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                console.log(xhr)
+                console.log(textStatus)
+                console.log(errorThrown)
+            }
+        });
+    }
+
+    function OpenModal() {
+        $('#popup-modal').show();
+        //$('#popup-modal').toggle('hidden');
+    }
+    function CloseModal() {
+        $('#popup-modal').hide();
+    }
+
+
+    function Book() {
+
+       var start = parseInt($('#startTime').val().replace(':00',''))
+        var end = parseInt($('#endTime').val().replace(':00', ''))
+        var selectedDate = $('#@datepickerId').val();
+        var idSocial = window.location.href.slice(-1);
+
+
+        //console.log(start);
+        //console.log(end);
+        //console.log(selectedDate);
+        //console.log(idSocial);
+
+        if (startTime <= start && endTime >= end) {
+
+            //console.log(CheckAvaibility(start, end, selectedDate, idSocial))
+
+            var data = {
+                date: selectedDate,
+                startTime: start,
+                endTime: end,
+                idSocialArea: idSocial
+            };
+
+            $.ajax({
+                url: "/Booking/CheckShedule", // Replace with the URL of the server-side action to get the selected date
+                type: "POST",
+                data: data,
+                success: function (response) {
+
+
+                    if (response.busy) {
+                        $('#modalText').text('Space Available');
+                        $('#wrongIcon').addClass('hidden');
+                        $('#sucessIcon').removeClass('hidden');
+                        $('#failedIcon').addClass('hidden');
+
+                        $('#schedule').removeClass('hidden');
+                        $('#cancel').removeClass('hidden');
+                        OpenModal();
+                    } else {
+
+                        $('#modalText').text('No Space Available');
+                        $('#wrongIcon').addClass('hidden');
+                        $('#sucessIcon').addClass('hidden');
+                        $('#failedIcon').removeClass('hidden');
+
+                        $('#schedule').addClass('hidden');
+                        $('#cancel').removeClass('hidden');
+                        OpenModal();
+                    }
+
+
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    console.log(xhr)
+                    console.log(textStatus)
+                    console.log(errorThrown)
+                }
+            });
+
+
+
+            
+
+        } else {
+
+            $('#modalText').text('Start Time / End Time incorrect');
+            $('#wrongIcon').removeClass('hidden');
+            $('#sucessIcon').addClass('hidden');
+            $('#failedIcon').addClass('hidden');
+
+            $('#schedule').addClass('hidden');
+            $('#cancel').addClass('hidden');
+
+            OpenModal();
+        }
+    }
+
+    function CheckAvaibility(startTime, endTime, date, socialAreaId) {
+
+        var data = {
+            date: date,
+            startTime: startTime,
+            endTime: endTime,
+            idSocialArea: socialAreaId
+        };
+
+        var result = false;
+
+        $.ajax({
+            url: "/Booking/CheckShedule", // Replace with the URL of the server-side action to get the selected date
+            type: "POST",
+            data: data,
+            success: function (response) {
+
+                //console.log('result' + response.busy)
+
+                if (response.busy == 'true') {
+                    result = true;
+                }
+
+
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                console.log(xhr)
+                console.log(textStatus)
+                console.log(errorThrown)
+            }
+        });
+
+        return result;
+    }
+
+    function PlaceBook() {
+
+        var start = parseInt($('#startTime').val().replace(':00',''))
+        var end = parseInt($('#endTime').val().replace(':00', ''))
+        var selectedDate = $('#@datepickerId').val();
+        var idSocial = window.location.href.slice(-1);
+
+        var data = {
+            date: selectedDate,
+            startTime: start,
+            endTime: end,
+            idSocialArea: idSocial
+        };
+
+
+        $.ajax({
+            url: "/Booking/PlaceBook", // Replace with the URL of the server-side action to get the selected date
+            type: "POST",
+            data: data,
+            success: function (response) {
+
+
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                console.log(xhr)
+                console.log(textStatus)
+                console.log(errorThrown)
+            }
+        });
+
+        CloseModal();
+
+        const intervalId = setInterval(ShowConfirmation, 1000);
+
+        setTimeout(() => {
+            clearInterval(intervalId);
+        }, 1000);
+
+    }
+
+    function ShowConfirmation() {
+
+        $('#modalText').text('Scheduled Successfully');
+        $('#wrongIcon').addClass('hidden');
+        $('#sucessIcon').removeClass('hidden');
+        $('#failedIcon').addClass('hidden');
+
+        $('#schedule').addClass('hidden');
+        $('#cancel').removeClass('hidden');
+
+        OpenModal();
+
+    }
+
+
+
+</script>
+
+

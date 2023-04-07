@@ -8,10 +8,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Services.Description;
+using Web.Security.Filters;
 
 namespace Web.Controllers
 {
 
+    [LoginFilter]
     public class HomeController : Controller
     {
         public ActionResult Index()

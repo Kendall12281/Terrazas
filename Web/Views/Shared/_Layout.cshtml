@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <script src="~/Content/tailwind.min.js"></script>
     <link rel="stylesheet" href="~/Content/Navigation.css">
+    @Styles.Render("~/Content/JQueryCSS")
 </head>
 <body class="active bg-transparent">
 
@@ -189,6 +190,8 @@
         </div>
 
     </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryUI")
 
     <script>
         if (this.screen.width > 800) {
