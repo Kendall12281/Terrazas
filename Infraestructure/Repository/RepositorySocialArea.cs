@@ -21,11 +21,12 @@ namespace Infraestructure.Repository
                     TimeSpan startTime1 = new TimeSpan(startTime, 0, 0);
                     TimeSpan endTime1 = new TimeSpan(endTime, 0, 0);
 
-                    var list = db.Booking.Where(x => x.IdSocialArea == socialAreaId && x.Date == date &&
+                    var list = db.Booking.Where(x => x.IdSocialArea == socialAreaId && x.Date == date && x.Confirmed != false &&
                          ((startTime1 >= x.StartTime && startTime1 <= x.EndTime)) &&
                          ((endTime1 >= x.StartTime && endTime1 <= x.EndTime))
                     ).FirstOrDefault();
 
+                   
 
                     if(list == null) { booking = true; }
 

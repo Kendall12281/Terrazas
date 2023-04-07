@@ -74,7 +74,6 @@ namespace Web.Controllers
             ServiceSocialArea service = new ServiceSocialArea();
             Booking booking = new Booking
             {
-                Confirmed = false,
                 Date = DateTime.Parse(date),
                 StartTime = new TimeSpan(startTime, 0, 0),
                 EndTime = new TimeSpan(endTime, 0, 0),

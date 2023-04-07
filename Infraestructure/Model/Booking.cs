@@ -20,7 +20,7 @@ namespace Infraestructure.Model
         public System.DateTime Date { get; set; }
         public System.TimeSpan StartTime { get; set; }
         public System.TimeSpan EndTime { get; set; }
-        public bool Confirmed { get; set; }
+        public Nullable<bool> Confirmed { get; set; }
     
         public virtual Resident Resident { get; set; }
         public virtual SocialArea SocialArea { get; set; }

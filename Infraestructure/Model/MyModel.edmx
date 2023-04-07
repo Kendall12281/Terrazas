@@ -15,7 +15,7 @@
           <Property Name="Date" Type="date" Nullable="false" />
           <Property Name="StartTime" Type="time" Precision="3" Nullable="false" />
           <Property Name="EndTime" Type="time" Precision="3" Nullable="false" />
-          <Property Name="Confirmed" Type="bit" Nullable="false" />
+          <Property Name="Confirmed" Type="bit" />
         </EntityType>
         <EntityType Name="Charge">
           <Key>
@@ -406,7 +406,7 @@
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="StartTime" Type="Time" Nullable="false" Precision="3" />
           <Property Name="EndTime" Type="Time" Nullable="false" Precision="3" />
-          <Property Name="Confirmed" Type="Boolean" Nullable="false" />
+          <Property Name="Confirmed" Type="Boolean" />
           <NavigationProperty Name="Resident" Relationship="Self.FK_Booking_Resident" FromRole="Booking" ToRole="Resident" />
           <NavigationProperty Name="SocialArea" Relationship="Self.FK_Booking_SocialArea" FromRole="Booking" ToRole="SocialArea" />
         </EntityType>
