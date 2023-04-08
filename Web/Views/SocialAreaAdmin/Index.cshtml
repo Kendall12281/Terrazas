@@ -1,0 +1,114 @@
+﻿
+@model  List<Infraestructure.Model.Booking>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DataTables </title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="~/Content/DataTable/styles.css" rel="stylesheet" />
+    <link href="~/Content/DataTable/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Content/DataTable/responsive.dataTables.min.css" rel="stylesheet" />
+
+
+
+</head>
+
+<body>
+
+
+    <!--Container-->
+    <div class="mt-5" style="margin-right:2rem; overflow:hidden">
+
+
+
+
+        <!--Card-->
+        <div class="p-8 mt-5 lg:mt-0 rounded shadow bg-white">
+
+
+            <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
+                <thead>
+                    <tr>
+
+                        <th data-priority="1">Resident House</th>
+                        <th data-priority="2">Area</th>
+                        <th data-priority="3">Date</th>
+                        <th data-priority="4">Start Time</th>
+                        <th data-priority="5">End Time</th>
+                        <th data-priority="6">Confirmed</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr class="text-center">
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Resident.HouseNumber)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SocialArea.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Date)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.StartTime)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EndTime)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Confirmed)
+                            </td>
+
+                        </tr>
+
+
+                    }
+                </tbody>
+
+            </table>
+
+
+        </div>
+        <!--/Card-->
+
+
+    </div>
+    <!--/container-->
+    <!-- jQuery -->
+    <script type="text/javascript" src="~/Content/DataTable/js/jquery-3.4.1.min.js"></script>
+
+    <!--Datatables -->
+    <script src="~/Content/DataTable/js/jquery.dataTables.min.js"></script>
+    <script src="~/Content/DataTable/js/dataTables.responsive.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            var table = $('#example').DataTable({
+                responsive: true
+            })
+                .columns.adjust()
+                .responsive.recalc();
+        });
+    </script>
+
+</body>
+
+</html>
+
+
+

@@ -11,6 +11,40 @@ namespace Infraestructure.Repository
 {
     public class RepositorySocialArea : IRepositorySocialArea
     {
+        public void ChangeBookingStatus(int idBooking, bool status)
+        {
+            try
+            {
+                using (MyContext db = new MyContext())
+                {
+                    Booking booking = db.Booking.Find(idBooking);
+                    booking.Confirmed = status;
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        public List<Booking> GetAllBooking()
+        {
+            List <Booking> list = new List<Booking>();
+            try
+            {
+                using (MyContext db = new MyContext())
+                {
+                    list = db.Booking.Include("SocialArea").Include("Resident").ToList();
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+            return list;
+        }
+
         public bool GetAvaibility(int startTime, int endTime, DateTime date, int socialAreaId)
         {
             bool booking = false;
@@ -38,6 +72,42 @@ namespace Infraestructure.Repository
 
             }
             return booking;
+        }
+
+        public List<Booking> GetBookingById(int residentId)
+        {
+            List <Booking> list = new List<Booking>();
+            try
+            {
+                using (MyContext db = new MyContext())
+                {
+                    list = db.Booking.Include("SocialArea").Where(x => x.IdResident == residentId).ToList();
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+
+            return list;
+        }
+
+        public List<Booking> GetPendinglBooking()
+        {
+            List<Booking> list = new List<Booking>();
+            try
+            {
+                using (MyContext db = new MyContext())
+                {
+                    list = db.Booking.Include("SocialArea").Include("Resident").Where(x => x.Confirmed == null).ToList();
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+
+            return list;
         }
 
         public SocialArea GetSocialAreaById(int socialAreaId)

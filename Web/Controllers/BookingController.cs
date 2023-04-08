@@ -93,5 +93,14 @@ namespace Web.Controllers
             return Json(data, JsonRequestBehavior.AllowGet);
 
         }
+
+        public ActionResult MyBookings()
+        {
+            Infraestructure.Model.Resident resident = (Infraestructure.Model.Resident)Session["Resident"];
+            ServiceSocialArea service = new ServiceSocialArea();
+            List<Booking> booking = service.GetBookingById(resident.Id);
+
+            return View(booking);
+        }
     }
 }

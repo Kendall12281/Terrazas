@@ -10,10 +10,34 @@ namespace ApplicationCore.Services
 {
     public class ServiceSocialArea : IServiceSocialArea
     {
+        public void ChangeBookingStatus(int idBooking, bool status)
+        {
+            IRepositorySocialArea repository = new RepositorySocialArea();
+            repository.ChangeBookingStatus(idBooking, status);
+        }
+
+        public List<Booking> GetAllBooking()
+        {
+            IRepositorySocialArea repository = new RepositorySocialArea();
+            return repository.GetAllBooking();
+        }
+
         public bool GetAvaibility(int startTime, int endTime, DateTime date, int socialAreaId)
         {
             IRepositorySocialArea repository = new RepositorySocialArea();
             return repository.GetAvaibility(startTime, endTime, date, socialAreaId);
+        }
+
+        public List<Booking> GetBookingById(int residentId)
+        {
+            IRepositorySocialArea repository = new RepositorySocialArea();
+            return repository.GetBookingById(residentId);
+        }
+
+        public List<Booking> GetPendinglBooking()
+        {
+            IRepositorySocialArea repository = new RepositorySocialArea();
+            return repository.GetPendinglBooking();
         }
 
         public SocialArea GetSocialAreaById(int socialAreaId)

@@ -294,6 +294,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\SocialAreaAdminController.cs" />
     <Compile Include="Controllers\SocialAreaController.cs" />
     <Compile Include="Controllers\BookingController.cs" />
     <Compile Include="Controllers\CollectionController.cs" />
@@ -531,6 +532,9 @@
     <Content Include="Views\Booking\Book.cshtml" />
     <Content Include="Scripts\JQuery\custom\package.json" />
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Views\Booking\MyBookings.cshtml" />
+    <Content Include="Views\SocialAreaAdmin\Index.cshtml" />
+    <Content Include="Views\SocialAreaAdmin\PendingBooking.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
