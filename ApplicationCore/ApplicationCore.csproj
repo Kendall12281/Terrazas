@@ -44,6 +44,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IServiceAccount.cs" />
     <Compile Include="Services\IServiceBooking.cs" />
+    <Compile Include="Services\IServiceCharges.cs" />
     <Compile Include="Services\IServiceCollection.cs" />
     <Compile Include="Services\IServiceHouseState.cs" />
     <Compile Include="Services\IServiceIncident.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="Services\IServiceSocialArea.cs" />
     <Compile Include="Services\ServiceAccount.cs" />
     <Compile Include="Services\ServiceBooking.cs" />
+    <Compile Include="Services\ServiceCharges.cs" />
     <Compile Include="Services\ServiceCollection.cs" />
     <Compile Include="Services\ServiceHouseState.cs" />
     <Compile Include="Services\ServiceIncident.cs" />

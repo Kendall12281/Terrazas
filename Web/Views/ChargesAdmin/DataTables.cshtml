@@ -1,0 +1,106 @@
+﻿
+@model IEnumerable<Infraestructure.Model.ViewModel.Charge.ViewModelCharge>
+
+
+@{
+    string datepickerId = ViewData.TemplateInfo.GetFullHtmlFieldId("");
+    string datepickerName = ViewData.TemplateInfo.GetFullHtmlFieldName("");
+    string datepickerValue = DateTime.Now.ToString("yyyy-MM-dd");
+
+
+}
+
+<head>
+    <link rel="stylesheet" href="~/Content/jquery-timepicker/jquery.timepicker.css">
+    @Styles.Render("~/Content/css")
+
+    <link href="~/Content/DataTable/styles.css" rel="stylesheet" />
+    <link href="~/Content/DataTable/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Content/DataTable/responsive.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Content/DataTable/checkbox/dataTables.checkboxes.css" rel="stylesheet" />
+
+</head>
+
+
+
+
+@if (Model != null)
+{
+    <div id="tableHidden" class="">
+
+
+
+
+        <!--Container-->
+        <div class="mt-5" style="margin-right:2rem; overflow:hidden">
+            @*Card*@
+            <div class="p-8 mt-5 lg:mt-0 rounded shadow bg-white">
+
+
+                <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <th data-priority="1">Name</th>
+                            <th data-priority="2">House Number</th>
+                            <th data-priority="2">Select Plan</th>
+                        </tr>
+                    </thead>
+                    <tbody id="insertData">
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td></td>
+                                <td>
+                                    @Html.DisplayFor(m => item.Id)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+
+
+            </div>
+            @*/Card*@
+        </div>
+
+
+    </div>
+
+}
+
+
+
+<script src="~/Scripts/JQuery/jquery.js"></script>
+@*Datatables*@
+<script src="~/Content/DataTable/js/jquery.dataTables.min.js"></script>
+<script src="~/Content/DataTable/js/dataTables.responsive.min.js"></script>
+<script src="~/Content/DataTable/checkbox/dataTables.checkboxes.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+
+        var table = $('#example').DataTable({
+            responsive: true,
+            'columnDefs': [
+                {
+                    'targets': 0,
+                    'checkboxes': {
+                        'selectRow': true
+                    }
+                }
+            ]
+
+        })
+            .columns.adjust()
+            .responsive.recalc();
+    });
+
+
+</script>
+
+
+
+

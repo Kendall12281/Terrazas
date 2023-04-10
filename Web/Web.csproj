@@ -294,6 +294,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ChargesAdminController.cs" />
     <Compile Include="Controllers\SocialAreaAdminController.cs" />
     <Compile Include="Controllers\SocialAreaController.cs" />
     <Compile Include="Controllers\BookingController.cs" />
@@ -399,6 +400,8 @@
     <Content Include="Content\datatables_custom\main.css" />
     <Content Include="Content\datatables_custom\main.js" />
     <Content Include="Content\datatables_custom\popper\popper.min.js" />
+    <Content Include="Content\DataTable\checkbox\dataTables.checkboxes.css" />
+    <Content Include="Content\DataTable\checkbox\dataTables.checkboxes.min.js" />
     <Content Include="Content\DataTable\img\sort_asc.png" />
     <Content Include="Content\DataTable\img\sort_both.png" />
     <Content Include="Content\DataTable\img\sort_desc.png" />
@@ -535,6 +538,11 @@
     <Content Include="Views\Booking\MyBookings.cshtml" />
     <Content Include="Views\SocialAreaAdmin\Index.cshtml" />
     <Content Include="Views\SocialAreaAdmin\PendingBooking.cshtml" />
+    <Content Include="Views\ChargesAdmin\Index.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Date.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DataTable.cshtml" />
+    <Content Include="Views\ChargesAdmin\DataTables.cshtml" />
+    <Content Include="Views\ChargesAdmin\SelectDate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,133 @@
+﻿
+
+<head>
+    <link href="~/Content/DataTable/styles.css" rel="stylesheet" />
+    <link href="~/Content/DataTable/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Content/DataTable/responsive.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Content/DataTable/checkbox/dataTables.checkboxes.css" rel="stylesheet" />
+</head>
+
+
+<style>
+    td {
+        text-align: center;
+    }
+</style>
+
+<div id="date" data-message="@ViewBag.date"></div>
+
+<form class="w-11/12" id="frm-example" action="/path/to/your/script.php" method="POST">
+
+    <table id="example" class="display" cellspacing="2" width="100%">
+        <thead>
+            <tr>
+                <th class="mx-auto"></th>
+                <th>House Number</th>
+                <th>Name</th>
+                <th>Plan</th>
+            </tr>
+        </thead>
+    </table>
+
+    <hr>
+
+
+</form>
+
+
+<div class="mb-8">
+    <input type="button" id="selectDate" onclick="Send()" value="Select Date" class="font-medium rounded-lg text-sm px-5 py-2.5 text-center btn-green-color shadow" />
+</div>
+
+
+
+
+
+
+    <script src="~/Scripts/JQuery/jquery.js"></script>
+    @*Datatables*@
+    <script src="~/Content/DataTable/js/jquery.dataTables.min.js"></script>
+    <script src="~/Content/DataTable/js/dataTables.responsive.min.js"></script>
+    <script src="~/Content/DataTable/checkbox/dataTables.checkboxes.min.js"></script>
+
+    <script>
+
+        var myModel = @Html.Raw(Json.Encode(Model));
+
+        const date = $('#date').data('message')
+
+
+
+
+        var table = $('#example').DataTable({
+            responsive: true,
+            "data": myModel,
+            "columns": [
+                { "data": "Id" },
+                { "data": "HouseNumber" },
+                { "data": "Name" },
+                {
+                    "render": function (data, type, row) {
+                        return row.getHtml;
+                    }
+                }
+            ],
+            'columnDefs': [
+                {
+                    'targets': 0,
+                    'checkboxes': {
+                        'selectRow': true
+                    }
+                }
+            ],
+            'select': {
+                'style': 'multi'
+            },
+            'order': [[1, 'asc']]
+        })
+            .columns.adjust()
+            .responsive.recalc();
+
+
+
+        function Send() {
+            var rows_selected = table.column(0).checkboxes.selected().join(",").split(",");
+            var data = [];
+
+
+            for (var i = 0; i < Object.keys(rows_selected).length; i++) {
+                data.push({
+                    Id : rows_selected[i],
+                    IdPlan : $(`#selected${rows_selected[i]}`).val(),
+                    Date : date
+                });
+            }
+
+            $.ajax({
+                url: "/ChargesAdmin/SaveCharges", // Replace with the URL of the server-side action to get the selected date
+                contentType: 'application/json',
+                type: "POST",
+                data: JSON.stringify(data),
+                success: function (response) {
+
+                 
+            window.location.href = '/ChargesAdmin/';
+
+
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    console.log(xhr)
+                    console.log(textStatus)
+                    console.log(errorThrown)
+                }
+            });
+
+
+
+
+
+
+        }
+
+
+    </script>
