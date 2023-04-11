@@ -10,12 +10,13 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Web.Security.Filters;
 
 namespace Web.Controllers
 {
     public class AccountController : Controller
     {
-
+        [LoginFilter]
         private List<ViewModelAccount> GetCharges()
         {
             User user = (User)Session["User"];

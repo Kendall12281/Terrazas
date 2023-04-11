@@ -7,10 +7,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Web.Security.Filters;
 using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
 namespace Web.Controllers
 {
+
+    [LoginFilter]
     public class BookingController : Controller
     {
         // GET: Booking

@@ -79,209 +79,220 @@
                         </div>
                     </div>
                 }
-                <ul>
-                    <li>
-                        <a href="/Home/">
-                            <span class="icon"><i class="fas fa-home"></i></span>
-                            <span class="item">Home</span>
-                        </a>
-                    </li>
-                    @if (user.IdRol == 2)
-                    {
+        <ul>
+            <li>
+                <a href="/Home/">
+                    <span class="icon"><i class="fas fa-home"></i></span>
+                    <span class="item">Home</span>
+                </a>
+            </li>
+            @if (user.IdRol == 2)
+            {
+                <li>
+                    <a href="/Account/">
+                        <span class="icon"><i class="fas fa-wallet"></i></span>
+                        <span class="item">Finances</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/Incident/">
+                        <span class="icon"><i class="fas fa-ticket-alt"></i></span>
+                        <span class="item">Incidents</span>
+                    </a>
+
+                    <ul class="ml-5">
+                        <li>
+                            <a href="/Incident/NewIncident">
+                                • New Incident
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="/Booking/">
+                        <span class="icon"><i class="fas fa-book"></i></span>
+                        <span class="item">Booking</span>
+                    </a>
+                    <ul class="ml-5">
+                        <li>
+                            <a href="/Booking/MyBookings">
+                                • My Bookings
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+            }
+            @if (user.IdRol == 1)
+            {
+
+                <li>
+                    <a id="dropDrownButtonResident">
+                        <div class="flex">
+
+                            <span class="icon"><i class="fas fa-ticket-alt"></i></span>
+                            <span class="item">Residents</span>
+                            <svg class="w-4 h-4 ml-2 mt-1" aria-hidden="true" fill="none" stroke="currentColor"
+                                 viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </a>
+                    <ul class="ml-5 hidden" id="dropDrownResident">
+                        <li>
+                            <a href="/Resident/">
+                                • Resident
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Resident/New">
+                                • New Resident
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+
+                    <a id="dropDrownButtonPlan">
+                        <div class="flex">
+
+                            <span class="icon"><i class="fas fa-ticket-alt"></i></span>
+                            <span class="item">Plans</span>
+                            <svg class="w-4 h-4 ml-2 mt-1" aria-hidden="true" fill="none" stroke="currentColor"
+                                 viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </a>
+                    <ul class="ml-5 hidden" id="dropDrownPlan">
+                        <li>
+                            <a href="/Plan/">
+                                • Plan
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Plan/New">
+                                • New Plan
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+
+                <li>
+
+                    <a id="dropDrownButtonCollection">
+                        <div class="flex">
+
+                            <span class="icon"><i class="fas fa-ticket-alt"></i></span>
+                            <span class="item">Collections</span>
+                            <svg class="w-4 h-4 ml-2 mt-1" aria-hidden="true" fill="none" stroke="currentColor"
+                                 viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </a>
+                    <ul class="ml-5 hidden" id="dropDrownCollection">
+                        <li>
+                            <a href="/Collection/">
+                                • Collection
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Collection/New">
+                                • New Collection
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+
+                    <a id="dropDrownButtonAccount">
+                        <div class="flex">
+
+                            <span class="icon"><i class="fas fa-ticket-alt"></i></span>
+                            <span class="item">Account</span>
+                            <svg class="w-4 h-4 ml-2 mt-1" aria-hidden="true" fill="none" stroke="currentColor"
+                                 viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </a>
+                    <ul class="ml-5 hidden" id="dropDrownAccount">
+                        <li>
+                            <a href="/Account/Admin">
+                                • Account
+                            </a>
+                        </li>
                         <li>
                             <a href="/Account/">
-                                <span class="icon"><i class="fas fa-wallet"></i></span>
-                                <span class="item">Finances</span>
+                                • All
                             </a>
                         </li>
+                    </ul>
+                </li>
 
+
+
+
+                <li>
+                    <a id="dropDrownButtonSocialArea">
+                        <div class="flex">
+
+                            <span class="icon"><i class="fas fa-ticket-alt"></i></span>
+                            <span class="item">Social Area</span>
+                            <svg class="w-4 h-4 ml-2 mt-1" aria-hidden="true" fill="none" stroke="currentColor"
+                                 viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </a>
+                    <ul class="ml-5 hidden" id="dropDrownSocialArea">
                         <li>
-                            <a href="/Incident/">
-                                <span class="icon"><i class="fas fa-ticket-alt"></i></span>
-                                <span class="item">Incidents</span>
+                            <a href="/SocialAreaAdmin/">
+                                • Bookings
                             </a>
-
-                            <ul class="ml-5">
-                                <li>
-                                    <a href="/Incident/NewIncident">
-                                        • New Incident
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
-
                         <li>
-                            <a href="/Booking/">
-                                <span class="icon"><i class="fas fa-book"></i></span>
-                                <span class="item">Booking</span>
-                            </a>
-                            <ul class="ml-5">
-                                <li>
-                                    <a href="/Booking/MyBookings">
-                                        • My Bookings
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
-
-                    }
-                    @if (user.IdRol == 1)
-                    {
-
-                        <li>
-                            <a id="dropDrownButtonResident">
-                                <div class="flex">
-
-                                    <span class="icon"><i class="fas fa-ticket-alt"></i></span>
-                                    <span class="item">Incidents</span>
-                                    <svg class="w-4 h-4 ml-2 mt-1" aria-hidden="true" fill="none" stroke="currentColor"
-                                         viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                    </svg>
-                                </div>
-                            </a>
-                            <ul class="ml-5 hidden" id="dropDrownResident">
-                                <li>
-                                    <a href="/Resident/">
-                                        • Resident
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/Resident/New">
-                                        • New Resident
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li>
-
-                            <a id="dropDrownButtonPlan">
-                                <div class="flex">
-
-                                    <span class="icon"><i class="fas fa-ticket-alt"></i></span>
-                                    <span class="item">Plans</span>
-                                    <svg class="w-4 h-4 ml-2 mt-1" aria-hidden="true" fill="none" stroke="currentColor"
-                                         viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                    </svg>
-                                </div>
-                            </a>
-                            <ul class="ml-5 hidden" id="dropDrownPlan">
-                                <li>
-                                    <a href="/Plan/">
-                                        • Plan
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/Plan/New">
-                                        • New Plan
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
-
-
-                        <li>
-
-                            <a id="dropDrownButtonCollection">
-                                <div class="flex">
-
-                                    <span class="icon"><i class="fas fa-ticket-alt"></i></span>
-                                    <span class="item">Collections</span>
-                                    <svg class="w-4 h-4 ml-2 mt-1" aria-hidden="true" fill="none" stroke="currentColor"
-                                         viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                    </svg>
-                                </div>
-                            </a>
-                            <ul class="ml-5 hidden" id="dropDrownCollection">
-                                <li>
-                                    <a href="/Collection/">
-                                        • Collection
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/Collection/New">
-                                        • New Collection
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li>
-
-                            <a id="dropDrownButtonAccount">
-                                <div class="flex">
-
-                                    <span class="icon"><i class="fas fa-ticket-alt"></i></span>
-                                    <span class="item">Account</span>
-                                    <svg class="w-4 h-4 ml-2 mt-1" aria-hidden="true" fill="none" stroke="currentColor"
-                                         viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                    </svg>
-                                </div>
-                            </a>
-                            <ul class="ml-5 hidden" id="dropDrownAccount">
-                                <li>
-                                    <a href="/Account/Admin">
-                                        • Account
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/Account/">
-                                        • All
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li>
-
-                            <a href="/Incident/AllIncidents">
-                                <span class="icon"><i class="fas fa-ticket-alt"></i></span>
-                                <span class="item">Incidents</span>
+                            <a href="/SocialAreaAdmin/PendingBooking">
+                                • Pending Bookings
                             </a>
                         </li>
+                    </ul>
+                </li>
 
 
-                        <li>
-                            <a id="dropDrownButtonSocialArea">
-                                <div class="flex">
+                <li>
 
-                                    <span class="icon"><i class="fas fa-ticket-alt"></i></span>
-                                    <span class="item">Social Area</span>
-                                    <svg class="w-4 h-4 ml-2 mt-1" aria-hidden="true" fill="none" stroke="currentColor"
-                                         viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                    </svg>
-                                </div>
-                            </a>
-                            <ul class="ml-5 hidden" id="dropDrownSocialArea">
-                                <li>
-                                    <a href="/SocialAreaAdmin/">
-                                        • Bookings
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/SocialAreaAdmin/PendingBooking">
-                                        • Pending Bookings
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                    <a href="/Incident/AllIncidents">
+                        <span class="icon"><i class="fas fa-ticket-alt"></i></span>
+                        <span class="item">Incidents</span>
+                    </a>
+                </li>
 
-                    }
+                <li>
 
-                    <li>
-                        <a href="/">
-                            <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
-                            <span class="item">Sign Out</span>
-                        </a>
-                    </li>
-                </ul>
+                    <a href="/ChargesAdmin/">
+                        <span class="icon"><i class="fas fa-ticket-alt"></i></span>
+                        <span class="item">Charges</span>
+                    </a>
+                </li>
+
+            }
+
+            <li>
+                <a href="/">
+                    <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
+                    <span class="item">Sign Out</span>
+                </a>
+            </li>
+        </ul>
             }
         </div>
 
