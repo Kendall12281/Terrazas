@@ -90,7 +90,7 @@ namespace Web.Controllers
         }
 
         [System.Web.Mvc.HttpPost]
-        public ActionResult SaveCharges([FromBody]  List<ViewModelCharge> list)
+        public void SaveCharges([FromBody]  List<ViewModelCharge> list)
         {
 
 
@@ -119,7 +119,6 @@ namespace Web.Controllers
             
             serviceCharges.SaveCharges(charges);
 
-            return View();
         }
 
         public ActionResult DataTables()
