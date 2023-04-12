@@ -21,53 +21,60 @@ namespace Infraestructure.Repository
 
         public Incident GetIncidentById(int id)
         {
+            Incident incident = new Incident();
             try
             {
                 using(MyContext db = new MyContext())
                 {
-                    return db.Incident.Include("IncidentState").Include("Resident")
+                    incident = db.Incident.Include("IncidentState").Include("Resident")
                         .Where(x=>x.Id == id).FirstOrDefault();
                 }
             }
             catch (Exception)
             {
 
-                throw;
+                
             }
+            return incident;
         }
 
         public List<Incident> GetIncidents()
         {
+            List <Incident> list = new List<Incident>();
             try
             {
                 using(MyContext db = new MyContext())
                 {
-                    return db.Incident.Include("Resident").Include("IncidentState")
+                     list = db.Incident.Include("Resident").Include("IncidentState")
                         .ToList();
                 }
             }
             catch (Exception)
             {
 
-                throw;
+                
             }
+            return list;
         }
 
         public List<Incident> GetIncidentsByIdResident(int id)
         {
+            List<Incident> list = new List<Incident> ();
             try
             {
                 using(MyContext db = new MyContext())
                 {
-                    return db.Incident.Include("IncidentState")
+                    list = db.Incident.Include("IncidentState")
                         .Where(x=> x.IdResident == id).ToList();
                 }
             }
             catch (Exception)
             {
 
-                throw;
+
             }
+
+            return list;
         }
 
         public void MarkIncidentAsSolved(int id)
@@ -83,7 +90,6 @@ namespace Infraestructure.Repository
             catch (Exception)
             {
 
-                throw;
             }
         }
 
@@ -100,7 +106,6 @@ namespace Infraestructure.Repository
             catch (Exception)
             {
 
-                throw;
             }
         }
     }

@@ -1,5 +1,5 @@
 ﻿
-@model  List<Infraestructure.Model.Booking>
+@model  List<Infraestructure.Model.ViewModel.Booking.ViewModelShowBooking>
 
 @{
     ViewBag.Title = "Index";
@@ -55,19 +55,19 @@
                     {
                         <tr class="text-center">
                             <td>
-                                @Html.DisplayFor(modelItem => item.SocialArea.Name)
+                                @Html.DisplayFor(modelItem => item.Name)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Date)
+                                @Html.DisplayFor(modelItem => item.date)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.StartTime)
+                                @Html.DisplayFor(modelItem => item.startDate)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.EndTime)
+                                @Html.DisplayFor(modelItem => item.endDate)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Confirmed)
+                                @Html.DisplayFor(modelItem => item.confirmedString)
                             </td>
 
                         </tr>

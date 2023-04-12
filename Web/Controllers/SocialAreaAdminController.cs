@@ -1,4 +1,5 @@
 ﻿using ApplicationCore.Services;
+using Infraestructure.Model.ViewModel.Booking;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,25 @@ namespace Web.Controllers
         {
             ServiceSocialArea service = new ServiceSocialArea();
 
-            return View(service.GetAllBooking());
+            List<ViewModelShowBooking> list = new List<ViewModelShowBooking>();
+
+            foreach (var item in service.GetAllBooking())
+            {
+                ViewModelShowBooking model = new ViewModelShowBooking()
+                {
+                    HouseNumber = item.Resident.HouseNumber,
+                    Name = item.SocialArea.Name,
+                    date = item.Date,
+                    startDate = item.StartTime,
+                    endDate = item.EndTime,
+                    confirmed = item.Confirmed
+
+                };
+
+                list.Add(model);
+            }
+
+            return View(list);
         }
 
         public ActionResult PendingBooking()

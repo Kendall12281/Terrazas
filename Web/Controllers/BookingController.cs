@@ -101,7 +101,22 @@ namespace Web.Controllers
         {
             Infraestructure.Model.Resident resident = (Infraestructure.Model.Resident)Session["Resident"];
             ServiceSocialArea service = new ServiceSocialArea();
-            List<Booking> booking = service.GetBookingById(resident.Id);
+            List<ViewModelShowBooking> booking = new List<ViewModelShowBooking>();
+            var result = service.GetBookingById(resident.Id);
+
+            foreach (var item in result)
+            {
+                ViewModelShowBooking model = new ViewModelShowBooking()
+                {
+                    Name = item.SocialArea.Name,
+                    confirmed = item.Confirmed,
+                    date = item.Date,
+                    endDate = item.EndTime,
+                    startDate = item.StartTime
+
+                };
+                booking.Add(model);
+            }
 
             return View(booking);
         }

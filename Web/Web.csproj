@@ -295,6 +295,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ChargesAdminController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\SocialAreaAdminController.cs" />
     <Compile Include="Controllers\SocialAreaController.cs" />
     <Compile Include="Controllers\BookingController.cs" />
@@ -543,6 +544,7 @@
     <Content Include="Views\Shared\EditorTemplates\DataTable.cshtml" />
     <Content Include="Views\ChargesAdmin\DataTables.cshtml" />
     <Content Include="Views\ChargesAdmin\SelectDate.cshtml" />
+    <Content Include="Views\Error\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

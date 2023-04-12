@@ -135,6 +135,7 @@
     <Compile Include="Model\ViewModel\Account\ViewModelAccount.cs" />
     <Compile Include="Model\ViewModel\Booking\ViewModelBooking.cs" />
     <Compile Include="Model\ViewModel\Booking\ViewModelDate.cs" />
+    <Compile Include="Model\ViewModel\Booking\ViewModelShowBooking.cs" />
     <Compile Include="Model\ViewModel\Charge\ViewModelCharge.cs" />
     <Compile Include="Model\ViewModel\Charge\ViewModelPlan.cs" />
     <Compile Include="Model\ViewModel\Collection\ViewModelCollection.cs" />

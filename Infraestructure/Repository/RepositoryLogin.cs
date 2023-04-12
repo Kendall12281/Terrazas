@@ -1,6 +1,7 @@
 ﻿using Infraestructure.Model;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,10 +28,9 @@ namespace Infraestructure.Repository
                         return true;
                 }
             }
-            catch (Exception)
+            catch (Exception err)
             {
-
-                throw;
+                throw new Exception(err.Message);
             }
         }
 
@@ -41,18 +41,13 @@ namespace Infraestructure.Repository
                 using (MyContext db = new MyContext())
                 {
 
-                    var oUser = (from user in db.User
-                                 where user.Email == username.Trim()
-                                 && user.Password == password.Trim()
-                                 select user).FirstOrDefault();
+                     return (from user in db.User where user.Email == username.Trim() && user.Password == password.Trim() select user).FirstOrDefault();
 
-                    return oUser;
                 }
             }
-            catch (Exception)
+            catch (Exception err)
             {
-
-                throw;
+                throw new Exception(err.Message);
             }
         }
     }
