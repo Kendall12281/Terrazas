@@ -19,7 +19,8 @@ namespace Web.Security.Filters
             //Admin
             if (filterContext.Controller is ResidentController == true && oUser.IdRol != 1) { filterContext.HttpContext.Response.Redirect("~/Home/"); }
             if (filterContext.Controller is PlanController == true && oUser.IdRol != 1) { filterContext.HttpContext.Response.Redirect("~/Home/"); }
-            if (filterContext.Controller is SocialAreaController == true && oUser.IdRol != 1) { filterContext.HttpContext.Response.Redirect("~/Home/"); }
+            if (filterContext.Controller is SocialAreaAdminController == true && oUser.IdRol != 1) { filterContext.HttpContext.Response.Redirect("~/Home/"); }
+            if (filterContext.Controller is ChargesAdminController == true && oUser.IdRol != 1) { filterContext.HttpContext.Response.Redirect("~/Home/"); }
 
 
             //Regular User

@@ -143,6 +143,13 @@ namespace Web.Controllers
 
             return View(list);
         }
+
+        public ActionResult Paid(int id) {
+
+            ServiceAccount service = new ServiceAccount();
+            service.MarkAsPaid(id);
+            return RedirectToAction("/");
+        }
         public ActionResult ShowTable()
         {
             // Generate the PDF table

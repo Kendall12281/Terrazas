@@ -110,5 +110,22 @@ namespace Infraestructure.Repository
                 throw;
             }
         }
+
+        public void MarkAsPaid(int id)
+        {
+            try
+            {
+                using (MyContext db = new MyContext())
+                {
+                    db.Charge.Find(id).Cancelled = true;
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

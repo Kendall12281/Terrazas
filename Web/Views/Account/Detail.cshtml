@@ -9,12 +9,12 @@
 </head>
 <div>
 
-    <dl class="shadow border p-10 bg-white">
+    <dl class="shadow border p-10 bg-slate-300 w-10/12">
         <dt class="control-label col-md-2 mb-2">
             @Html.DisplayNameFor(model => model.houseNumber)
         </dt>
 
-        <dd class="bg-white border sm:text-sm rounded-lg block w-full p-2.5 mb-5">
+        <dd class="bg-white border sm:text-sm rounded-lg block w-full p-2.5 mb-5 w-1/12">
             @Html.DisplayFor(model => model.houseNumber)
         </dd>
         <div>
@@ -23,7 +23,7 @@
                 @Html.DisplayNameFor(model => model.email)
             </dt>
 
-            <dd class="bg-white border sm:text-sm rounded-lg block w-full p-2.5 mb-5">
+            <dd class="bg-white border sm:text-sm rounded-lg block w-full p-2.5 mb-5 w-6/12">
                 @Html.DisplayFor(model => model.email)
             </dd>
         </div>
@@ -33,7 +33,7 @@
                 @Html.DisplayNameFor(model => model.name)
             </dt>
 
-            <dd class="bg-white border sm:text-sm rounded-lg block w-full p-2.5 mb-5">
+            <dd class="bg-white border sm:text-sm rounded-lg block w-full p-2.5 mb-5 w-6/12">
                 @Html.DisplayFor(model => model.name)
             </dd>
         </div>
@@ -45,7 +45,7 @@
                 @Html.DisplayNameFor(model => model.lastName)
             </dt>
 
-            <dd class="bg-white border sm:text-sm rounded-lg block w-full p-2.5 mb-5">
+            <dd class="bg-white border sm:text-sm rounded-lg block w-full p-2.5 mb-5 w-6/12">
                 @Html.DisplayFor(model => model.lastName)
             </dd>
         </div>
@@ -55,7 +55,7 @@
             @Html.DisplayNameFor(model => model.month)
         </dt>
 
-        <dd class="bg-white border sm:text-sm rounded-lg block w-full p-2.5 mb-5">
+        <dd class="bg-white border sm:text-sm rounded-lg block w-full p-2.5 mb-5 w-1/12">
             @Html.DisplayFor(model => model.monthName)
         </dd>
 
@@ -63,7 +63,7 @@
             @Html.DisplayNameFor(model => model.year)
         </dt>
 
-        <dd class="bg-white border sm:text-sm rounded-lg block w-full p-2.5 mb-5">
+        <dd class="bg-white border sm:text-sm rounded-lg block w-full p-2.5 mb-5 w-1/12">
             @Html.DisplayFor(model => model.year)
         </dd>
 
@@ -72,7 +72,7 @@
             @Html.DisplayNameFor(model => model.PlanName)
         </dt>
 
-        <dd class="bg-white border sm:text-sm rounded-lg block w-full p-2.5 mb-5">
+        <dd class="bg-white border sm:text-sm rounded-lg block w-full p-2.5 mb-5 w-3/12">
             @Html.DisplayFor(model => model.PlanName)
         </dd>
 
@@ -93,7 +93,7 @@
             @Html.DisplayNameFor(model => model.total)
         </dt>
 
-        <dd class="bg-white border sm:text-sm rounded-lg block w-full p-2.5 mb-5">
+        <dd class="bg-white border sm:text-sm rounded-lg block w-full p-2.5 mb-5 w-3/12">
             @Html.DisplayFor(model => model.totalColones)
         </dd>
 
@@ -101,7 +101,7 @@
             @Html.DisplayNameFor(model => model.notes)
         </dt>
 
-        <dd class="bg-white border sm:text-sm rounded-lg block w-full p-2.5 mb-5">
+        <dd class="bg-white border sm:text-sm rounded-lg block w-full p-2.5 mb-5 w-6/12">
             @Html.DisplayFor(model => model.notes)
         </dd>
 
@@ -109,14 +109,20 @@
             @Html.DisplayNameFor(model => model.cancelled)
         </dt>
 
-        <dd class="bg-white border sm:text-sm rounded-lg block w-full p-2.5 mb-5">
+        <dd class="bg-white border sm:text-sm rounded-lg block w-full p-2.5 mb-5 w-1/12">
             @Html.DisplayFor(model => model.cancelledName)
         </dd>
 
 
     </dl>
 </div>
-<p>
+<p class="flex gap-3">
+    @if (Model.cancelled == false)
+            {
+                <button class="font-medium rounded-lg text-sm px-5 py-2.5 text-center btn-green-color shadow">
+                    @Html.ActionLink("Mark as Paid", "Paid", new { id = @Model.Id })
+                </button>
+            }
     <button class="font-medium rounded-lg text-sm px-5 py-2.5 text-center btn-blue-color shadow">
         @Html.ActionLink("Back to List ", "Index", new { @class = "btn-blue-color" })
     </button>

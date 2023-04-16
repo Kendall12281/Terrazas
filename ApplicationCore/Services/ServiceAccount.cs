@@ -54,5 +54,11 @@ namespace ApplicationCore.Services
             IRepositoryAccount repository = new RepositoryAccount();
             return repository.GetPendingChargesByResidentId(id);
         }
+
+        public void MarkAsPaid(int id)
+        {
+            IRepositoryAccount repository = new RepositoryAccount();
+            repository.MarkAsPaid(id);
+        }
     }
 }

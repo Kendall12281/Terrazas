@@ -17,5 +17,6 @@ namespace ApplicationCore.Services
         IEnumerable<Charge> GetPendingChargesByResidentId(int id);
         IEnumerable<Charge> GetCancelledChargesByResidentId(int id);
         Charge GetChargeByChargeId(int id);
+        void MarkAsPaid(int id);
     }
 }
